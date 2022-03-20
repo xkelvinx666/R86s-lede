@@ -175,8 +175,6 @@ define Package/iwlwifi-firmware-ax200/install
 endef
 $(eval $(call BuildPackage,iwlwifi-firmware-ax200))
 
-<<<<<<< Updated upstream
-=======
 Package/iwlwifi-firmware-ax201 = $(call Package/firmware-default,Intel ax201 firmware)
 define Package/iwlwifi-firmware-ax201/install
 	$(INSTALL_DIR) $(1)/lib/firmware
@@ -184,7 +182,6 @@ define Package/iwlwifi-firmware-ax201/install
 endef
 $(eval $(call BuildPackage,iwlwifi-firmware-ax201))
 
->>>>>>> Stashed changes
 Package/iwlwifi-firmware-ax210 = $(call Package/firmware-default,Intel AX210 firmware)
 define Package/iwlwifi-firmware-ax210/install
 	$(INSTALL_DIR) $(1)/lib/firmware
