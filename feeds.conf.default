@@ -3,9 +3,12 @@ src-git luci https://github.com/coolsnowwolf/luci
 src-git routing https://github.com/coolsnowwolf/routing
 src-git telephony https://git.openwrt.org/feed/telephony.git
 src-git r86sglobal https://github.com/R86S/R86S-QuickInstaller.git
+src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2
+src-git nginx https://github.com/sun-cut/luci-app-nginx-manager
 src-git kenzo https://github.com/kenzok8/openwrt-packages
 src-git small https://github.com/kenzok8/small
 src-git liuran001_packages https://github.com/liuran001/openwrt-packages
+src-git tencent_ddns https://github.com/Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns
 #src-git video https://github.com/openwrt/video.git
 #src-git targets https://github.com/openwrt/targets.git
 #src-git oldpackages http://git.openwrt.org/packages.git
