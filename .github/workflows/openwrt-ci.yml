@@ -26,16 +26,15 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
-
       - name: Checkout
         uses: actions/checkout@v2
         with:
           ref: latest
 
       - name: Clone extra packages code
-      run: |
-        git clone https://github.com/sun-cut/luci-app-nginx-manager package/lean
-        git clone https://github.com/thinktip/luci-theme-neobird package/lean
+        run: |
+          git clone https://github.com/sun-cut/luci-app-nginx-manager package/lean
+          git clone https://github.com/thinktip/luci-theme-neobird package/lean
 
       - name: Space cleanup
         env:
