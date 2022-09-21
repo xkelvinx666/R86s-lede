@@ -57,7 +57,168 @@ jobs:
           ./scripts/feeds install -a
 
       - name: Generate configuration file
-        run: make defconfig
+        run: |
+          rm -f ./.config*
+          touch ./.config
+          cat >> .config <<EOF
+          #
+          # ========================固件定制部分========================
+          #
+          CONFIG_TARGET_x86=y
+          CONFIG_TARGET_x86_64=y
+          CONFIG_TARGET_x86_64_DEVICE_generic=y
+          CONFIG_LIBMBEDTLS_HAVE_SSE2=y
+          CONFIG_LIBSODIUM_MINIMAL=y
+          CONFIG_NGINX_HEADERS_MORE=y
+          CONFIG_NGINX_HTTP_ACCESS=y
+          CONFIG_NGINX_HTTP_AUTH_BASIC=y
+          CONFIG_NGINX_HTTP_AUTOINDEX=y
+          CONFIG_NGINX_HTTP_BROWSER=y
+          CONFIG_NGINX_HTTP_CACHE=y
+          CONFIG_NGINX_HTTP_CHARSET=y
+          CONFIG_NGINX_HTTP_EMPTY_GIF=y
+          CONFIG_NGINX_HTTP_FASTCGI=y
+          CONFIG_NGINX_HTTP_GEO=y
+          CONFIG_NGINX_HTTP_GZIP=y
+          CONFIG_NGINX_HTTP_LIMIT_CONN=y
+          CONFIG_NGINX_HTTP_LIMIT_REQ=y
+          CONFIG_NGINX_HTTP_MAP=y
+          CONFIG_NGINX_HTTP_MEMCACHED=y
+          CONFIG_NGINX_HTTP_PROXY=y
+          CONFIG_NGINX_HTTP_REFERER=y
+          CONFIG_NGINX_HTTP_REWRITE=y
+          CONFIG_NGINX_HTTP_SCGI=y
+          CONFIG_NGINX_HTTP_SPLIT_CLIENTS=y
+          CONFIG_NGINX_HTTP_SSI=y
+          CONFIG_NGINX_HTTP_UPSTREAM_HASH=y
+          CONFIG_NGINX_HTTP_UPSTREAM_IP_HASH=y
+          CONFIG_NGINX_HTTP_UPSTREAM_KEEPALIVE=y
+          CONFIG_NGINX_HTTP_UPSTREAM_LEAST_CONN=y
+          CONFIG_NGINX_HTTP_USERID=y
+          CONFIG_NGINX_HTTP_UWSGI=y
+          CONFIG_NGINX_HTTP_V2=y
+          CONFIG_NGINX_NAXSI=y
+          CONFIG_NGINX_PCRE=y
+          CONFIG_NGINX_UBUS=y
+          CONFIG_PACKAGE_boost=y
+          CONFIG_PACKAGE_boost-program_options=y
+          CONFIG_PACKAGE_boost-system=y
+          CONFIG_PACKAGE_chinadns-ng=y
+          CONFIG_PACKAGE_coreutils=y
+          CONFIG_PACKAGE_coreutils-base64=y
+          CONFIG_PACKAGE_coreutils-nohup=y
+          CONFIG_PACKAGE_dns2socks=y
+          CONFIG_PACKAGE_dns2tcp=y
+          CONFIG_PACKAGE_haproxy=y
+          CONFIG_PACKAGE_iptables-mod-ipopt=y
+          CONFIG_PACKAGE_kmod-ifb=y
+          CONFIG_PACKAGE_kmod-ipt-ipopt=y
+          CONFIG_PACKAGE_kmod-sched-cake=y
+          CONFIG_PACKAGE_kmod-sched-core=y
+          CONFIG_PACKAGE_libcares=y
+          CONFIG_PACKAGE_libev=y
+          CONFIG_PACKAGE_libevent2=y
+          CONFIG_PACKAGE_libltdl=y
+          CONFIG_PACKAGE_liblua5.3=y
+          CONFIG_PACKAGE_libmbedtls=y
+          CONFIG_PACKAGE_libsodium=y
+          CONFIG_PACKAGE_libudns=y
+          CONFIG_PACKAGE_libunbound=y
+          CONFIG_PACKAGE_libunbound_ipset=y
+          CONFIG_PACKAGE_libunbound_libevent=y
+          CONFIG_PACKAGE_libunbound_libpthread=y
+          # CONFIG_PACKAGE_luci-app-adbyby-plus is not set
+          # CONFIG_PACKAGE_luci-app-ddns is not set
+          CONFIG_PACKAGE_luci-app-mosdns=y
+          CONFIG_PACKAGE_luci-app-nginx-manager=y
+          CONFIG_PACKAGE_luci-app-passwall=y
+          CONFIG_PACKAGE_luci-app-sqm=y
+          CONFIG_PACKAGE_luci-app-tencentddns=y
+          # CONFIG_PACKAGE_luci-app-unblockmusic is not set
+          CONFIG_PACKAGE_luci-app-unbound=y
+          CONFIG_PACKAGE_luci-app-uugamebooster=y
+          # CONFIG_PACKAGE_luci-app-vsftpd is not set
+          # CONFIG_PACKAGE_luci-app-wireguard is not set
+          # CONFIG_PACKAGE_luci-app-wol is not set
+          # CONFIG_PACKAGE_luci-app-xlnetacc is not set
+          # CONFIG_PACKAGE_luci-app-zerotier is not set
+          CONFIG_PACKAGE_luci-compat=y
+          CONFIG_PACKAGE_luci-i18n-mosdns-zh-cn=y
+          CONFIG_PACKAGE_luci-i18n-nginx-manager-zh-cn=y
+          CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=y
+          CONFIG_PACKAGE_luci-i18n-sqm-zh-cn=y
+          CONFIG_PACKAGE_luci-i18n-uugamebooster-zh-cn=y
+          CONFIG_PACKAGE_luci-nginx=y
+          CONFIG_PACKAGE_luci-proto-ipv6=y
+          CONFIG_PACKAGE_luci-ssl-nginx=y
+          CONFIG_PACKAGE_luci-ssl-openssl=y
+          CONFIG_PACKAGE_luci-theme-neobird=y
+          CONFIG_PACKAGE_microsocks=y
+          CONFIG_PACKAGE_mosdns=y
+          CONFIG_PACKAGE_nginx=y
+          CONFIG_PACKAGE_nginx-mod-luci=y
+          CONFIG_PACKAGE_nginx-mod-luci-ssl=y
+          CONFIG_PACKAGE_nginx-ssl=y
+          CONFIG_PACKAGE_nginx-ssl-util=y
+          CONFIG_PACKAGE_nginx-util=y
+          CONFIG_PACKAGE_resolveip=y
+          CONFIG_PACKAGE_shadowsocks-libev-ss-local=y
+          CONFIG_PACKAGE_shadowsocks-libev-ss-redir=y
+          CONFIG_PACKAGE_shadowsocks-libev-ss-server=y
+          CONFIG_PACKAGE_shadowsocksr-libev-ssr-local=y
+          CONFIG_PACKAGE_shadowsocksr-libev-ssr-redir=y
+          CONFIG_PACKAGE_simple-obfs=y
+          CONFIG_PACKAGE_sqm-scripts=y
+          CONFIG_PACKAGE_tc-tiny=y
+          CONFIG_PACKAGE_tcping=y
+          CONFIG_PACKAGE_trojan-plus=y
+          CONFIG_PACKAGE_unbound-daemon=y
+          CONFIG_PACKAGE_unzip=y
+          CONFIG_PACKAGE_uugamebooster=y
+          CONFIG_PACKAGE_uwsgi=y
+          CONFIG_PACKAGE_uwsgi-cgi-plugin=y
+          CONFIG_PACKAGE_uwsgi-luci-support=y
+          CONFIG_PACKAGE_uwsgi-syslog-plugin=y
+          CONFIG_PACKAGE_v2ray-core=y
+          CONFIG_PACKAGE_v2ray-geoip=y
+          CONFIG_PACKAGE_v2ray-geosite=y
+          CONFIG_PACKAGE_v2ray-plugin=y
+          CONFIG_PACKAGE_xray-core=y
+          # CONFIG_TARGET_IMAGES_GZIP is not set
+          CONFIG_boost-compile-visibility-hidden=y
+          CONFIG_boost-runtime-shared=y
+          CONFIG_boost-static-and-shared-libs=y
+          CONFIG_boost-variant-release=y
+          # CONFIG_BUSYBOX_CONFIG_FEATURE_IP_LINK is not set
+          # CONFIG_BUSYBOX_CONFIG_IP is not set
+          CONFIG_PACKAGE_UnblockNeteaseMusic-Go=y
+          CONFIG_PACKAGE_adbyby=y
+          CONFIG_PACKAGE_etherwake=y
+          CONFIG_PACKAGE_kmod-crypto-kpp=y
+          CONFIG_PACKAGE_kmod-crypto-lib-chacha20=y
+          CONFIG_PACKAGE_kmod-crypto-lib-chacha20poly1305=y
+          CONFIG_PACKAGE_kmod-crypto-lib-curve25519=y
+          CONFIG_PACKAGE_kmod-crypto-lib-poly1305=y
+          CONFIG_PACKAGE_kmod-udptunnel4=y
+          CONFIG_PACKAGE_kmod-udptunnel6=y
+          CONFIG_PACKAGE_kmod-wireguard=y
+          CONFIG_PACKAGE_libminiupnpc=y
+          CONFIG_PACKAGE_libnatpmp=y
+          CONFIG_PACKAGE_luci-proto-wireguard=y
+          CONFIG_PACKAGE_vsftpd-alt=y
+          CONFIG_PACKAGE_wireguard-tools=y
+          CONFIG_PACKAGE_wol=y
+          CONFIG_PACKAGE_zerotier=y
+          CONFIG_VSFTPD_USE_UCI_SCRIPTS=y
+          # CONFIG_ZEROTIER_ENABLE_DEBUG is not set
+          # CONFIG_ZEROTIER_ENABLE_SELFTEST is not set
+          #
+          # ========================固件定制部分结束========================
+          #
+          EOF
+          sed -i 's/^[ \t]*//g' ./.config
+          make defconfig
+
 
       - name: Make download
         run: |
