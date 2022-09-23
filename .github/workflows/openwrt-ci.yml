@@ -106,7 +106,6 @@ jobs:
           CONFIG_PACKAGE_boost-system=y
           CONFIG_PACKAGE_chinadns-ng=y
           CONFIG_PACKAGE_coreutils=y
-
           CONFIG_PACKAGE_libunbound_libevent=y
           CONFIG_PACKAGE_libunbound_libpthread=y
           CONFIG_PACKAGE_luci-app-adbyby-plus is not set
