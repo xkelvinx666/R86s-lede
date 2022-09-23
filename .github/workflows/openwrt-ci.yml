@@ -106,9 +106,45 @@ jobs:
           CONFIG_PACKAGE_boost-system=y
           CONFIG_PACKAGE_chinadns-ng=y
           CONFIG_PACKAGE_coreutils=y
+          CONFIG_PACKAGE_coreutils-base64=y
+          CONFIG_PACKAGE_coreutils-nohup=y
+          CONFIG_PACKAGE_dns2socks=y
+          CONFIG_PACKAGE_dns2tcp=y
+          CONFIG_PACKAGE_haproxy=y
+          CONFIG_PACKAGE_ip6tables=y
+          CONFIG_PACKAGE_ip6tables-extra=y
+          CONFIG_PACKAGE_ip6tables-mod-nat=y
+          CONFIG_PACKAGE_iptables-mod-ipopt=y
+          CONFIG_PACKAGE_ipv6helper=y
+          CONFIG_PACKAGE_kmod-ifb=y
+          CONFIG_PACKAGE_kmod-ip6tables=y
+          CONFIG_PACKAGE_kmod-ip6tables-extra=y
+          CONFIG_PACKAGE_kmod-ipt-ipopt=y
+          CONFIG_PACKAGE_kmod-ipt-nat6=y
+          CONFIG_PACKAGE_kmod-ipt-offload=y
+          CONFIG_PACKAGE_kmod-iptunnel=y
+          CONFIG_PACKAGE_kmod-nf-flow=y
+          CONFIG_PACKAGE_kmod-nf-ipt6=y
+          CONFIG_PACKAGE_kmod-nf-log6=y
+          CONFIG_PACKAGE_kmod-nf-nat6=y
+          CONFIG_PACKAGE_kmod-nf-reject6=y
+          CONFIG_PACKAGE_kmod-sched-cake=y
+          CONFIG_PACKAGE_kmod-sched-core=y
+          CONFIG_PACKAGE_kmod-sit=y
+          CONFIG_PACKAGE_kmod-usb-printer=y
+          CONFIG_PACKAGE_libcares=y
+          CONFIG_PACKAGE_libev=y
+          CONFIG_PACKAGE_libevent2=y
+          CONFIG_PACKAGE_libltdl=y
+          CONFIG_PACKAGE_liblua5.3=y
+          CONFIG_PACKAGE_libmbedtls=y
+          CONFIG_PACKAGE_libsodium=y
+          CONFIG_PACKAGE_libudns=y
+          CONFIG_PACKAGE_libunbound=y
+          CONFIG_PACKAGE_libunbound_ipset=y
           CONFIG_PACKAGE_libunbound_libevent=y
           CONFIG_PACKAGE_libunbound_libpthread=y
-          CONFIG_PACKAGE_luci-app-adbyby-plus is not set
+          # CONFIG_PACKAGE_luci-app-adbyby-plus is not set
           # CONFIG_PACKAGE_luci-app-ddns is not set
           CONFIG_PACKAGE_luci-app-mosdns=y
           CONFIG_PACKAGE_luci-app-nginx-manager=y
