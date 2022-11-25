@@ -7,7 +7,6 @@ src-git r86sglobal https://github.com/R86S/R86S-QuickInstaller.git
 src-git mosdns https://github.com/sbwml/luci-app-mosdns
 src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall;packages
 src-git passwall_luci https://github.com/xiaorouji/openwrt-passwall;luci
-src-git tencent_ddns https://github.com/SSSSSimon/tencentcloud-openwrt-plugin-ddns
 #src-git video https://github.com/openwrt/video.git
 #src-git targets https://github.com/openwrt/targets.git
 #src-git oldpackages http://git.openwrt.org/packages.git
