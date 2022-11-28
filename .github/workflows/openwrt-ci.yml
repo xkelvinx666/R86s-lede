@@ -33,7 +33,6 @@ jobs:
 
       - name: Clone extra packages code
         run: |
-          git clone https://github.com/sun-cut/luci-app-nginx-manager package/lean/luci-app-nginx-manager
           git clone https://github.com/thinktip/luci-theme-neobird package/lean/luci-theme-neobird
 
       - name: Space cleanup
@@ -52,7 +51,6 @@ jobs:
 
       - name: Update feeds
         run: |
-          sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
@@ -67,38 +65,6 @@ jobs:
           CONFIG_TARGET_x86=y
           CONFIG_TARGET_x86_64=y
           CONFIG_TARGET_x86_64_DEVICE_generic=y
-          CONFIG_NGINX_HEADERS_MORE=y
-          CONFIG_NGINX_HTTP_ACCESS=y
-          CONFIG_NGINX_HTTP_AUTH_BASIC=y
-          CONFIG_NGINX_HTTP_AUTOINDEX=y
-          CONFIG_NGINX_HTTP_BROWSER=y
-          CONFIG_NGINX_HTTP_CACHE=y
-          CONFIG_NGINX_HTTP_CHARSET=y
-          CONFIG_NGINX_HTTP_EMPTY_GIF=y
-          CONFIG_NGINX_HTTP_FASTCGI=y
-          CONFIG_NGINX_HTTP_GEO=y
-          CONFIG_NGINX_HTTP_GZIP=y
-          CONFIG_NGINX_HTTP_GZIP_STATIC=y
-          CONFIG_NGINX_HTTP_LIMIT_CONN=y
-          CONFIG_NGINX_HTTP_LIMIT_REQ=y
-          CONFIG_NGINX_HTTP_MAP=y
-          CONFIG_NGINX_HTTP_MEMCACHED=y
-          CONFIG_NGINX_HTTP_PROXY=y
-          CONFIG_NGINX_HTTP_REFERER=y
-          CONFIG_NGINX_HTTP_REWRITE=y
-          CONFIG_NGINX_HTTP_SCGI=y
-          CONFIG_NGINX_HTTP_SPLIT_CLIENTS=y
-          CONFIG_NGINX_HTTP_SSI=y
-          CONFIG_NGINX_HTTP_UPSTREAM_HASH=y
-          CONFIG_NGINX_HTTP_UPSTREAM_IP_HASH=y
-          CONFIG_NGINX_HTTP_UPSTREAM_KEEPALIVE=y
-          CONFIG_NGINX_HTTP_UPSTREAM_LEAST_CONN=y
-          CONFIG_NGINX_HTTP_USERID=y
-          CONFIG_NGINX_HTTP_UWSGI=y
-          CONFIG_NGINX_HTTP_V2=y
-          CONFIG_NGINX_NAXSI=y
-          CONFIG_NGINX_PCRE=y
-          CONFIG_NGINX_UBUS=y
           CONFIG_PACKAGE_6in4=y
           # CONFIG_PACKAGE_UnblockNeteaseMusic-Go is not set
           # CONFIG_PACKAGE_adbyby is not set
@@ -109,7 +75,6 @@ jobs:
           CONFIG_PACKAGE_dns2socks=y
           CONFIG_PACKAGE_dns2tcp=y
           # CONFIG_PACKAGE_etherwake is not set
-          CONFIG_PACKAGE_haproxy=y
           CONFIG_PACKAGE_intel-microcode=y
           CONFIG_PACKAGE_ip6tables=y
           CONFIG_PACKAGE_ipt2socks=y
@@ -141,12 +106,12 @@ jobs:
           # CONFIG_PACKAGE_kmod-shortcut-fe-cm is not set
           CONFIG_PACKAGE_kmod-sit=y
           # CONFIG_PACKAGE_kmod-tcp-bbr is not set
+          # CONFIG_PACKAGE_kmod-wireguard is not set
           CONFIG_PACKAGE_libevent2=y
-          CONFIG_PACKAGE_libltdl=y
-          CONFIG_PACKAGE_liblua5.3=y
           # CONFIG_PACKAGE_libminiupnpc is not set
           # CONFIG_PACKAGE_libnatpmp is not set
           # CONFIG_PACKAGE_libparted is not set
+          # CONFIG_PACKAGE_libstdcpp is not set
           CONFIG_PACKAGE_libunbound=y
           CONFIG_PACKAGE_libunbound_ipset=y
           CONFIG_PACKAGE_libunbound_libevent=y
@@ -157,10 +122,8 @@ jobs:
           # CONFIG_PACKAGE_luci-app-autoreboot is not set
           # CONFIG_PACKAGE_luci-app-diskman is not set
           # CONFIG_PACKAGE_luci-app-filetransfer is not set
-          # CONFIG_PACKAGE_luci-app-ipsec-vpnd is not set
           CONFIG_PACKAGE_luci-app-mosdns=y
           CONFIG_PACKAGE_luci-app-netdata=y
-          CONFIG_PACKAGE_luci-app-nginx-manager=y
           # CONFIG_PACKAGE_luci-app-nlbwmon is not set
           CONFIG_PACKAGE_luci-app-passwall=y
           # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Haproxy is not set
@@ -171,7 +134,6 @@ jobs:
           # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_Plus is not set
           # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray is not set
           # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray_Plugin is not set
-          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray_Plugin=y
           CONFIG_PACKAGE_luci-app-passwall_Iptables_Transparent_Proxy=y
           # CONFIG_PACKAGE_luci-app-rclone_INCLUDE_rclone-ng is not set
           # CONFIG_PACKAGE_luci-app-rclone_INCLUDE_rclone-webui is not set
@@ -181,37 +143,31 @@ jobs:
           # CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_BBR_CCA is not set
           CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_OFFLOADING=y
           # CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_PDNSD is not set
+          CONFIG_PACKAGE_luci-app-uhttpd=y
           # CONFIG_PACKAGE_luci-app-unblockmusic is not set
           # CONFIG_PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_Go is not set
           CONFIG_PACKAGE_luci-app-unbound=y
           CONFIG_PACKAGE_luci-app-uugamebooster=y
           # CONFIG_PACKAGE_luci-app-vsftpd is not set
+          # CONFIG_PACKAGE_luci-app-wireguard is not set
           # CONFIG_PACKAGE_luci-app-wol is not set
           # CONFIG_PACKAGE_luci-app-xlnetacc is not set
           # CONFIG_PACKAGE_luci-app-zerotier is not set
           CONFIG_PACKAGE_luci-compat=y
           CONFIG_PACKAGE_luci-i18n-mosdns-zh-cn=y
           CONFIG_PACKAGE_luci-i18n-netdata-zh-cn=y
-          CONFIG_PACKAGE_luci-i18n-nginx-manager-zh-cn=y
           CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=y
           CONFIG_PACKAGE_luci-i18n-socat-zh-cn=y
           CONFIG_PACKAGE_luci-i18n-sqm-zh-cn=y
+          CONFIG_PACKAGE_luci-i18n-uhttpd-zh-cn=y
           CONFIG_PACKAGE_luci-i18n-uugamebooster-zh-cn=y
           # CONFIG_PACKAGE_luci-lib-fs is not set
-          CONFIG_PACKAGE_luci-nginx=y
           CONFIG_PACKAGE_luci-proto-ipv6=y
-          CONFIG_PACKAGE_luci-ssl-nginx=y
-          CONFIG_PACKAGE_luci-ssl-openssl=y
+          # CONFIG_PACKAGE_luci-proto-wireguard is not set
           CONFIG_PACKAGE_luci-theme-neobird=y
           CONFIG_PACKAGE_microsocks=y
           CONFIG_PACKAGE_mosdns=y
           CONFIG_PACKAGE_netdata=y
-          CONFIG_PACKAGE_nginx=y
-          CONFIG_PACKAGE_nginx-mod-luci=y
-          CONFIG_PACKAGE_nginx-mod-luci-ssl=y
-          CONFIG_PACKAGE_nginx-ssl=y
-          CONFIG_PACKAGE_nginx-ssl-util=y
-          CONFIG_PACKAGE_nginx-util=y
           # CONFIG_PACKAGE_nlbwmon is not set
           CONFIG_PACKAGE_odhcp6c=y
           CONFIG_PACKAGE_odhcp6c_ext_cer_id=0
@@ -229,135 +185,20 @@ jobs:
           CONFIG_PACKAGE_unbound-daemon=y
           CONFIG_PACKAGE_unzip=y
           CONFIG_PACKAGE_uugamebooster=y
-          CONFIG_PACKAGE_uwsgi=y
-          CONFIG_PACKAGE_uwsgi-cgi-plugin=y
-          CONFIG_PACKAGE_uwsgi-luci-support=y
-          CONFIG_PACKAGE_uwsgi-syslog-plugin=y
           CONFIG_PACKAGE_v2ray-geoip=y
           CONFIG_PACKAGE_v2ray-geosite=y
           # CONFIG_PACKAGE_vsftpd-alt is not set
+          # CONFIG_PACKAGE_wireguard-tools is not set
           # CONFIG_PACKAGE_wol is not set
           CONFIG_PACKAGE_xray-core=y
-          CONFIG_PACKAGE_xray-plugin=y
           # CONFIG_PACKAGE_zerotier is not set
           CONFIG_TARGET_EXT4_BLOCKSIZE=4096
           CONFIG_TARGET_EXT4_BLOCKSIZE_4K=y
           CONFIG_TARGET_EXT4_RESERVED_PCT=0
           CONFIG_TARGET_ROOTFS_EXT4FS=y
-          CONFIG_TARGET_ROOTFS_PARTSIZE=650
+          CONFIG_TARGET_ROOTFS_PARTSIZE=600
           # CONFIG_TARGET_ROOTFS_SQUASHFS is not set
           # CONFIG_VMDK_IMAGES is not set
-          CONFIG_PACKAGE_iptables-mod-ipsec=y
-          CONFIG_PACKAGE_kmod-crypto-cbc=y
-          CONFIG_PACKAGE_kmod-crypto-deflate=y
-          CONFIG_PACKAGE_kmod-crypto-des=y
-          CONFIG_PACKAGE_kmod-crypto-echainiv=y
-          CONFIG_PACKAGE_kmod-crypto-hmac=y
-          CONFIG_PACKAGE_kmod-crypto-md5=y
-          # CONFIG_PACKAGE_kmod-ip-vti is not set
-          # CONFIG_PACKAGE_kmod-ip6-vti is not set
-          CONFIG_PACKAGE_kmod-ipsec=y
-          CONFIG_PACKAGE_kmod-ipsec4=y
-          CONFIG_PACKAGE_kmod-ipsec6=y
-          CONFIG_PACKAGE_kmod-ipt-ipsec=y
-          CONFIG_PACKAGE_kmod-iptunnel6=y
-          CONFIG_PACKAGE_kmod-lib-zlib-deflate=y
-          # CONFIG_PACKAGE_kmod-xfrm-interface is not set
-          CONFIG_PACKAGE_strongswan=y
-          CONFIG_PACKAGE_strongswan-charon=y
-          # CONFIG_PACKAGE_strongswan-charon-cmd is not set
-          # CONFIG_PACKAGE_strongswan-default is not set
-          CONFIG_PACKAGE_strongswan-ipsec=y
-          # CONFIG_PACKAGE_strongswan-isakmp is not set
-          # CONFIG_PACKAGE_strongswan-libnttfft is not set
-          # CONFIG_PACKAGE_strongswan-libtls is not set
-          CONFIG_PACKAGE_strongswan-minimal=y
-          # CONFIG_PACKAGE_strongswan-mod-addrblock is not set
-          CONFIG_PACKAGE_strongswan-mod-aes=y
-          # CONFIG_PACKAGE_strongswan-mod-af-alg is not set
-          # CONFIG_PACKAGE_strongswan-mod-agent is not set
-          # CONFIG_PACKAGE_strongswan-mod-attr is not set
-          # CONFIG_PACKAGE_strongswan-mod-attr-sql is not set
-          # CONFIG_PACKAGE_strongswan-mod-bliss is not set
-          # CONFIG_PACKAGE_strongswan-mod-blowfish is not set
-          # CONFIG_PACKAGE_strongswan-mod-ccm is not set
-          # CONFIG_PACKAGE_strongswan-mod-chapoly is not set
-          # CONFIG_PACKAGE_strongswan-mod-cmac is not set
-          # CONFIG_PACKAGE_strongswan-mod-connmark is not set
-          # CONFIG_PACKAGE_strongswan-mod-constraints is not set
-          # CONFIG_PACKAGE_strongswan-mod-coupling is not set
-          # CONFIG_PACKAGE_strongswan-mod-ctr is not set
-          # CONFIG_PACKAGE_strongswan-mod-curl is not set
-          # CONFIG_PACKAGE_strongswan-mod-curve25519 is not set
-          # CONFIG_PACKAGE_strongswan-mod-des is not set
-          # CONFIG_PACKAGE_strongswan-mod-dhcp is not set
-          # CONFIG_PACKAGE_strongswan-mod-dnskey is not set
-          # CONFIG_PACKAGE_strongswan-mod-duplicheck is not set
-          # CONFIG_PACKAGE_strongswan-mod-eap-identity is not set
-          # CONFIG_PACKAGE_strongswan-mod-eap-md5 is not set
-          # CONFIG_PACKAGE_strongswan-mod-eap-mschapv2 is not set
-          # CONFIG_PACKAGE_strongswan-mod-eap-radius is not set
-          # CONFIG_PACKAGE_strongswan-mod-eap-tls is not set
-          # CONFIG_PACKAGE_strongswan-mod-farp is not set
-          # CONFIG_PACKAGE_strongswan-mod-fips-prf is not set
-          # CONFIG_PACKAGE_strongswan-mod-forecast is not set
-          # CONFIG_PACKAGE_strongswan-mod-gcm is not set
-          # CONFIG_PACKAGE_strongswan-mod-gcrypt is not set
-          CONFIG_PACKAGE_strongswan-mod-gmp=y
-          # CONFIG_PACKAGE_strongswan-mod-gmpdh is not set
-          # CONFIG_PACKAGE_strongswan-mod-ha is not set
-          CONFIG_PACKAGE_strongswan-mod-hmac=y
-          CONFIG_PACKAGE_strongswan-mod-kernel-libipsec=y
-          CONFIG_PACKAGE_strongswan-mod-kernel-netlink=y
-          # CONFIG_PACKAGE_strongswan-mod-ldap is not set
-          # CONFIG_PACKAGE_strongswan-mod-led is not set
-          # CONFIG_PACKAGE_strongswan-mod-load-tester is not set
-          # CONFIG_PACKAGE_strongswan-mod-md4 is not set
-          # CONFIG_PACKAGE_strongswan-mod-md5 is not set
-          # CONFIG_PACKAGE_strongswan-mod-mgf1 is not set
-          # CONFIG_PACKAGE_strongswan-mod-mysql is not set
-          # CONFIG_PACKAGE_strongswan-mod-newhope is not set
-          CONFIG_PACKAGE_strongswan-mod-nonce=y
-          # CONFIG_PACKAGE_strongswan-mod-ntru is not set
-          # CONFIG_PACKAGE_strongswan-mod-openssl is not set
-          # CONFIG_PACKAGE_strongswan-mod-pem is not set
-          # CONFIG_PACKAGE_strongswan-mod-pgp is not set
-          # CONFIG_PACKAGE_strongswan-mod-pkcs1 is not set
-          # CONFIG_PACKAGE_strongswan-mod-pkcs11 is not set
-          # CONFIG_PACKAGE_strongswan-mod-pkcs12 is not set
-          # CONFIG_PACKAGE_strongswan-mod-pkcs7 is not set
-          # CONFIG_PACKAGE_strongswan-mod-pkcs8 is not set
-          CONFIG_PACKAGE_strongswan-mod-pubkey=y
-          CONFIG_PACKAGE_strongswan-mod-random=y
-          # CONFIG_PACKAGE_strongswan-mod-rc2 is not set
-          # CONFIG_PACKAGE_strongswan-mod-resolve is not set
-          # CONFIG_PACKAGE_strongswan-mod-revocation is not set
-          CONFIG_PACKAGE_strongswan-mod-sha1=y
-          # CONFIG_PACKAGE_strongswan-mod-sha2 is not set
-          # CONFIG_PACKAGE_strongswan-mod-sha3 is not set
-          # CONFIG_PACKAGE_strongswan-mod-smp is not set
-          CONFIG_PACKAGE_strongswan-mod-socket-default=y
-          # CONFIG_PACKAGE_strongswan-mod-socket-dynamic is not set
-          # CONFIG_PACKAGE_strongswan-mod-sql is not set
-          # CONFIG_PACKAGE_strongswan-mod-sqlite is not set
-          # CONFIG_PACKAGE_strongswan-mod-sshkey is not set
-          CONFIG_PACKAGE_strongswan-mod-stroke=y
-          # CONFIG_PACKAGE_strongswan-mod-test-vectors is not set
-          # CONFIG_PACKAGE_strongswan-mod-uci is not set
-          # CONFIG_PACKAGE_strongswan-mod-unity is not set
-          CONFIG_PACKAGE_strongswan-mod-updown=y
-          # CONFIG_PACKAGE_strongswan-mod-vici is not set
-          # CONFIG_PACKAGE_strongswan-mod-whitelist is not set
-          CONFIG_PACKAGE_strongswan-mod-x509=y
-          # CONFIG_PACKAGE_strongswan-mod-xauth-eap is not set
-          CONFIG_PACKAGE_strongswan-mod-xauth-generic=y
-          CONFIG_PACKAGE_strongswan-mod-xcbc=y
-          # CONFIG_PACKAGE_strongswan-pki is not set
-          # CONFIG_PACKAGE_strongswan-scepclient is not set
-          # CONFIG_PACKAGE_strongswan-swanctl is not set
-          # CONFIG_PACKAGE_xfrm is not set
-          CONFIG_STRONGSWAN_ROUTING_TABLE="220"
-          CONFIG_STRONGSWAN_ROUTING_TABLE_PRIO="220"
           #
           # ========================固件定制部分结束========================
           #
