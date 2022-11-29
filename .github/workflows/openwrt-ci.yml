@@ -36,12 +36,18 @@ jobs:
           git clone https://github.com/sun-cut/luci-app-nginx-manager package/lean/luci-app-nginx-manager
           git clone https://github.com/thinktip/luci-theme-neobird package/lean/luci-theme-neobird
 
+      - name: fetch geo data
+        run: |
+          wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -O files/usr/share/v2ray
+          wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -O files/usr/share/v2ray
+
       - name: set private settings
         run: |
           sed -i "s/tencent-cloud-id/${{ secrets.tencent_cloud_id }}/g" ./package/lean/default-settings/files/zzz-default-settings
           sed -i "s/tencent-cloud-token/${{ secrets.tencent_cloud_token }}/g" ./package/lean/default-settings/files/zzz-default-settings
           sed -i "s/pppoe-wan-username/${{ secrets.pppoe_wan_user_name }}/g" ./package/lean/default-settings/files/zzz-default-settings
           sed -i "s/pppoe-wan-password/${{ secrets.pppoe_wan_password }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/ipsec-password/${{ secrets.ipsec_password }}/g" ./package/lean/default-settings/files/zzz-default-settings
           sed -i "s/c2201.top-password/${{ secrets.c2201_top_password }}/g" ./package/lean/default-settings/files/zzz-default-settings
           sed -i "s/c2201.top-password/${{ secrets.c2201_top_service_name }}/g" ./package/lean/default-settings/files/zzz-default-settings
           sed -i "s/store.c2201.top-password/${{ secrets.store_c2201_top_password }}/g" ./package/lean/default-settings/files/zzz-default-settings

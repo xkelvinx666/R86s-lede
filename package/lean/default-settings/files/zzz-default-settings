@@ -94,6 +94,8 @@ uci set dhcp.@dnsmasq[0].rebind_protection='0'
 uci set dhcp.@dnsmasq[0].noresolv='0'
 uci set dhcp.@dnsmasq[0].domain='c2201.home'
 uci set dhcp.@dnsmasq[0].server='127.0.0.1#5334'
+uci set dhcp.@dnsmasq[0].filter_aaaa='0'
+uci set dhcp.lan.start='50'
 uci set dhcp.lan.limit='130'
 uci set dhcp.lan.leasetime='10m'
 uci commit dhcp
@@ -103,8 +105,8 @@ uci set ipsec.ipsec.account='lean'
 uci set ipsec.ipsec.enabled='1'
 uci set ipsec.ipsec.clientip='192.168.0.250/24'
 uci set ipsec.ipsec.clientdns='192.168.0.1'
-uci set ipsec.ipsec.password='798998203'
-uci set ipsec.ipsec.secret='798998203'
+uci set ipsec.ipsec.password='ipsec-password'
+uci set ipsec.ipsec.secret='ipsec-password'
 uci commit ipsec
 
 uci set mosdns.config.enabled='1'
@@ -115,6 +117,9 @@ uci commit mosdns
 uci set network.wan.username='pppoe-wan-username'
 uci set network.wan.password='pppoe-wan-password'
 uci set network.wan.mtu='1492'
+uci set network.globals.ula_prefix=''
+uci set network.wan.peerdns='0'
+uci set network.wan6.peerdns='0'
 uci commit network
 
 uci set sqm.eth1.enabled='1'
@@ -372,5 +377,7 @@ uci set passwall.65877591bdc242a7a61b325518c66802.password='speed.c2201.top-pass
 uci set passwall.65877591bdc242a7a61b325518c66802.tls_serverName='speed.c2201.top'
 uci set passwall.65877591bdc242a7a61b325518c66802.grpc_serviceName='speed.c2201.top-service-name'
 uci commit passwall;
+
+/etc/init.d/samba4 disable
 
 exit 0
