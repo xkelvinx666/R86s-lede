@@ -36,6 +36,19 @@ jobs:
           git clone https://github.com/sun-cut/luci-app-nginx-manager package/lean/luci-app-nginx-manager
           git clone https://github.com/thinktip/luci-theme-neobird package/lean/luci-theme-neobird
 
+      - name: set private settings
+        run: |
+          sed -i "s/tencent-cloud-id/${{ secrets.tencent-cloud-id }}" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/tencent-cloud-token/${{ secrets.tencent-cloud-token }}" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/pppoe-wan-username/${{ secrets.pppoe-wan-user-name }}" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/pppoe-wan-password/${{ secrets.pppoe-wan-password }}" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/c2201.top-password/${{ secrets.c2201.top-password }}" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/c2201.top-password/${{ secrets.c2201.top-service-name }}" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/store.c2201.top-password/${{ secrets.store.c2201.top-password }}" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/store.c2201.top-password/${{ secrets.store.c2201.top-service-name }}" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/speed.c2201.top-password/${{ secrets.speed.c2201.top-password }}" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/speed.c2201.top-password/${{ secrets.speed.c2201.top-service-name }}" ./package/lean/default-settings/files/zzz-default-settings
+
       - name: Space cleanup
         env:
           DEBIAN_FRONTEND: noninteractive
