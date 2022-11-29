@@ -38,16 +38,16 @@ jobs:
 
       - name: set private settings
         run: |
-          sed -i "s/tencent-cloud-id/${{ secrets.tencent_cloud_id }}" ./package/lean/default-settings/files/zzz-default-settings
-          sed -i "s/tencent-cloud-token/${{ secrets.tencent_cloud_token }}" ./package/lean/default-settings/files/zzz-default-settings
-          sed -i "s/pppoe-wan-username/${{ secrets.pppoe_wan_user_name }}" ./package/lean/default-settings/files/zzz-default-settings
-          sed -i "s/pppoe-wan-password/${{ secrets.pppoe_wan_password }}" ./package/lean/default-settings/files/zzz-default-settings
-          sed -i "s/c2201.top-password/${{ secrets.c2201_top_password }}" ./package/lean/default-settings/files/zzz-default-settings
-          sed -i "s/c2201.top-password/${{ secrets.c2201_top_service_name }}" ./package/lean/default-settings/files/zzz-default-settings
-          sed -i "s/store.c2201.top-password/${{ secrets.store_c2201_top_password }}" ./package/lean/default-settings/files/zzz-default-settings
-          sed -i "s/store.c2201.top-password/${{ secrets.store_c2201_top_service_name }}" ./package/lean/default-settings/files/zzz-default-settings
-          sed -i "s/speed.c2201.top-password/${{ secrets.speed_c2201_top_password }}" ./package/lean/default-settings/files/zzz-default-settings
-          sed -i "s/speed.c2201.top-password/${{ secrets.speed_c2201_top_service_name }}" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/tencent-cloud-id/${{ secrets.tencent_cloud_id }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/tencent-cloud-token/${{ secrets.tencent_cloud_token }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/pppoe-wan-username/${{ secrets.pppoe_wan_user_name }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/pppoe-wan-password/${{ secrets.pppoe_wan_password }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/c2201.top-password/${{ secrets.c2201_top_password }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/c2201.top-password/${{ secrets.c2201_top_service_name }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/store.c2201.top-password/${{ secrets.store_c2201_top_password }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/store.c2201.top-password/${{ secrets.store_c2201_top_service_name }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/speed.c2201.top-password/${{ secrets.speed_c2201_top_password }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/speed.c2201.top-password/${{ secrets.speed_c2201_top_service_name }}/g" ./package/lean/default-settings/files/zzz-default-settings
 
       - name: Space cleanup
         env:
