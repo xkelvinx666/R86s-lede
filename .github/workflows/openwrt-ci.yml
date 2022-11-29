@@ -33,6 +33,7 @@ jobs:
 
       - name: Clone extra packages code
         run: |
+          git clone https://github.com/sun-cut/luci-app-nginx-manager package/lean/luci-app-nginx-manager
           git clone https://github.com/thinktip/luci-theme-neobird package/lean/luci-theme-neobird
 
       - name: Space cleanup
@@ -65,6 +66,38 @@ jobs:
           CONFIG_TARGET_x86=y
           CONFIG_TARGET_x86_64=y
           CONFIG_TARGET_x86_64_DEVICE_generic=y
+          CONFIG_NGINX_HEADERS_MORE=y
+          CONFIG_NGINX_HTTP_ACCESS=y
+          CONFIG_NGINX_HTTP_AUTH_BASIC=y
+          CONFIG_NGINX_HTTP_AUTOINDEX=y
+          CONFIG_NGINX_HTTP_BROWSER=y
+          CONFIG_NGINX_HTTP_CACHE=y
+          CONFIG_NGINX_HTTP_CHARSET=y
+          CONFIG_NGINX_HTTP_EMPTY_GIF=y
+          CONFIG_NGINX_HTTP_FASTCGI=y
+          CONFIG_NGINX_HTTP_GEO=y
+          CONFIG_NGINX_HTTP_GZIP=y
+          CONFIG_NGINX_HTTP_GZIP_STATIC=y
+          CONFIG_NGINX_HTTP_LIMIT_CONN=y
+          CONFIG_NGINX_HTTP_LIMIT_REQ=y
+          CONFIG_NGINX_HTTP_MAP=y
+          CONFIG_NGINX_HTTP_MEMCACHED=y
+          CONFIG_NGINX_HTTP_PROXY=y
+          CONFIG_NGINX_HTTP_REFERER=y
+          CONFIG_NGINX_HTTP_REWRITE=y
+          CONFIG_NGINX_HTTP_SCGI=y
+          CONFIG_NGINX_HTTP_SPLIT_CLIENTS=y
+          CONFIG_NGINX_HTTP_SSI=y
+          CONFIG_NGINX_HTTP_UPSTREAM_HASH=y
+          CONFIG_NGINX_HTTP_UPSTREAM_IP_HASH=y
+          CONFIG_NGINX_HTTP_UPSTREAM_KEEPALIVE=y
+          CONFIG_NGINX_HTTP_UPSTREAM_LEAST_CONN=y
+          CONFIG_NGINX_HTTP_USERID=y
+          CONFIG_NGINX_HTTP_UWSGI=y
+          CONFIG_NGINX_HTTP_V2=y
+          CONFIG_NGINX_NAXSI=y
+          CONFIG_NGINX_PCRE=y
+          CONFIG_NGINX_UBUS=y
           CONFIG_PACKAGE_6in4=y
           # CONFIG_PACKAGE_UnblockNeteaseMusic-Go is not set
           # CONFIG_PACKAGE_adbyby is not set
@@ -111,7 +144,6 @@ jobs:
           # CONFIG_PACKAGE_libminiupnpc is not set
           # CONFIG_PACKAGE_libnatpmp is not set
           # CONFIG_PACKAGE_libparted is not set
-          # CONFIG_PACKAGE_libstdcpp is not set
           CONFIG_PACKAGE_libunbound=y
           CONFIG_PACKAGE_libunbound_ipset=y
           CONFIG_PACKAGE_libunbound_libevent=y
@@ -124,6 +156,7 @@ jobs:
           # CONFIG_PACKAGE_luci-app-filetransfer is not set
           CONFIG_PACKAGE_luci-app-mosdns=y
           CONFIG_PACKAGE_luci-app-netdata=y
+          CONFIG_PACKAGE_luci-app-nginx-manager=y
           # CONFIG_PACKAGE_luci-app-nlbwmon is not set
           CONFIG_PACKAGE_luci-app-passwall=y
           # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Haproxy is not set
@@ -143,7 +176,6 @@ jobs:
           # CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_BBR_CCA is not set
           CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_OFFLOADING=y
           # CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_PDNSD is not set
-          CONFIG_PACKAGE_luci-app-uhttpd=y
           # CONFIG_PACKAGE_luci-app-unblockmusic is not set
           # CONFIG_PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_Go is not set
           CONFIG_PACKAGE_luci-app-unbound=y
@@ -156,18 +188,27 @@ jobs:
           CONFIG_PACKAGE_luci-compat=y
           CONFIG_PACKAGE_luci-i18n-mosdns-zh-cn=y
           CONFIG_PACKAGE_luci-i18n-netdata-zh-cn=y
+          CONFIG_PACKAGE_luci-i18n-nginx-manager-zh-cn=y
           CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=y
           CONFIG_PACKAGE_luci-i18n-socat-zh-cn=y
           CONFIG_PACKAGE_luci-i18n-sqm-zh-cn=y
-          CONFIG_PACKAGE_luci-i18n-uhttpd-zh-cn=y
           CONFIG_PACKAGE_luci-i18n-uugamebooster-zh-cn=y
           # CONFIG_PACKAGE_luci-lib-fs is not set
+          CONFIG_PACKAGE_luci-nginx=y
           CONFIG_PACKAGE_luci-proto-ipv6=y
           # CONFIG_PACKAGE_luci-proto-wireguard is not set
+          CONFIG_PACKAGE_luci-ssl-nginx=y
+          CONFIG_PACKAGE_luci-ssl-openssl=y
           CONFIG_PACKAGE_luci-theme-neobird=y
           CONFIG_PACKAGE_microsocks=y
           CONFIG_PACKAGE_mosdns=y
           CONFIG_PACKAGE_netdata=y
+          CONFIG_PACKAGE_nginx=y
+          CONFIG_PACKAGE_nginx-mod-luci=y
+          CONFIG_PACKAGE_nginx-mod-luci-ssl=y
+          CONFIG_PACKAGE_nginx-ssl=y
+          CONFIG_PACKAGE_nginx-ssl-util=y
+          CONFIG_PACKAGE_nginx-util=y
           # CONFIG_PACKAGE_nlbwmon is not set
           CONFIG_PACKAGE_odhcp6c=y
           CONFIG_PACKAGE_odhcp6c_ext_cer_id=0
@@ -185,6 +226,10 @@ jobs:
           CONFIG_PACKAGE_unbound-daemon=y
           CONFIG_PACKAGE_unzip=y
           CONFIG_PACKAGE_uugamebooster=y
+          CONFIG_PACKAGE_uwsgi=y
+          CONFIG_PACKAGE_uwsgi-cgi-plugin=y
+          CONFIG_PACKAGE_uwsgi-luci-support=y
+          CONFIG_PACKAGE_uwsgi-syslog-plugin=y
           CONFIG_PACKAGE_v2ray-geoip=y
           CONFIG_PACKAGE_v2ray-geosite=y
           # CONFIG_PACKAGE_vsftpd-alt is not set
