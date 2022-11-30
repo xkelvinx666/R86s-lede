@@ -7,9 +7,7 @@
 #
 name: OpenWrt-CI
 
-on:
-  workflow_dispatch
-  push
+on: [workflow_call, push]
     
 permissions:
   contents: read
