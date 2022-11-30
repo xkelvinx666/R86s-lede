@@ -38,8 +38,8 @@ jobs:
 
       - name: fetch geo data
         run: |
-          wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -P files/usr/share/v2ray/geoip.dat
-          wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -P files/usr/share/v2ray/geosite.dat
+          wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -P files/usr/share/xray/geoip.dat
+          wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -P files/usr/share/xray/geosite.dat
 
       - name: set private settings
         run: |

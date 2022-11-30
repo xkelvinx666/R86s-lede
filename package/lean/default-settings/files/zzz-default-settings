@@ -57,6 +57,10 @@ echo "log-facility=/dev/null" >> /etc/dnsmasq.conf
 rm -rf /tmp/luci-modulecache/
 rm -f /tmp/luci-indexcache
 
+mv /usr/share/xray/geoip.dat /usr/share/v2ray/geoip.dat 
+mv /usr/share/xray/geosite.dat /usr/share/v2ray/geosite.dat 
+rm -rf /usr/share/xray
+
 uci set network.lan.ipaddr='192.168.0.1'   # 默认 IP 地址
 uci set network.lan.proto='static'   # 静态 IP
 uci set network.lan.type='bridge'   # 接口类型：桥接
