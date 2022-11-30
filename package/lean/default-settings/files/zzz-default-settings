@@ -31,7 +31,8 @@ sed -i 's/services/nas/g'  /usr/lib/lua/luci/view/minidlna_status.htm
 ln -sf /sbin/ip /usr/bin/ip
 
 sed -i 's#downloads.openwrt.org#mirrors.cloud.tencent.com/lede#g' /etc/opkg/distfeeds.conf
-sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
+sed -i 's/root::0:0:99999:7:::/root:$1$pl544Ip9$eVk3sgSxTPNYWwV5cI4wU.:19326:0:99999:7:::/g' /etc/shadow
+
 
 sed -i "s/# //g" /etc/opkg/distfeeds.conf
 sed -i '/openwrt_luci/ { s/snapshots/releases\/18.06.9/g; }'  /etc/opkg/distfeeds.conf
@@ -114,6 +115,7 @@ uci set mosdns.config.configfile='/etc/mosdns/config_custom.yaml'
 uci set mosdns.config.redirect='0'
 uci commit mosdns
 
+uci set network.wan.proto='pppoe'
 uci set network.wan.username='pppoe-wan-username'
 uci set network.wan.password='pppoe-wan-password'
 uci set network.wan.mtu='1492'
@@ -226,7 +228,7 @@ uci set passwall.Proxy.remarks='Proxy'
 uci set passwall.Proxy.domain_list='geosite:gfw
 geosite:greatfire
 geosite:geolocation-!cn'
-usi set passwall.Proxy.ip_list='149.154.160.0/20
+uci set passwall.Proxy.ip_list='149.154.160.0/20
 91.108.4.0/22
 91.108.56.0/24
 109.239.140.0/24
@@ -249,72 +251,13 @@ usi set passwall.Proxy.ip_list='149.154.160.0/20
 2001:4860:4860::8844
 2606:4700:4700::1111
 2606:4700:4700::1001'
-uci set passwall.@global[0]=global
-uci set passwall.@global[0].socks_enabled='0'
-uci set passwall.@global[0].tcp_proxy_mode='chnroute'
-uci set passwall.@global[0].udp_proxy_mode='chnroute'
-uci set passwall.@global[0].localhost_tcp_proxy_mode='default'
-uci set passwall.@global[0].localhost_udp_proxy_mode='default'
-uci set passwall.@global[0].close_log_tcp='0'
-uci set passwall.@global[0].close_log_udp='0'
-uci set passwall.@global[0].loglevel='error'
-uci set passwall.@global[0].trojan_loglevel='4'
 uci set passwall.@global[0].enabled='1'
 uci set passwall.@global[0].tcp_node='myshunt'
 uci set passwall.@global[0].udp_node='tcp'
 uci set passwall.@global[0].dns_mode='udp'
 uci set passwall.@global[0].remote_dns='127.0.0.1:5334'
-uci set passwall.@global_haproxy[0]=global_haproxy
-uci set passwall.@global_haproxy[0].balancing_enable='0'
-uci set passwall.@global_delay[0]=global_delay
-uci set passwall.@global_delay[0].auto_on='0'
-uci set passwall.@global_delay[0].start_daemon='1'
-uci set passwall.@global_delay[0].start_delay='1'
-uci set passwall.@global_forwarding[0]=global_forwarding
-uci set passwall.@global_forwarding[0].tcp_no_redir_ports='disable'
-uci set passwall.@global_forwarding[0].udp_no_redir_ports='disable'
-uci set passwall.@global_forwarding[0].tcp_proxy_drop_ports='disable'
-uci set passwall.@global_forwarding[0].udp_proxy_drop_ports='80,443'
-uci set passwall.@global_forwarding[0].tcp_redir_ports='22,25,53,143,465,587,853,993,995,80,443'
-uci set passwall.@global_forwarding[0].udp_redir_ports='1:65535'
-uci set passwall.@global_forwarding[0].accept_icmp='0'
-uci set passwall.@global_forwarding[0].use_nft='0'
-uci set passwall.@global_forwarding[0].sniffing='1'
-uci set passwall.@global_forwarding[0].route_only='0'
 uci set passwall.@global_forwarding[0].tcp_proxy_way='tproxy'
 uci set passwall.@global_forwarding[0].ipv6_tproxy='1'
-uci set passwall.@global_forwarding[0].accept_icmpv6='0'
-uci set passwall.@global_other[0]=global_other
-uci set passwall.@global_other[0].nodes_ping='auto_ping tcping'
-uci set passwall.@global_rules[0]=global_rules
-uci set passwall.@global_rules[0].auto_update='0'
-uci set passwall.@global_rules[0].chnlist_update='1'
-uci set passwall.@global_rules[0].chnroute_update='1'
-uci set passwall.@global_rules[0].chnroute6_update='1'
-uci set passwall.@global_rules[0].gfwlist_update='1'
-uci set passwall.@global_rules[0].gfwlist_url='https://fastly.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/gfw.txt'
-uci set passwall.@global_rules[0].chnroute_url='https://ispip.clang.cn/all_cn.txt'
-uci set passwall.@global_rules[0].chnroute6_url='https://ispip.clang.cn/all_cn_ipv6.txt'
-uci set passwall.@global_rules[0].chnlist_url='https://fastly.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/accelerated-domains.china.conf' 'https://fastly.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/apple.china.conf' 'https://fastly.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/google.china.conf'
-uci set passwall.@global_rules[0].v2ray_location_asset='/usr/share/v2ray/'
-uci set passwall.@global_rules[0].geoip_update='1'
-uci set passwall.@global_rules[0].geosite_update='1'
-uci set passwall.@global_app[0]=global_app
-uci set passwall.@global_app[0].v2ray_file='/usr/bin/v2ray'
-uci set passwall.@global_app[0].xray_file='/usr/bin/xray'
-uci set passwall.@global_app[0].trojan_go_file='/usr/bin/trojan-go'
-uci set passwall.@global_app[0].brook_file='/usr/bin/brook'
-uci set passwall.@global_app[0].hysteria_file='/usr/bin/hysteria'
-uci set passwall.@global_subscribe[0]=global_subscribe
-uci set passwall.@global_subscribe[0].subscribe_proxy='0'
-uci set passwall.@global_subscribe[0].filter_keyword_mode='1'
-uci set passwall.@global_subscribe[0].filter_discard_list='过期时间' '剩余流量' 'QQ群' '官网'
-uci set passwall.@auto_switch[0]=auto_switch
-uci set passwall.@auto_switch[0].enable='0'
-uci set passwall.@auto_switch[0].testing_time='1'
-uci set passwall.@auto_switch[0].connect_timeout='3'
-uci set passwall.@auto_switch[0].retry_num='3'
-uci set passwall.@auto_switch[0].shunt_logic='1'
 uci set passwall.myshunt=nodes
 uci set passwall.myshunt.remarks='分流总节点'
 uci set passwall.myshunt.type='Xray'
