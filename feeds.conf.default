@@ -6,6 +6,7 @@ src-git r86sglobal https://github.com/R86S/R86S-QuickInstaller.git
 src-git mosdns https://github.com/sbwml/luci-app-mosdns
 src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall;packages
 src-git passwall_luci https://github.com/xiaorouji/openwrt-passwall;luci
+src-git cups https://github.com/sirpdboy/luci-app-netdata
 #src-git helloworld https://github.com/fw876/helloworld.git
 #src-git oui https://github.com/zhaojh329/oui.git
 #src-git video https://github.com/openwrt/video.git
