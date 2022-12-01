@@ -72,28 +72,6 @@ uci set network.lan.gateway='192.168.0.1'   # 默认网关地址（主路由 IP�
 uci set network.lan.dns='192.168.0.1'  # 默认上游 DNS 地址
 uci commit network
 
-uci set ddns.global=ddns
-uci set ddns.global.ddns_dateformat='%F %R'
-uci set ddns.global.ddns_loglines='250'
-uci set ddns.global.upd_privateip='0'
-uci set ddns.home=service
-uci set ddns.home.service_name='dnspod.cn'
-uci set ddns.home.enabled='1'
-uci set ddns.home.lookup_host='home.caijinbiao.cn'
-uci set ddns.home.domain='home.caijinbiao.cn'
-uci set ddns.home.username='tencent-cloud-id'
-uci set ddns.home.password='tencent-cloud-token'
-uci set ddns.Home6=service
-uci set ddns.Home6.service_name='dnspod.cn'
-uci set ddns.Home6.enabled='1'
-uci set ddns.Home6.lookup_host='home6.caijinbiao.cn'
-uci set ddns.Home6.use_ipv6='1'
-uci set ddns.Home6.domain='home6.caijinbiao.cn'
-uci set ddns.Home6.username='tencent-cloud-id'
-uci set ddns.Home6.password='tencent-cloud-token'
-uci set ddns.Home6.ip_source='web'
-uci commit ddns
-
 uci set dhcp.@dnsmasq[0].dnsforwardmax='10000'
 uci set dhcp.@dnsmasq[0].cachesize='0'
 uci set dhcp.@dnsmasq[0].mini_ttl='0'
@@ -110,15 +88,6 @@ uci set dhcp.lan.limit='150'
 uci commit dhcp
 
 echo 'server=127.0.0.1#5334' >> /etc/dnsmasq.conf
-
-uci set ipsec.ipsec=service
-uci set ipsec.ipsec.account='lean'
-uci set ipsec.ipsec.enabled='1'
-uci set ipsec.ipsec.clientip='192.168.0.250/24'
-uci set ipsec.ipsec.clientdns='192.168.0.1'
-uci set ipsec.ipsec.password='ipsec-password'
-uci set ipsec.ipsec.secret='ipsec-password'
-uci commit ipsec
 
 uci set mosdns.config.enabled='1'
 uci set mosdns.config.configfile='/etc/mosdns/config_custom.yaml'
@@ -334,7 +303,5 @@ uci set passwall.65877591bdc242a7a61b325518c66802.tls_serverName='speed.c2201.to
 uci set passwall.65877591bdc242a7a61b325518c66802.grpc_serviceName='speed.c2201.top-service-name'
 
 uci commit passwall;
-
-/etc/init.d/samba4 disable
 
 exit 0
