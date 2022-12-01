@@ -98,11 +98,18 @@ uci set dhcp.@dnsmasq[0].dnsforwardmax='10000'
 uci set dhcp.@dnsmasq[0].cachesize='0'
 uci set dhcp.@dnsmasq[0].mini_ttl='0'
 uci set dhcp.@dnsmasq[0].rebind_protection='0'
-uci set dhcp.@dnsmasq[0].noresolv='0'
+uci set dhcp.@dnsmasq[0].noresolv='1'
+uci set dhcp.@dnsmasq[0].nohosts='1'
+uci set dhcp.@dnsmasq[0].nonegcache='1'
+uci set dhcp.@dnsmasq[0].boguspriv='0'
 uci set dhcp.@dnsmasq[0].domain='c2201.home'
 uci set dhcp.@dnsmasq[0].server='127.0.0.1#5334'
 uci set dhcp.@dnsmasq[0].filter_aaaa='0'
+uci set dhcp.lan.start='50'
+uci set dhcp.lan.limit='150'
 uci commit dhcp
+
+echo 'server=127.0.0.1#5334' >> /etc/dnsmasq.conf
 
 uci set ipsec.ipsec=service
 uci set ipsec.ipsec.account='lean'
