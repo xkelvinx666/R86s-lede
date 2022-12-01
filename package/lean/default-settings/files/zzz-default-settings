@@ -59,10 +59,6 @@ echo "log-facility=/dev/null" >> /etc/dnsmasq.conf
 rm -rf /tmp/luci-modulecache/
 rm -f /tmp/luci-indexcache
 
-mv /usr/share/xray/geoip.dat /usr/share/v2ray/geoip.dat 
-mv /usr/share/xray/geosite.dat /usr/share/v2ray/geosite.dat 
-rm -rf /usr/share/xray
-
 uci set network.lan.ipaddr='192.168.0.1'   # 默认 IP 地址
 uci set network.lan.proto='static'   # 静态 IP
 uci set network.lan.type='bridge'   # 接口类型：桥接
@@ -257,14 +253,14 @@ uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.type='Xray'
 uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.protocol='trojan'
 uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.address='c2201.top'
 uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.port='443'
-uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.password='c2201.top-password'
+uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.password='c2201-top-password'
 uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.tls='1'
 uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.xtls='0'
 uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.alpn='h2'
 uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.tls_serverName='c2201.top'
 uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.fingerprint='disable'
 uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.transport='grpc'
-uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.grpc_serviceName='c2201.top-service-name'
+uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.grpc_serviceName='c2201-top-service-name'
 uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.grpc_mode='gun'
 uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.grpc_initial_windows_size='0'
 uci set passwall.f58512f7cb784412a7ad5f7679022cc7=nodes
@@ -281,9 +277,9 @@ uci set passwall.f58512f7cb784412a7ad5f7679022cc7.transport='grpc'
 uci set passwall.f58512f7cb784412a7ad5f7679022cc7.add_mode='1'
 uci set passwall.f58512f7cb784412a7ad5f7679022cc7.remarks='store.c2201.top'
 uci set passwall.f58512f7cb784412a7ad5f7679022cc7.address='store.c2201.top'
-uci set passwall.f58512f7cb784412a7ad5f7679022cc7.password='store.c2201.top-password'
+uci set passwall.f58512f7cb784412a7ad5f7679022cc7.password='store-c2201-top-password'
 uci set passwall.f58512f7cb784412a7ad5f7679022cc7.tls_serverName='store.c2201.top'
-uci set passwall.f58512f7cb784412a7ad5f7679022cc7.grpc_serviceName='store.c2201.top-service-name'
+uci set passwall.f58512f7cb784412a7ad5f7679022cc7.grpc_serviceName='store-c2201-top-service-name'
 uci set passwall.65877591bdc242a7a61b325518c66802=nodes
 uci set passwall.65877591bdc242a7a61b325518c66802.tls='1'
 uci set passwall.65877591bdc242a7a61b325518c66802.protocol='trojan'
@@ -298,9 +294,9 @@ uci set passwall.65877591bdc242a7a61b325518c66802.xtls='0'
 uci set passwall.65877591bdc242a7a61b325518c66802.transport='grpc'
 uci set passwall.65877591bdc242a7a61b325518c66802.remarks='speed.c2201.top'
 uci set passwall.65877591bdc242a7a61b325518c66802.address='speed.c2201.top'
-uci set passwall.65877591bdc242a7a61b325518c66802.password='speed.c2201.top-password'
+uci set passwall.65877591bdc242a7a61b325518c66802.password='speed-c2201-top-password'
 uci set passwall.65877591bdc242a7a61b325518c66802.tls_serverName='speed.c2201.top'
-uci set passwall.65877591bdc242a7a61b325518c66802.grpc_serviceName='speed.c2201.top-service-name'
+uci set passwall.65877591bdc242a7a61b325518c66802.grpc_serviceName='speed-c2201-top-service-name'
 
 uci commit passwall;
 

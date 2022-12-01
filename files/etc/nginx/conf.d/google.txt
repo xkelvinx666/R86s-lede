@@ -1,8 +1,0 @@
-server {
-  listen 80;
-  listen [::]:80;
-  listen 443;
-  listen [::]:443;
-  server_name www.google.cn;
-  return 301 https://www.google.com$request_uri;
-}
