@@ -99,6 +99,28 @@ uci set network.wan.peerdns='0'
 uci set network.wan6.peerdns='0'
 uci commit network
 
+uci set ddns.global=ddns
+uci set ddns.global.ddns_dateformat='%F %R'
+uci set ddns.global.ddns_loglines='250'
+uci set ddns.global.upd_privateip='0'
+uci set ddns.home=service
+uci set ddns.home.service_name='dnspod.cn'
+uci set ddns.home.enabled='1'
+uci set ddns.home.lookup_host='home.caijinbiao.cn'
+uci set ddns.home.domain='home.caijinbiao.cn'
+uci set ddns.home.username='tencent-cloud-id'
+uci set ddns.home.password='tencent-cloud-token'
+uci set ddns.Home6=service
+uci set ddns.Home6.service_name='dnspod.cn'
+uci set ddns.Home6.enabled='1'
+uci set ddns.Home6.lookup_host='home6.caijinbiao.cn'
+uci set ddns.Home6.use_ipv6='1'
+uci set ddns.Home6.domain='home6.caijinbiao.cn'
+uci set ddns.Home6.username='tencent-cloud-id'
+uci set ddns.Home6.password='tencent-cloud-token'
+uci set ddns.Home6.ip_source='web'
+uci commit ddns
+
 uci set sqm.eth1.enabled='1'
 uci set sqm.eth1.download='856625'
 uci set sqm.eth1.upload='48000'
@@ -113,6 +135,15 @@ uci set unbound.ub_main.manual_conf='1'
 uci set unbound.ub_main.extended_luci='1'
 uci set unbound.ub_main.listen_port='5334'
 uci commit unbound
+
+
+uci set openvpn.myvpn.port='1194'
+uci set openvpn.myvpn.server='10.8.0.0 255.255.255.0'
+uci set openvpn.myvpn.enabled='1'
+uci set openvpn.myvpn.proto='udp6'
+uci set openvpn.myvpn.ddns='home6.caijinbiao.cn'
+uci set openvpn.myvpn.push='route 192.168.0.0 255.255.255.0' 'comp-lzo adaptive' 'redirect-gateway def1 bypass-dhcp' 'dhcp-option DNS 192.168.0.1'
+uci commit openvpn
 
 uci delete passwall.AD
 uci delete passwall.Direct
