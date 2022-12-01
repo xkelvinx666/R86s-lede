@@ -1,5 +1,7 @@
 #!/bin/sh
 
+/etc/uci-defaults/luci-passwall
+
 uci set luci.main.lang=zh_cn
 uci commit luci
 
@@ -140,24 +142,18 @@ uci set unbound.ub_main.extended_luci='1'
 uci set unbound.ub_main.listen_port='5334'
 uci commit unbound
 
+uci delete passwall.AD
+uci delete passwall.Direct
+uci delete passwall.Netflix
+uci delete passwall.Proxy
+uci commit passwall;
+
 uci set passwall.BT=shunt_rules
 uci set passwall.BT.remarks='BT'
 uci set passwall.BT.protocol='bittorrent'
 uci set passwall.Speed=shunt_rules
 uci set passwall.Speed.remarks='Speed'
-uci set passwall.Speed.domain_list='geosite:category-porn
-18comic.vip
-mxdcontent.net
-phncdn.com
-haileshe.club
-sb-cd.com
-rule34video.com
-kenzato.uk
-hanime.tv
-cn.pornhub.com
-hath.network
-hembed.com
-i.nhentai.net'
+uci set passwall.Speed.domain_list='speed.c2201.rule'
 uci set passwall.Netflix=shunt_rules
 uci set passwall.Netflix.remarks='Netflix'
 uci set passwall.Netflix.domain_list='fast.com
@@ -186,11 +182,15 @@ geosite:twitter'
 uci set passwall.Direct=shunt_rules
 uci set passwall.Direct.remarks='Direct'
 uci set passwall.Direct.domain_list='geosite:cn
+geosite:apple-cn
+geosite:icloud
+geosite:google-cn
 geosite:geolocation-cn
 geosite:private
 geosite:tld-cn
 geosite:category-games@cn
 home.caijinbiao.cn
+home6.caijinbiao.cn
 c2201.top
 store.c2201.top
 speed.c2201.top
@@ -259,6 +259,11 @@ uci set passwall.@global[0].dns_mode='udp'
 uci set passwall.@global[0].remote_dns='127.0.0.1:5334'
 uci set passwall.@global_forwarding[0].tcp_proxy_way='tproxy'
 uci set passwall.@global_forwarding[0].ipv6_tproxy='1'
+uci set passwall.@global_rules[0].geosite_update='1'
+uci set passwall.@global_rules[0].geoip_update='1'
+uci set passwall.@global_rules[0].auto_update='1'
+uci set passwall.@global_rules[0].week_update='5'
+uci set passwall.@global_rules[0].time_update='4'
 uci set passwall.myshunt=nodes
 uci set passwall.myshunt.remarks='分流总节点'
 uci set passwall.myshunt.type='Xray'
@@ -320,6 +325,7 @@ uci set passwall.65877591bdc242a7a61b325518c66802.address='speed.c2201.top'
 uci set passwall.65877591bdc242a7a61b325518c66802.password='speed.c2201.top-password'
 uci set passwall.65877591bdc242a7a61b325518c66802.tls_serverName='speed.c2201.top'
 uci set passwall.65877591bdc242a7a61b325518c66802.grpc_serviceName='speed.c2201.top-service-name'
+
 uci commit passwall;
 
 /etc/init.d/samba4 disable
