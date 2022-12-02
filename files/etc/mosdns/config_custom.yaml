@@ -6,11 +6,11 @@ include: []
 
 data_providers:
   - tag: geoip
-    file: "/usr/share/xray/geoip.dat"
+    file: "/usr/share/v2ray/geoip.dat"
     auto_reload: true
 
   - tag: geosite
-    file: "/usr/share/xray/geosite.dat"
+    file: "/usr/share/v2ray/geosite.dat"
     auto_reload: true
 
   - tag: whitelist

@@ -2,5 +2,3 @@
 * * * * * sh /root/schedule/google-re.sh >> /var/log/google-re.log 2>&1
 * * * * * sh /root/schedule/twitter-re.sh >> /var/log/twitter-re.log 2>&1
 10 3 * * 5 sh /root/schedule/adlist-update.sh >> /var/log/adlist-update.log 2>&1
-10 2 * * 5 wget https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat -O /usr/share/xray/geoip.dat
-10 2 * * 5 wget https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat -O /usr/share/xray/geosite.dat

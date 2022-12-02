@@ -149,7 +149,7 @@ uci delete passwall.AD
 uci delete passwall.Direct
 uci delete passwall.Netflix
 uci delete passwall.Proxy
-uci commit passwall;
+uci commit passwall
 
 uci set passwall.BT=shunt_rules
 uci set passwall.BT.remarks='BT'
@@ -329,6 +329,10 @@ uci set passwall.65877591bdc242a7a61b325518c66802.password='speed-c2201-top-pass
 uci set passwall.65877591bdc242a7a61b325518c66802.tls_serverName='speed.c2201.top'
 uci set passwall.65877591bdc242a7a61b325518c66802.grpc_serviceName='speed-c2201-top-service-name'
 
-uci commit passwall;
+uci commit passwall
+
+mv /usr/share/xray/geoip.dat /usr/share/v2ray/geoip.dat
+mv /usr/share/xray/geosite.dat /usr/share/v2ray/geosite.dat
+rm -rf /usr/share/xray
 
 exit 0
