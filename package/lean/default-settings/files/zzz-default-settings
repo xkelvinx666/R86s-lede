@@ -196,6 +196,8 @@ geosite:geolocation-cn
 geosite:private
 geosite:tld-cn
 geosite:category-games@cn
+geosite:playstation
+geosite:microsoft
 home.caijinbiao.cn
 home6.caijinbiao.cn
 c2201.top
@@ -224,6 +226,7 @@ d2.xboxlive.com
 xvcf1.xboxlive.com
 xvcf2.xboxlive.com
 test-ipv6.com
+ipv6-test.com
 ooklaserver.net'
 uci set passwall.Direct.ip_list='223.5.5.5/32
 119.29.29.29/32
@@ -235,7 +238,8 @@ uci set passwall.Proxy=shunt_rules
 uci set passwall.Proxy.remarks='Proxy'
 uci set passwall.Proxy.domain_list='geosite:gfw
 geosite:greatfire
-geosite:geolocation-!cn'
+geosite:geolocation-!cn
+www.facebook.com'
 uci set passwall.Proxy.ip_list='149.154.160.0/20
 91.108.4.0/22
 91.108.56.0/24

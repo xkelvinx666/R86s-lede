@@ -15,6 +15,3 @@ assets2.xboxlive.cn 59.36.133.253
 dlassets.xboxlive.cn 14.29.98.43
 dlassets2.xboxlive.com 14.29.98.43
 tlu.dl.delivery.mp.microsoft.com 59.36.226.218
-gst.prod.dl.playstation.net 59.39.66.113
-gs2.ww.prod.dl.playstation.net 183.60.152.112
-zeus.dl.playstation.net 116.211.122.1

@@ -168,7 +168,7 @@ plugins:
     type: query_matcher
     args:
       domain:
-        - "provider:geosite:cn,apple-cn,icloud,google-cn,tld-cn,geolocation-cn,category-games@cn"
+        - "provider:geosite:cn,apple-cn,icloud,google-cn,tld-cn,geolocation-cn,category-games@cn,playstation,microsoft"
 
   - tag: query_is_non_local_domain
     type: query_matcher
