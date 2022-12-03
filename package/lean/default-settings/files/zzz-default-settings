@@ -142,7 +142,11 @@ uci set openvpn.myvpn.server='10.8.0.0 255.255.255.0'
 uci set openvpn.myvpn.enabled='1'
 uci set openvpn.myvpn.proto='udp6'
 uci set openvpn.myvpn.ddns='home6.caijinbiao.cn'
-uci set openvpn.myvpn.push='route 192.168.0.0 255.255.255.0' 'comp-lzo adaptive' 'redirect-gateway def1 bypass-dhcp' 'dhcp-option DNS 192.168.0.1'
+uci delete openvpn.myvpn.push
+uci add_list openvpn.myvpn.push='route 192.168.0.0 255.255.255.0' 
+uci add_list openvpn.myvpn.push='comp-lzo adaptive'
+uci add_list openvpn.myvpn.push='redirect-gateway def1 bypass-dhcp'
+uci add_list openvpn.myvpn.push='dhcp-option DNS 192.168.0.1'
 uci commit openvpn
 
 uci delete passwall.AD
