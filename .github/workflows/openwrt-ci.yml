@@ -182,6 +182,7 @@ jobs:
           CONFIG_PACKAGE_kmod-ipt-socket=y
           CONFIG_PACKAGE_kmod-iptunnel=y
           # CONFIG_PACKAGE_kmod-iptunnel6 is not set
+          # CONFIG_PACKAGE_kmod-nf-conntrack-netlink is not set
           CONFIG_PACKAGE_kmod-nf-flow=y
           CONFIG_PACKAGE_kmod-nf-ipt6=y
           CONFIG_PACKAGE_kmod-nf-log6=y
@@ -222,6 +223,7 @@ jobs:
           # CONFIG_PACKAGE_libwebsockets-full is not set
           # CONFIG_PACKAGE_luci-app-accesscontrol is not set
           # CONFIG_PACKAGE_luci-app-adbyby-plus is not set
+          # CONFIG_PACKAGE_luci-app-arpbind is not set
           # CONFIG_PACKAGE_luci-app-autoreboot is not set
           # CONFIG_PACKAGE_luci-app-diskman is not set
           # CONFIG_PACKAGE_luci-app-filetransfer is not set
@@ -229,6 +231,7 @@ jobs:
           CONFIG_PACKAGE_luci-app-mosdns=y
           CONFIG_PACKAGE_luci-app-netdata=y
           CONFIG_PACKAGE_luci-app-nginx-manager=y
+          # CONFIG_PACKAGE_luci-app-nlbwmon is not set
           CONFIG_PACKAGE_luci-app-openvpn-server=y
           CONFIG_PACKAGE_luci-app-passwall=y
           # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Haproxy is not set
@@ -252,12 +255,10 @@ jobs:
           # CONFIG_PACKAGE_luci-app-unblockmusic is not set
           # CONFIG_PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_Go is not set
           CONFIG_PACKAGE_luci-app-unbound=y
-          # CONFIG_PACKAGE_luci-app-upnp is not set
           CONFIG_PACKAGE_luci-app-uugamebooster=y
           # CONFIG_PACKAGE_luci-app-vsftpd is not set
           # CONFIG_PACKAGE_luci-app-wireguard is not set
           # CONFIG_PACKAGE_luci-app-wol is not set
-          CONFIG_PACKAGE_luci-app-wrtbwmon=y
           # CONFIG_PACKAGE_luci-app-xlnetacc is not set
           # CONFIG_PACKAGE_luci-app-zerotier is not set
           CONFIG_PACKAGE_luci-compat=y
@@ -269,7 +270,6 @@ jobs:
           CONFIG_PACKAGE_luci-i18n-socat-zh-cn=y
           CONFIG_PACKAGE_luci-i18n-sqm-zh-cn=y
           CONFIG_PACKAGE_luci-i18n-uugamebooster-zh-cn=y
-          CONFIG_PACKAGE_luci-i18n-wrtbwmon-zh-cn=y
           # CONFIG_PACKAGE_luci-lib-fs is not set
           CONFIG_PACKAGE_luci-nginx=y
           CONFIG_PACKAGE_luci-proto-ipv6=y
@@ -278,7 +278,6 @@ jobs:
           CONFIG_PACKAGE_luci-ssl-openssl=y
           CONFIG_PACKAGE_luci-theme-neobird=y
           CONFIG_PACKAGE_microsocks=y
-          # CONFIG_PACKAGE_miniupnpd is not set
           CONFIG_PACKAGE_mosdns=y
           CONFIG_PACKAGE_netdata=y
           CONFIG_PACKAGE_nginx=y
@@ -287,6 +286,7 @@ jobs:
           CONFIG_PACKAGE_nginx-ssl=y
           CONFIG_PACKAGE_nginx-ssl-util=y
           CONFIG_PACKAGE_nginx-util=y
+          # CONFIG_PACKAGE_nlbwmon is not set
           CONFIG_PACKAGE_odhcp6c=y
           CONFIG_PACKAGE_odhcp6c_ext_cer_id=0
           CONFIG_PACKAGE_odhcpd-ipv6only=y
@@ -322,12 +322,12 @@ jobs:
           # CONFIG_PACKAGE_wsdd2 is not set
           CONFIG_PACKAGE_xray-core=y
           # CONFIG_PACKAGE_zerotier is not set
-          CONFIG_SOCAT_SSL=y
           CONFIG_TARGET_EXT4_BLOCKSIZE=4096
           CONFIG_TARGET_EXT4_BLOCKSIZE_4K=y
           CONFIG_TARGET_EXT4_RESERVED_PCT=0
+          CONFIG_TARGET_KERNEL_PARTSIZE=256
           CONFIG_TARGET_ROOTFS_EXT4FS=y
-          CONFIG_TARGET_ROOTFS_PARTSIZE=650
+          CONFIG_TARGET_ROOTFS_PARTSIZE=512
           # CONFIG_TARGET_ROOTFS_SQUASHFS is not set
           # CONFIG_VMDK_IMAGES is not set
           #
