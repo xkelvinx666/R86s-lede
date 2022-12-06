@@ -247,8 +247,7 @@ geosite:netflix
 geosite:disney
 geosite:youtube
 geosite:twitter
-geosite:github
-github.com'
+geosite:github'
 uci set passwall.Direct=shunt_rules
 uci set passwall.Direct.remarks='Direct'
 uci set passwall.Direct.domain_list='geosite:cn
