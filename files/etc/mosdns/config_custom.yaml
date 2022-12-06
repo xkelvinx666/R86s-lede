@@ -174,7 +174,7 @@ plugins:
     type: query_matcher
     args:
       domain:
-        - "provider:geosite:gfw,disney,greatfire,geolocation-!cn"
+        - "provider:geosite:gfw,disney,greatfire,geolocation-!cn,github"
 
   - tag: response_has_local_ip
     type: response_matcher
