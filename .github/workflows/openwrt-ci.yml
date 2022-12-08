@@ -61,10 +61,8 @@ jobs:
           sed -i "s/store-c2201-top-password/${{ secrets.store_c2201_top_password }}/g" ./package/lean/default-settings/files/zzz-default-settings
           sed -i "s/store-c2201-top-service-name/${{ secrets.store_c2201_top_service_name }}/g" ./package/lean/default-settings/files/zzz-default-settings
           sed -i "s/speed-c2201-top-password/${{ secrets.speed_c2201_top_password }}/g" ./package/lean/default-settings/files/zzz-default-settings
-          sed -i "s/speed-c2201-top-service-name/${{ secrets.speed_c2201_top_service_name }}/g" ./package/lean/default-settings/files/zzz-default-settings
           sed -i "s/speed-c2201-rule/${{ secrets.speed_c2201_top_rule }}/g" ./package/lean/default-settings/files/zzz-default-settings
           sed -i "s/c2201-top-password/${{ secrets.c2201_top_password }}/g" ./package/lean/default-settings/files/zzz-default-settings
-          sed -i "s/c2201-top-service-name/${{ secrets.c2201_top_service_name }}/g" ./package/lean/default-settings/files/zzz-default-settings
 
       - name: SSH connection to Actions
         uses: P3TERX/ssh2actions@v1.0.0
