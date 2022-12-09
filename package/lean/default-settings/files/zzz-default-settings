@@ -64,9 +64,15 @@ uci set network.lan.proto='static'   # 静态 IP
 uci set network.lan.type='bridge'   # 接口类型：桥接
 uci set network.lan.ifname='eth1'   # 网络端口：默认 eth0，第一个接口
 uci set network.lan.netmask='255.255.255.0' # 子网掩码
+<<<<<<< HEAD
 uci set network.lan.gateway='192.168.2.1'   # 默认网关地址（主路由 IP）
 uci set network.lan.dns='192.168.2.1'  # 默认上游 DNS 地址
 uci set network.lan.ip6assign='64'
+=======
+uci set network.lan.gateway='192.168.0.1'   # 默认网关地址（主路由 IP）
+uci set network.lan.dns='192.168.0.1'  # 默认上游 DNS 地址
+uci set network.lan.ip6assign='60'
+>>>>>>> latest
 uci commit network
 
 uci set dhcp.@dnsmasq[0].dnsforwardmax='10000'
@@ -143,68 +149,25 @@ uci commit passwall
 uci set passwall.BT=shunt_rules
 uci set passwall.BT.remarks='BT'
 uci set passwall.BT.protocol='bittorrent'
+<<<<<<< HEAD
 uci set passwall.Netflix=shunt_rules
 uci set passwall.Netflix.remarks='Netflix'
 uci set passwall.Netflix.domain_list='geosite:netflix
+=======
+uci set passwall.Speed=shunt_rules
+uci set passwall.Speed.remarks='Speed'
+uci set passwall.Speed.domain_list='speed-c2201-rule'
+uci set passwall.Twitter=shunt_rules
+uci set passwall.Twitter.remarks='Twitter'
+uci set passwall.Twitter.domain_list='geosite:twitter'
+uci set passwall.Common=shunt_rules
+uci set passwall.Common.remarks='Common'
+uci set passwall.Common.domain_list='geosite:netflix
+>>>>>>> latest
 geosite:disney
-geosite:youtube
-geosite:twitter
-geosite:github'
-uci set passwall.Direct=shunt_rules
-uci set passwall.Direct.remarks='Direct'
-uci set passwall.Direct.domain_list='geosite:cn
-geosite:apple-cn
-geosite:icloud
-geosite:google-cn
-geosite:geolocation-cn
-geosite:private
-geosite:tld-cn
-geosite:category-games@cn
-geosite:playstation
-geosite:xbox
-home.caijinbiao.cn
-home6.caijinbiao.cn
-c2201.top
-store.c2201.top
-speed.c2201.top
-www.linksys.com
-linksys.com
-bing.com.cn
-cn.bing.com
-cn.bing.net
-xboxlive.cn
-ookla.com
-ooklaserver.net
-pingtest.net
-speedtest.co
-speedtest.net
-speedtestcustom.com
-webtest.net
-assets1.xboxlive.com
-assets2.xboxlive.com
-dlassets.xboxlive.com
-dlassets2.xboxlive.com
-d1.xboxlive.com
-d1.xboxlive.com
-d2.xboxlive.com
-xvcf1.xboxlive.com
-xvcf2.xboxlive.com
-test-ipv6.com
-ipv6-test.com
-ooklaserver.net'
-uci set passwall.Direct.ip_list='223.5.5.5/32
-119.29.29.29/32
-180.76.76.76/32
-114.114.114.114/32
-geoip:cn
-geoip:private'
-uci set passwall.Proxy=shunt_rules
-uci set passwall.Proxy.remarks='Proxy'
-uci set passwall.Proxy.domain_list='geosite:gfw
-geosite:greatfire
-geosite:geolocation-!cn
-www.facebook.com'
-uci set passwall.Proxy.ip_list='149.154.160.0/20
+geosite:github
+geosite:gfw'
+uci set passwall.Common.ip_list='149.154.160.0/20
 91.108.4.0/22
 91.108.56.0/24
 109.239.140.0/24
@@ -227,6 +190,40 @@ uci set passwall.Proxy.ip_list='149.154.160.0/20
 2001:4860:4860::8844
 2606:4700:4700::1111
 2606:4700:4700::1001'
+uci set passwall.Direct=shunt_rules
+uci set passwall.Direct.remarks='Direct'
+uci set passwall.Direct.domain_list='geosite:cn
+geosite:apple-cn
+geosite:icloud
+geosite:google-cn
+geosite:geolocation-cn
+geosite:private
+geosite:tld-cn
+geosite:category-games@cn
+geosite:microsoft@cn
+geosite:sony@cn
+geosite:playstation
+geosite:xbox
+geosite:onedrive
+geosite:bing
+geosite:test-ipv6
+geosite:ookla-speedtest
+caijinbiao.cn
+c2201.top
+linksys.com
+fast.com
+ipv6-test.com'
+uci set passwall.Direct.ip_list='223.5.5.5/32
+119.29.29.29/32
+180.76.76.76/32
+114.114.114.114/32
+geoip:cn
+geoip:private'
+uci set passwall.Proxy=shunt_rules
+uci set passwall.Proxy.remarks='Proxy'
+uci set passwall.Proxy.domain_list='geosite:gfw
+geosite:greatfire
+geosite:geolocation-!cn'
 uci set passwall.@global[0].enabled='1'
 uci set passwall.@global[0].tcp_node='myshunt'
 uci set passwall.@global[0].udp_node='tcp'
@@ -243,28 +240,20 @@ uci set passwall.myshunt=nodes
 uci set passwall.myshunt.remarks='分流总节点'
 uci set passwall.myshunt.type='Xray'
 uci set passwall.myshunt.protocol='_shunt'
+uci set passwall.myshunt.AD='_blackhole'
 uci set passwall.myshunt.BT='_direct'
 uci set passwall.myshunt.Direct='_direct'
 uci set passwall.myshunt.domainStrategy='IPOnDemand'
+<<<<<<< HEAD
 uci set passwall.myshunt.Netflix='f58512f7cb784412a7ad5f7679022cc7'
 uci set passwall.myshunt.Proxy='e4ca1bb7fe784219a91093a27ce3d90b'
+=======
+>>>>>>> latest
 uci set passwall.myshunt.default_node='_direct'
-uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b=nodes
-uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.remarks='c2201.top'
-uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.type='Xray'
-uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.protocol='trojan'
-uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.address='c2201.top'
-uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.port='443'
-uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.password='c2201-top-password'
-uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.tls='1'
-uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.xtls='0'
-uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.alpn='h2'
-uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.tls_serverName='c2201.top'
-uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.fingerprint='disable'
-uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.transport='grpc'
-uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.grpc_serviceName='c2201-top-service-name'
-uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.grpc_mode='gun'
-uci set passwall.e4ca1bb7fe784219a91093a27ce3d90b.grpc_initial_windows_size='0'
+uci set passwall.myshunt.Speed='b158a696836b492a8accb277360edb61'
+uci set passwall.myshunt.Common='b609bb2b317f4d739b2407adb3eac6c9'
+uci set passwall.myshunt.Proxy='f58512f7cb784412a7ad5f7679022cc7'
+uci set passwall.myshunt.Twitter='f58512f7cb784412a7ad5f7679022cc7'
 uci set passwall.f58512f7cb784412a7ad5f7679022cc7=nodes
 uci set passwall.f58512f7cb784412a7ad5f7679022cc7.tls='1'
 uci set passwall.f58512f7cb784412a7ad5f7679022cc7.protocol='trojan'
@@ -282,6 +271,45 @@ uci set passwall.f58512f7cb784412a7ad5f7679022cc7.address='store.c2201.top'
 uci set passwall.f58512f7cb784412a7ad5f7679022cc7.password='store-c2201-top-password'
 uci set passwall.f58512f7cb784412a7ad5f7679022cc7.tls_serverName='store.c2201.top'
 uci set passwall.f58512f7cb784412a7ad5f7679022cc7.grpc_serviceName='store-c2201-top-service-name'
+<<<<<<< HEAD
+=======
+uci set passwall.b609bb2b317f4d739b2407adb3eac6c9=nodes
+uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.remarks='Hys-c2201.top'
+uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.type='Hysteria'
+uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.address='c2201.top'
+uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.port='32230'
+uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.hysteria_auth_type='string'
+uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.hysteria_alpn='h3'
+uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.tls_serverName='c2201.top'
+uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.hysteria_up_mbps='33'
+uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.hysteria_down_mbps='33'
+uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.hysteria_auth_password='c2201-top-password'
+uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.tls_allowInsecure='1'
+uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.protocol='wechat-video'
+uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.hysteria_recv_window_conn='2097152'
+uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.hysteria_recv_window='524288'
+uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.hysteria_handshake_timeout='15'
+uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.hysteria_idle_timeout='30'
+uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.hysteria_disable_mtu_discovery='1'
+uci set passwall.b158a696836b492a8accb277360edb61=nodes
+uci set passwall.b158a696836b492a8accb277360edb61.remarks='Hys-speed-c2201-top'
+uci set passwall.b158a696836b492a8accb277360edb61.type='Hysteria'
+uci set passwall.b158a696836b492a8accb277360edb61.address='speed.c2201.top'
+uci set passwall.b158a696836b492a8accb277360edb61.port='21289'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_auth_type='string'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_auth_password='speed-c2201-top-password'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_alpn='h3'
+uci set passwall.b158a696836b492a8accb277360edb61.tls_serverName='speed.c2201.top'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_up_mbps='220'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_down_mbps='220'
+uci set passwall.b158a696836b492a8accb277360edb61.tls_allowInsecure='1'
+uci set passwall.b158a696836b492a8accb277360edb61.protocol='wechat-video'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_recv_window_conn='4194304'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_recv_window='16777216'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_handshake_timeout='15'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_idle_timeout='30'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_disable_mtu_discovery='1'
+>>>>>>> latest
 
 uci commit passwall
 
