@@ -1,3 +1,3 @@
 store.c2201.top 43.132.182.153
 c2201.top 101.33.127.109
-www.google.cn 192.168.0.1
+www.google.cn 192.168.2.1
