@@ -380,6 +380,12 @@ uci set network.@wireguard_wireguard[1].public_key='iphone12_publickey'
 uci set network.@wireguard_wireguard[1].route_allowed_ips='1'
 uci set network.@wireguard_wireguard[1].persistent_keepalive='25'
 uci set network.@wireguard_wireguard[1].allowed_ips='10.0.0.5/24'
+uci add network route
+uci set network.@route[0]=route
+uci set network.@route[0].interface='lan'
+uci set network.@route[0].target='192.168.2.0'
+uci set network.@route[0].netmask='255.255.255.0'
+uci set network.@route[0].gateway='10.0.0.2'
 uci commit network
 
 uci add firewall zone
