@@ -60,6 +60,9 @@ jobs:
           sed -i "s/store-c2201-top-password/${{ secrets.store_c2201_top_password }}/g" ./package/lean/default-settings/files/zzz-default-settings
           sed -i "s/store-c2201-top-service-name/${{ secrets.store_c2201_top_service_name }}/g" ./package/lean/default-settings/files/zzz-default-settings
           sed -i "s/c2201-top-password/${{ secrets.c2201_top_password }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/iphone12_publickey/${{ secrets.wireguard_iphone12_publickey }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/store_publickey/${{ secrets.wireguard_store_publickey }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/server_privatekey/${{ secrets.wireguard_server_privatekey }}/g" ./package/lean/default-settings/files/zzz-default-settings
 
       - name: SSH connection to Actions
         uses: P3TERX/ssh2actions@v1.0.0
