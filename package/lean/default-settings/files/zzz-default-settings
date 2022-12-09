@@ -270,6 +270,11 @@ uci set passwall.Direct.ip_list='223.5.5.5/32
 114.114.114.114/32
 geoip:cn
 geoip:private'
+uci set passwall.Proxy=shunt_rules
+uci set passwall.Proxy.remarks='Proxy'
+uci set passwall.Proxy.domain_list='geosite:gfw
+geosite:greatfire
+geosite:geolocation-!cn'
 uci set passwall.@global[0].enabled='1'
 uci set passwall.@global[0].tcp_node='myshunt'
 uci set passwall.@global[0].udp_node='tcp'
