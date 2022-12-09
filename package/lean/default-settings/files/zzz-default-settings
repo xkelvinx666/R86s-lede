@@ -209,7 +209,7 @@ uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.hysteria_recv_window='524288'
 uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.hysteria_handshake_timeout='15'
 uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.hysteria_idle_timeout='30'
 uci set passwall.b609bb2b317f4d739b2407adb3eac6c9.hysteria_disable_mtu_discovery='1'
-uci set passwall.5aad9f34a17943de9badca96a5e37173=nodes              
+uci set passwall.5aad9f34a17943de9badca96a5e37173=nodes
 uci set passwall.5aad9f34a17943de9badca96a5e37173.type='Xray'        
 uci set passwall.5aad9f34a17943de9badca96a5e37173.protocol='_balancing'
 uci set passwall.5aad9f34a17943de9badca96a5e37173.balancing_node='b609bb2b317f4d739b2407adb3eac6c9' 'f58512f7cb784412a7ad5f7679022cc7'
@@ -227,22 +227,17 @@ sed -i "s/fastpath\"/fastpath >\/dev\/null\"/g" /usr/lib/lua/luci/controller/tur
 
 uci set network.wireguard=interface
 uci set network.wireguard.proto='wireguard'
-uci set network.wireguard.private_key='server_privatekey'
+uci set network.wireguard.private_key='store_privatekey'
 uci set network.wireguard.listen_port='12345'
-uci set network.wireguard.addresses='10.0.0.1/24'
+uci set network.wireguard.addresses='10.0.0.2/24'
 uci add network wireguard_wireguard
-uci set network.@wireguard_wireguard[0]=wireguard_wireguard
 uci set network.@wireguard_wireguard[0]=wireguard_wireguard
 uci set network.@wireguard_wireguard[0].route_allowed_ips='1'
 uci set network.@wireguard_wireguard[0].persistent_keepalive='25'
-uci set network.@wireguard_wireguard[0].public_key='store_publickey'
-uci set network.@wireguard_wireguard[0].allowed_ips='10.0.0.2/32'
-uci add network wireguard_wireguard
-uci set network.@wireguard_wireguard[1]=wireguard_wireguard
-uci set network.@wireguard_wireguard[1].public_key='iphone12_publickey'
-uci set network.@wireguard_wireguard[1].route_allowed_ips='1'
-uci set network.@wireguard_wireguard[1].persistent_keepalive='25'
-uci set network.@wireguard_wireguard[1].allowed_ips='10.0.0.5/24'
+uci set network.@wireguard_wireguard[0].endpoint_host='home6.caijinbiao.cn'
+uci set network.@wireguard_wireguard[0].endpoint_port='12345'
+uci set network.@wireguard_wireguard[0].public_key='server_publickey'
+uci set network.@wireguard_wireguard[0].allowed_ips='10.0.0.1/32'
 uci commit network
 
 uci add firewall zone
