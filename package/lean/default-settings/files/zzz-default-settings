@@ -67,6 +67,14 @@ uci set network.lan.netmask='255.255.255.0' # 子网掩码
 uci set network.lan.gateway='192.168.2.1'   # 默认网关地址（主路由 IP）
 uci set network.lan.dns='192.168.2.1'  # 默认上游 DNS 地址
 uci set network.lan.ip6assign='60'
+uci set network.hn8255q=interface
+uci set network.hn8255q.proto='static'
+uci set network.hn8255q.ifname='eth0'
+uci set network.hn8255q.delegate='0'
+uci set network.hn8255q.force_link='0'
+uci set network.hn8255q.ipaddr='192.168.1.2'
+uci set network.hn8255q.netmask='255.255.255.0'
+uci set network.hn8255q.gateway='192.168.1.1'
 uci commit network
 
 uci set dhcp.@dnsmasq[0].dnsforwardmax='10000'
