@@ -375,6 +375,7 @@ uci set network.wireguard.proto='wireguard'
 uci set network.wireguard.private_key='server_privatekey'
 uci set network.wireguard.listen_port='12345'
 uci set network.wireguard.addresses='10.0.0.1/24'
+uci set network.wireguard._fwzone='lan'
 uci add network wireguard_wireguard
 uci set network.@wireguard_wireguard[0]=wireguard_wireguard
 uci set network.@wireguard_wireguard[0]=wireguard_wireguard
@@ -395,46 +396,13 @@ uci set network.@route[0].target='192.168.2.0'
 uci set network.@route[0].netmask='255.255.255.0'
 uci set network.@route[0].gateway='10.0.0.2'
 uci commit network
-
-uci add firewall zone
-uci set firewall.@zone[3]=zone
-uci set firewall.@zone[3].name='wireguard'
-uci set firewall.@zone[3].input='ACCEPT'
-uci set firewall.@zone[3].output='ACCEPT'
-uci set firewall.@zone[3].network='wireguard'
-uci set firewall.@zone[3].forward='ACCEPT'
-uci add firewall forwarding
-uci set firewall.@forwarding[0]=forwarding
-uci set firewall.@forwarding[0].dest='docker'
-uci set firewall.@forwarding[0].src='lan'
-uci add firewall forwarding
-uci set firewall.@forwarding[1]=forwarding
-uci set firewall.@forwarding[1].dest='wan'
-uci set firewall.@forwarding[1].src='lan'
-uci add firewall forwarding
-uci set firewall.@forwarding[2]=forwarding
-uci set firewall.@forwarding[2].dest='docker'
-uci set firewall.@forwarding[2].src='wireguard'
-uci add firewall forwarding
-uci set firewall.@forwarding[3]=forwarding
-uci set firewall.@forwarding[3].dest='lan'
-uci set firewall.@forwarding[3].src='wireguard'
-uci add firewall forwarding
-uci set firewall.@forwarding[4]=forwarding
-uci set firewall.@forwarding[4].dest='wan'
-uci set firewall.@forwarding[4].src='wireguard'
-uci add firewall forwarding
-uci set firewall.@forwarding[5]=forwarding
-uci set firewall.@forwarding[5].dest='wireguard'
-uci set firewall.@forwarding[5].src='lan'
-
 uci add firewall rule
-uci set firewall.@rule[11]=rule
-uci set firewall.@rule[11].target='ACCEPT'
-uci set firewall.@rule[11].src='wan'
-uci set firewall.@rule[11].proto='udp'
-uci set firewall.@rule[11].dest_port='12345'
-uci set firewall.@rule[11].name='Allow-Wireguard'
+uci set firewall.@rule[-1]=rule
+uci set firewall.@rule[-1].target='ACCEPT'
+uci set firewall.@rule[-1].src='wan'
+uci set firewall.@rule[-1].proto='udp'
+uci set firewall.@rule[-1].dest_port='12345'
+uci set firewall.@rule[-1].name='Allow-Wireguard'
 uci commit firewall
 
 exit 0
