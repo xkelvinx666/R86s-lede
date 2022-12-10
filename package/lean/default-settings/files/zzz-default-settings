@@ -220,8 +220,6 @@ mv /usr/share/xray/geoip.dat /usr/share/v2ray/geoip.dat
 mv /usr/share/xray/geosite.dat /usr/share/v2ray/geosite.dat
 rm -rf /usr/share/xray
 
-sed -i "s/fastpath\"/fastpath >\/dev\/null\"/g" /usr/lib/lua/luci/controller/turboacc.lua
-
 uci set network.wireguard=interface
 uci set network.wireguard.proto='wireguard'
 uci set network.wireguard.private_key='store_privatekey'
