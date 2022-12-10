@@ -225,7 +225,6 @@ uci set network.wireguard.proto='wireguard'
 uci set network.wireguard.private_key='store_privatekey'
 uci set network.wireguard.listen_port='12345'
 uci set network.wireguard.addresses='10.0.0.2/24'
-uci set network.wireguard._fwzone='lan'
 uci add network wireguard_wireguard
 uci set network.@wireguard_wireguard[0]=wireguard_wireguard
 uci set network.@wireguard_wireguard[0].route_allowed_ips='1'
@@ -248,6 +247,7 @@ uci set firewall.@rule[-1].src='wan'
 uci set firewall.@rule[-1].proto='udp'
 uci set firewall.@rule[-1].dest_port='12345'
 uci set firewall.@rule[-1].name='Allow-Wireguard'
+uci set firewall.@zone[0].network='lan wireguard'
 uci commit firewall
 
 exit 0
