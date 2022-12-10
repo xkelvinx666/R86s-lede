@@ -99,6 +99,7 @@ uci set network.wan.ifname='eth0'
 uci set network.globals.ula_prefix=''
 uci set network.wan.peerdns='0'
 uci set network.wan6.peerdns='0'
+uci set network.wan6.mtu='1472'
 uci commit network
 
 uci set ddns.global=ddns
