@@ -38,7 +38,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: latest
+          ref: j4125
 
       - name: Clone extra packages code
         run: |
