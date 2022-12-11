@@ -142,6 +142,11 @@ uci set dhcp.@host[11].name='ILO-GEN8'
 uci set dhcp.@host[11].dns='1'
 uci set dhcp.@host[11].ip='192.168.0.10'
 uci set dhcp.@host[11].mac='00:fd:45:fc:8b:3e'
+uci add dhcp host
+uci set dhcp.@host[12].name='youxishiatv4k'
+uci set dhcp.@host[12].dns='1'
+uci set dhcp.@host[12].ip='192.168.0.23'
+uci set dhcp.@host[12].mac='f0:b3:ec:09:b3:8e'
 uci commit dhcp
 
 echo 'server=127.0.0.1#5334' >> /etc/dnsmasq.conf
