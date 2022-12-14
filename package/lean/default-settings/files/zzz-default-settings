@@ -256,5 +256,15 @@ uci set firewall.@forwarding[-1]=forwarding
 uci set firewall.@forwarding[-1].dest='wireguard'
 uci set firewall.@forwarding[-1].src='lan'
 uci commit firewall
+uci add firewall forwarding
+uci set firewall.@forwarding[-1]=forwarding
+uci set firewall.@forwarding[-1].dest='wan'
+uci set firewall.@forwarding[-1].src='wireguard'
+uci commit firewall
+uci add firewall forwarding
+uci set firewall.@forwarding[-1]=forwarding
+uci set firewall.@forwarding[-1].dest='lan'
+uci set firewall.@forwarding[-1].src='wireguard'
+uci commit firewall
 
 exit 0
