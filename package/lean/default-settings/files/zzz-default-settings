@@ -34,7 +34,7 @@ ln -sf /sbin/ip /usr/bin/ip
 
 sed -i 's#downloads.openwrt.org#mirrors.cloud.tencent.com/lede#g' /etc/opkg/distfeeds.conf
 sed -i 's/root::0:0:99999:7:::/root:$1$pl544Ip9$eVk3sgSxTPNYWwV5cI4wU.:19326:0:99999:7:::/g' /etc/shadow
-
+sed -i 's/root:::0:99999:7:::/root:$1$pl544Ip9$eVk3sgSxTPNYWwV5cI4wU.:19326:0:99999:7:::/g' /etc/shadow
 
 sed -i "s/# //g" /etc/opkg/distfeeds.conf
 sed -i '/openwrt_luci/ { s/snapshots/releases\/18.06.9/g; }'  /etc/opkg/distfeeds.conf
@@ -62,7 +62,7 @@ rm -f /tmp/luci-indexcache
 uci set network.lan.ipaddr='192.168.2.1'   # 默认 IP 地址
 uci set network.lan.proto='static'   # 静态 IP
 uci set network.lan.type='bridge'   # 接口类型：桥接
-uci set network.lan.ifname='eth1'   # 网络端口：默认 eth0，第一个接口
+uci set network.lan.ifname='eth1 eth2 eth3'   # 网络端口：默认 eth0，第一个接口
 uci set network.lan.netmask='255.255.255.0' # 子网掩码
 uci set network.lan.gateway='192.168.2.1'   # 默认网关地址（主路由 IP）
 uci set network.lan.dns='192.168.2.1'  # 默认上游 DNS 地址
@@ -96,6 +96,7 @@ uci set network.wan.username='store-pppoe-wan-username'
 uci set network.wan.password='store-pppoe-wan-password'
 uci set network.wan.mtu='1492'
 uci set network.wan.ifname='eth0'
+uci set network.wan6.ifname='eth0'
 uci set network.globals.ula_prefix=''
 uci set network.wan.peerdns='0'
 uci set network.wan6.peerdns='0'
@@ -106,13 +107,7 @@ uci set ddns.global=ddns
 uci set ddns.global.ddns_dateformat='%F %R'
 uci set ddns.global.ddns_loglines='250'
 uci set ddns.global.upd_privateip='0'
-uci set ddns.store=service
-uci set ddns.store.service_name='dnspod.cn'
-uci set ddns.store.enabled='1'
-uci set ddns.store.lookup_host='store.caijinbiao.cn'
-uci set ddns.store.domain='store.caijinbiao.cn'
-uci set ddns.store.username='tencent-cloud-id'
-uci set ddns.store.password='tencent-cloud-token'
+# 无公网ipv4
 uci set ddns.store6=service
 uci set ddns.store6.service_name='dnspod.cn'
 uci set ddns.store6.enabled='1'
@@ -248,7 +243,18 @@ uci set firewall.@rule[-1].src='wan'
 uci set firewall.@rule[-1].proto='udp'
 uci set firewall.@rule[-1].dest_port='12345'
 uci set firewall.@rule[-1].name='Allow-Wireguard'
-uci set firewall.@zone[0].network='lan wireguard'
+uci add firewall zone
+uci set firewall.@zone[-1]=zone
+uci set firewall.@zone[-1].input='ACCEPT'
+uci set firewall.@zone[-1].output='ACCEPT'
+uci set firewall.@zone[-1].forward='ACCEPT'
+uci set firewall.@zone[-1].masq='1'
+uci set firewall.@zone[-1].name='wireguard'
+uci set firewall.@zone[-1].network='wireguard'
+uci add firewall forwarding
+uci set firewall.@forwarding[-1]=forwarding
+uci set firewall.@forwarding[-1].dest='wireguard'
+uci set firewall.@forwarding[-1].src='lan'
 uci commit firewall
 
 exit 0
