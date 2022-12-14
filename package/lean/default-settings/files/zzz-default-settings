@@ -218,6 +218,36 @@ uci set passwall.Speed.domain_list='speed-c2201-rule'
 uci set passwall.Twitter=shunt_rules
 uci set passwall.Twitter.remarks='Twitter'
 uci set passwall.Twitter.domain_list='geosite:twitter'
+uci set passwall.Direct=shunt_rules
+uci set passwall.Direct.remarks='Direct'
+uci set passwall.Direct.domain_list='geosite:cn
+geosite:apple-cn
+geosite:icloud
+geosite:google-cn
+geosite:geolocation-cn
+geosite:private
+geosite:tld-cn
+geosite:category-games@cn
+geosite:microsoft@cn
+geosite:sony@cn
+geosite:playstation
+geosite:xbox
+geosite:onedrive
+geosite:bing
+geosite:test-ipv6
+geosite:ookla-speedtest
+geosite:jetbrains
+caijinbiao.cn
+c2201.top
+linksys.com
+fast.com
+ipv6-test.com'
+uci set passwall.Direct.ip_list='223.5.5.5/32
+119.29.29.29/32
+180.76.76.76/32
+114.114.114.114/32
+geoip:cn
+geoip:private'
 uci set passwall.Common=shunt_rules
 uci set passwall.Common.remarks='Common'
 uci set passwall.Common.domain_list='geosite:netflix
@@ -247,39 +277,9 @@ uci set passwall.Common.ip_list='149.154.160.0/20
 2001:4860:4860::8844
 2606:4700:4700::1111
 2606:4700:4700::1001'
-uci set passwall.Direct=shunt_rules
-uci set passwall.Direct.remarks='Direct'
-uci set passwall.Direct.domain_list='geosite:cn
-geosite:apple-cn
-geosite:icloud
-geosite:google-cn
-geosite:geolocation-cn
-geosite:private
-geosite:tld-cn
-geosite:category-games@cn
-geosite:microsoft@cn
-geosite:sony@cn
-geosite:playstation
-geosite:xbox
-geosite:onedrive
-geosite:bing
-geosite:test-ipv6
-geosite:ookla-speedtest
-caijinbiao.cn
-c2201.top
-linksys.com
-fast.com
-ipv6-test.com'
-uci set passwall.Direct.ip_list='223.5.5.5/32
-119.29.29.29/32
-180.76.76.76/32
-114.114.114.114/32
-geoip:cn
-geoip:private'
 uci set passwall.Proxy=shunt_rules
 uci set passwall.Proxy.remarks='Proxy'
-uci set passwall.Proxy.domain_list='geosite:gfw
-geosite:greatfire
+uci set passwall.Proxy.domain_list='geosite:greatfire
 geosite:geolocation-!cn'
 uci set passwall.@global[0].enabled='1'
 uci set passwall.@global[0].tcp_node='myshunt'
@@ -297,7 +297,6 @@ uci set passwall.myshunt=nodes
 uci set passwall.myshunt.remarks='分流总节点'
 uci set passwall.myshunt.type='Xray'
 uci set passwall.myshunt.protocol='_shunt'
-uci set passwall.myshunt.AD='_blackhole'
 uci set passwall.myshunt.BT='_direct'
 uci set passwall.myshunt.Direct='_direct'
 uci set passwall.myshunt.domainStrategy='IPOnDemand'
