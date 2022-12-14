@@ -382,16 +382,16 @@ uci set network.@wireguard_wireguard[0].public_key='store_publickey'
 uci set network.@wireguard_wireguard[0].allowed_ips='10.0.0.2/32'
 uci add network wireguard_wireguard
 uci set network.@wireguard_wireguard[1]=wireguard_wireguard
-uci set network.@wireguard_wireguard[1].public_key='iphone12_publickey'
+uci set network.@wireguard_wireguard[1].public_key='iphone_publickey'
 uci set network.@wireguard_wireguard[1].route_allowed_ips='1'
 uci set network.@wireguard_wireguard[1].persistent_keepalive='25'
 uci set network.@wireguard_wireguard[1].allowed_ips='10.0.0.5/24'
 uci add network route
 uci set network.@route[0]=route
-uci set network.@route[0].interface='lan'
+uci set network.@route[0].interface='wireguard'
 uci set network.@route[0].target='192.168.2.0'
 uci set network.@route[0].netmask='255.255.255.0'
-uci set network.@route[0].gateway='10.0.0.2'
+uci set network.@route[0].gateway='10.0.0.1'
 uci commit network
 uci add firewall rule
 uci set firewall.@rule[-1]=rule
@@ -400,7 +400,18 @@ uci set firewall.@rule[-1].src='wan'
 uci set firewall.@rule[-1].proto='udp'
 uci set firewall.@rule[-1].dest_port='12345'
 uci set firewall.@rule[-1].name='Allow-Wireguard'
-uci set firewall.@zone[0].network='lan wireguard'
+uci add firewall zone
+uci set firewall.@zone[-1]=zone
+uci set firewall.@zone[-1].input='ACCEPT'
+uci set firewall.@zone[-1].output='ACCEPT'
+uci set firewall.@zone[-1].forward='ACCEPT'
+uci set firewall.@zone[-1].masq='1'
+uci set firewall.@zone[-1].name='wireguard'
+uci set firewall.@zone[-1].network='wireguard'
+uci add firewall forwarding
+uci set firewall.@forwarding[-1]=forwarding
+uci set firewall.@forwarding[-1].dest='wireguard'
+uci set firewall.@forwarding[-1].src='lan'
 uci commit firewall
 
 exit 0
