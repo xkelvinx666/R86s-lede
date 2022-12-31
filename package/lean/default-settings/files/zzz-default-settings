@@ -266,5 +266,7 @@ uci set firewall.@forwarding[-1]=forwarding
 uci set firewall.@forwarding[-1].dest='lan'
 uci set firewall.@forwarding[-1].src='wireguard'
 uci commit firewall
+uci set turboacc.config.fullcone_nat='1'
+uci commit turboacc
 
 exit 0
