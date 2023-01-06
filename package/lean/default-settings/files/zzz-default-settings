@@ -228,7 +228,8 @@ uci set network.@wireguard_wireguard[0].persistent_keepalive='25'
 uci set network.@wireguard_wireguard[0].endpoint_host='home6.caijinbiao.cn'
 uci set network.@wireguard_wireguard[0].endpoint_port='12345'
 uci set network.@wireguard_wireguard[0].public_key='server_publickey'
-uci set network.@wireguard_wireguard[0].allowed_ips='10.0.0.1/32'
+uci add_list network.@wireguard_wireguard[0].allowed_ips='10.0.0.1/32'
+uci add_list network.@wireguard_wireguard[0].allowed_ips='192.168.0.0/24'
 uci add network route
 uci set network.@route[0]=route
 uci set network.@route[0].interface='lan'
