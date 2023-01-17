@@ -473,6 +473,24 @@ uci set firewall.@forwarding[-1]=forwarding
 uci set firewall.@forwarding[-1].dest='lan'
 uci set firewall.@forwarding[-1].src='wireguard'
 uci commit firewall
+uci add firewall rule
+uci set firewall.@rule[-1]=rule
+uci set firewall.@rule[-1].target='ACCEPT'
+uci set firewall.@rule[-1].src='wan'
+uci set firewall.@rule[-1].proto='udp'
+uci set firewall.@rule[-1].dest_port='456'
+uci set firewall.@rule[-1].name='allow-ipv6-456'
+uci set firewall.@rule[-1].family='ipv6'
+uci commit firewall
+uci add firewall rule
+uci set firewall.@rule[-1]=rule
+uci set firewall.@rule[-1].enabled='1'
+uci set firewall.@rule[-1].target='ACCEPT'
+uci set firewall.@rule[-1].src='wan'
+uci set firewall.@rule[-1].name='allow-ipv6-igmp'
+uci set firewall.@rule[-1].family='ipv6'
+uci set firewall.@rule[-1].proto='igmp'
+uci commit firewall
 uci set turboacc.config.fullcone_nat='1'
 uci commit turboacc
 
