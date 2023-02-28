@@ -2,4 +2,3 @@
 */15 * * * * sh /root/schedule/google-re.sh >> /var/log/google-re.log 2>&1
 */15 * * * * sh /root/schedule/twitter-re.sh >> /var/log/twitter-re.log 2>&1
 0 * * * * sh /root/schedule/restart-wireguard.sh >> /var/log/restart-wireguard.log 2>&1
-10 3 * * 5 sh /root/schedule/adlist-update.sh >> /var/log/adlist-update.log 2>&1

@@ -123,20 +123,15 @@ uci set dhcp.@host[7].dns='1'
 uci set dhcp.@host[7].mac='d8:bb:c1:99:1b:b1'
 uci set dhcp.@host[7].ip='192.168.0.22'
 uci add dhcp host
-uci set dhcp.@host[8].name='omv-system'
+uci set dhcp.@host[8].name='unraid-gen8'
 uci set dhcp.@host[8].dns='1'
 uci set dhcp.@host[8].mac='00:fd:45:fc:8b:3c'
-uci set dhcp.@host[8].ip='192.168.0.12'
+uci set dhcp.@host[8].ip='192.168.0.11'
 uci add dhcp host
 uci set dhcp.@host[9].name='DESKTOP-Gen8'
 uci set dhcp.@host[9].dns='1'
 uci set dhcp.@host[9].mac='a0:36:9f:49:65:ab'
 uci set dhcp.@host[9].ip='192.168.0.14'
-uci add dhcp host
-uci set dhcp.@host[10].name='ESXI-GEN8'
-uci set dhcp.@host[10].dns='1'
-uci set dhcp.@host[10].ip='192.168.0.11'
-uci set dhcp.@host[10].mac='00:fd:45:fc:8b:3d'
 uci add dhcp host
 uci set dhcp.@host[11].name='ILO-GEN8'
 uci set dhcp.@host[11].dns='1'

@@ -21,10 +21,6 @@ data_providers:
     file: "/etc/mosdns/rule/blocklist.txt"
     auto_reload: true
 
-  - tag: pihole
-    file: "/etc/mosdns/rule/pi-hole.txt"
-    auto_reload: true
-
   - tag: hosts
     file: "/etc/mosdns/rule/hosts.txt"
     auto_reload: true
@@ -188,12 +184,6 @@ plugins:
       domain:
         - "provider:geosite:category-ads-all,category-ads"
 
-  - tag: query_is_pi_hole
-    type: query_matcher
-    args:
-      domain:
-        - "provider:pihole"
-
   - tag: match_qtype65
     type: query_matcher
     args:
@@ -236,7 +226,7 @@ plugins:
             - forward_local
             - _return
 
-        - if: "query_is_blocklist_domain || query_is_ad_domain  || query_is_pi_hole || match_qtype65"
+        - if: "query_is_blocklist_domain || query_is_ad_domain || match_qtype65"
           exec:
             - _new_nxdomain_response
             - _return
