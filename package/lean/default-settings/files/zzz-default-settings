@@ -184,6 +184,15 @@ uci set ddns.Home6.domain='home6.caijinbiao.cn'
 uci set ddns.Home6.username='tencent-cloud-id'
 uci set ddns.Home6.password='tencent-cloud-token'
 uci set ddns.Home6.ip_source='web'
+uci set ddns.alist=service
+uci set ddns.alist.service_name='dnspod.cn'
+uci set ddns.alist.enabled='1'
+uci set ddns.alist.lookup_host='alist.caijinbiao.cn'
+uci set ddns.alist.use_ipv6='1'
+uci set ddns.alist.domain='alist.caijinbiao.cn'
+uci set ddns.alist.username='tencent-cloud-id'
+uci set ddns.alist.password='tencent-cloud-token'
+uci set ddns.alist.ip_source='web'
 uci commit ddns
 
 uci set sqm.eth1.enabled='1'
@@ -216,7 +225,8 @@ uci set passwall.Speed.remarks='Speed'
 uci set passwall.Speed.domain_list='speed-c2201-rule'
 uci set passwall.Twitter=shunt_rules
 uci set passwall.Twitter.remarks='Twitter'
-uci set passwall.Twitter.domain_list='geosite:twitter'
+uci set passwall.Twitter.domain_list='geosite:twitter
+geosite:bing'
 uci set passwall.Direct=shunt_rules
 uci set passwall.Direct.remarks='Direct'
 uci set passwall.Direct.domain_list='geosite:cn
@@ -232,7 +242,6 @@ geosite:sony@cn
 geosite:playstation
 geosite:xbox
 geosite:onedrive
-geosite:bing
 geosite:test-ipv6
 geosite:ookla-speedtest
 geosite:jetbrains
@@ -298,10 +307,12 @@ geoip:cn
 geoip:private'
 uci set passwall.Common=shunt_rules
 uci set passwall.Common.remarks='Common'
-uci set passwall.Common.domain_list='geosite:netflix
-geosite:disney
+uci set passwall.Common.domain_list='geosite:disney
 geosite:github
-geosite:gfw'
+geosite:gfw
+geosite:netflix
+www.bitget.com
+static.bitget.com'
 uci set passwall.Common.ip_list='149.154.160.0/20
 91.108.4.0/22
 91.108.56.0/24
