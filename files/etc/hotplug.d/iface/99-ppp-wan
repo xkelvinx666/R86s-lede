@@ -1,6 +1,0 @@
-#!/bin/sh
-[ "$INTERFACE" = wan ] || exit 0
-[ "$ACTION" = ifdown ] || exit 0
-echo "$(date) wan interface down, auto restarting" >> /var/log/restart-wan.log 2>&1
-sleep 1s
-ifup wan
