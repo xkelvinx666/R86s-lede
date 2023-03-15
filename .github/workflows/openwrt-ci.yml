@@ -60,8 +60,8 @@ jobs:
           wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -O files/usr/share/xray/geoip.dat
           wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -O files/usr/share/xray/geosite.dat
 
-       - name: set private settings
-         run: |
+      - name: set private settings
+        run: |
           sed -i "s/tencent-cloud-id/${{ secrets.tencent_cloud_id }}/g" ./package/lean/default-settings/files/zzz-default-settings
           sed -i "s/tencent-cloud-token/${{ secrets.tencent_cloud_token }}/g" ./package/lean/default-settings/files/zzz-default-settings
           sed -i "s/pppoe-wan-username/${{ secrets.pppoe_wan_user_name }}/g" ./package/lean/default-settings/files/zzz-default-settings
