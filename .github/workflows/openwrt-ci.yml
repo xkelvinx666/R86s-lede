@@ -49,6 +49,32 @@ jobs:
       - name: Checkout OpenWrt
         uses: actions/checkout@v3
 
+      - name: Clone extra packages code
+        run: |
+          git clone https://github.com/sun-cut/luci-app-nginx-manager package/lean/luci-app-nginx-manager
+          git clone https://github.com/thinktip/luci-theme-neobird package/lean/luci-theme-neobird
+
+      - name: fetch geo data
+        run: |
+          mkdir -p files/usr/share/xray
+          wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -O files/usr/share/xray/geoip.dat
+          wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -O files/usr/share/xray/geosite.dat
+
+       - name: set private settings
+         run: |
+          sed -i "s/tencent-cloud-id/${{ secrets.tencent_cloud_id }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/tencent-cloud-token/${{ secrets.tencent_cloud_token }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/pppoe-wan-username/${{ secrets.pppoe_wan_user_name }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/pppoe-wan-password/${{ secrets.pppoe_wan_password }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/store-c2201-top-password/${{ secrets.store_c2201_top_password }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/store-c2201-top-service-name/${{ secrets.store_c2201_top_service_name }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/speed-c2201-top-password/${{ secrets.speed_c2201_top_password }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/speed-c2201-rule/${{ secrets.speed_c2201_top_rule }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/c2201-top-password/${{ secrets.c2201_top_password }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/iphone12_publickey/${{ secrets.wireguard_iphone12_publickey }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/store_publickey/${{ secrets.wireguard_store_publickey }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          sed -i "s/server_privatekey/${{ secrets.wireguard_server_privatekey }}/g" ./package/lean/default-settings/files/zzz-default-settings
+
       - name: Update feeds
         run: |
           ./scripts/feeds update -a
