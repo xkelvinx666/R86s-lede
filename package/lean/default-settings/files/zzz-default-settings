@@ -145,6 +145,16 @@ uci set dhcp.@host[12].name='youxishiatv4k'
 uci set dhcp.@host[12].dns='1'
 uci set dhcp.@host[12].ip='192.168.0.23'
 uci set dhcp.@host[12].mac='f0:b3:ec:09:b3:8e'
+uci add dhcp host
+uci set dhcp.@host[13].name='MACM2'
+uci set dhcp.@host[13].dns='1'
+uci set dhcp.@host[13].mac='f8:e4:3b:d3:02:1a'
+uci set dhcp.@host[13].ip='192.168.0.24'
+uci add dhcp host
+uci set dhcp.@host[14].name='MACM2Wifi'
+uci set dhcp.@host[14].dns='1'
+uci set dhcp.@host[14].mac='a4:cf:99:51:ce:13'
+uci set dhcp.@host[14].ip='192.168.0.25'
 uci commit dhcp
 
 echo 'server=127.0.0.1#5334' >> /etc/dnsmasq.conf
