@@ -164,6 +164,42 @@ uci set mosdns.config.configfile='/etc/mosdns/config_custom.yaml'
 uci set mosdns.config.redirect='0'
 uci commit mosdns
 
+uci set mosdns.config=mosdns
+uci set mosdns.config.enabled='1'
+uci set mosdns.config.configfile='/etc/mosdns/config.yaml'
+uci set mosdns.config.logfile='/tmp/mosdns.log'
+uci set mosdns.config.idle_timeout='30'
+uci set mosdns.config.insecure_skip_verify='0'
+uci set mosdns.config.dump_file='0'
+uci set mosdns.config.minimal_ttl='0'
+uci set mosdns.config.maximum_ttl='0'
+uci set mosdns.config.listen_port_api='9091'
+uci set mosdns.config.concurrent='3'
+uci set mosdns.config.max_conns='3'
+uci set mosdns.config.enable_pipeline='1'
+uci set mosdns.config.cache_size='1000000'
+uci set mosdns.config.cache_survival_time='86400'
+uci set mosdns.config.adblock='1'
+uci set mosdns.config.ad_source='https://anti-ad.net/domains.txt'
+uci set mosdns.config.enabled_api='1'
+uci set mosdns.config.geo_auto_update='1'
+uci set mosdns.config.geo_update_week_time='5'
+uci set mosdns.config.geo_update_day_time='4'
+uci set mosdns.config.listen_port='5334'
+uci set mosdns.config.redirect='1'
+uci set mosdns.config.bootstrap_dns='119.29.29.29'
+uci add_list mosdns.config.remote_dns='tls://8.8.8.8'
+uci add_list mosdns.config.remote_dns='2001:4860:4860::8888'
+uci add_list mosdns.config.remote_dns='tls://1.1.1.1'
+uci add_list mosdns.config.remote_dns='2620:0:ccc::2'
+uci set mosdns.config.log_level='error'
+uci set mosdns.config.custom_local_dns='1'
+uci add_list mosdns.config.local_dns='202.96.134.133'
+uci add_list mosdns.config.local_dns='202.96.128.166'
+uci add_list mosdns.config.local_dns='240e:1f:1::1'
+uci add_list mosdns.config.local_dns='240e:1f:1::33'
+uci commit mosdns
+
 uci set network.wan.proto='pppoe'
 uci set network.wan.username='pppoe-wan-username'
 uci set network.wan.password='pppoe-wan-password'
@@ -214,14 +250,7 @@ uci commit sqm
 uci set uuplugin.uuplugin.enabled='1'
 uci commit uuplugin
 
-uci set unbound.ub_main.enabled='1'
-uci set unbound.ub_main.manual_conf='1'
-uci set unbound.ub_main.extended_luci='1'
-uci set unbound.ub_main.listen_port='5334'
-uci commit unbound
-
 uci delete passwall.STEAM
-uci delete passwall.AD
 uci delete passwall.Direct
 uci delete passwall.Netflix
 uci delete passwall.Proxy
@@ -236,7 +265,8 @@ uci set passwall.Speed.domain_list='speed-c2201-rule'
 uci set passwall.Twitter=shunt_rules
 uci set passwall.Twitter.remarks='Twitter'
 uci set passwall.Twitter.domain_list='geosite:twitter
-geosite:bing'
+geosite:bing
+bitget'
 uci set passwall.Direct=shunt_rules
 uci set passwall.Direct.remarks='Direct'
 uci set passwall.Direct.domain_list='geosite:cn
@@ -317,12 +347,8 @@ geoip:cn
 geoip:private'
 uci set passwall.Common=shunt_rules
 uci set passwall.Common.remarks='Common'
-uci set passwall.Common.domain_list='geosite:disney
-geosite:github
-geosite:gfw
-geosite:netflix
-www.bitget.com
-static.bitget.com'
+uci set passwall.Common.domain_list='geosite:github
+geosite:gfw'
 uci set passwall.Common.ip_list='149.154.160.0/20
 91.108.4.0/22
 91.108.56.0/24
@@ -367,8 +393,10 @@ uci set passwall.myshunt.remarks='分流总节点'
 uci set passwall.myshunt.type='Xray'
 uci set passwall.myshunt.protocol='_shunt'
 uci set passwall.myshunt.BT='_direct'
+uci set passwall.myshunt.AD='_blackhole'
 uci set passwall.myshunt.Direct='_direct'
 uci set passwall.myshunt.domainStrategy='IPOnDemand'
+uci set passwall.myshunt.dialerProxy='1'
 uci set passwall.myshunt.default_node='_direct'
 uci set passwall.myshunt.Speed='b158a696836b492a8accb277360edb61'
 uci set passwall.myshunt.Common='b609bb2b317f4d739b2407adb3eac6c9'
