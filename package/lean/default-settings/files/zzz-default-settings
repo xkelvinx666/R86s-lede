@@ -186,6 +186,7 @@ uci add_list mosdns.config.geosite_tags='geolocation-!cn'
 uci add_list mosdns.config.geosite_tags='gfw'
 uci add_list mosdns.config.geosite_tags='greatfire'
 uci add_list mosdns.config.geosite_tags='category-ads-all'
+uci add_list mosdns.config.geosite_tags='test-ipv6'
 uci set mosdns.config.geo_auto_update='0'
 uci commit mosdns
 
