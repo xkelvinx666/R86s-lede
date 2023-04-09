@@ -84,7 +84,8 @@ plugins:
     type: domain_set
     args:
       files:
-        - "/var/disable-ads.txt"
+        - "/var/mosdns/geosite_category-ads-all.txt"
+        - "/etc/mosdns/rule/adlist.txt"
 
   - tag: local_ptr
     type: domain_set
@@ -238,4 +239,3 @@ plugins:
     args:
       entry: main_sequence
       listen: ":5335"
-      
