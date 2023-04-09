@@ -59,6 +59,7 @@ jobs:
           mkdir -p files/usr/share/xray
           wget https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat -O files/usr/share/xray/geoip.dat
           wget https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat -O files/usr/share/xray/geosite.dat
+          wget https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat -O files/etc/mosdns/rule/adlist.txt
 
       - name: set private settings
         run: |
