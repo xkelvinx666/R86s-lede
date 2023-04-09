@@ -1,0 +1,241 @@
+log:
+  level: error
+  file: "/tmp/mosdns.log"
+
+api:
+  http: "0.0.0.0:9091"
+
+include: []
+
+plugins:
+  - tag: geosite_cn
+    type: domain_set
+    args:
+      files:
+        - "/var/mosdns/geosite_cn.txt"
+        - "/var/mosdns/geosite_ookla-speedtest.txt"
+        - "/var/mosdns/geosite_apple-cn.txt"
+        - "/var/mosdns/geosite_google-cn.txt"
+        - "/var/mosdns/geosite_playstation.txt"
+        - "/var/mosdns/geosite_private.txt"
+        - "/var/mosdns/geosite_category-games@cn.txt"
+        - "/var/mosdns/geosite_icloud.txt"
+        - "/var/mosdns/geosite_sony@cn.txt"
+        - "/var/mosdns/geosite_jetbrains.txt"
+        - "/var/mosdns/geosite_test-ipv6.txt"
+        - "/var/mosdns/geosite_microsoft@cn.txt"
+        - "/var/mosdns/geosite_tld-cn.txt"
+        - "/var/mosdns/geosite_geolocation-cn.txt"
+        - "/var/mosdns/geosite_onedrive.txt"
+        - "/var/mosdns/geosite_xbox.txt"
+
+  - tag: geoip_cn
+    type: ip_set
+    args:
+      files:
+        - "/var/mosdns/geoip_cn.txt"
+
+  - tag: geosite_no_cn
+    type: domain_set
+    args:
+      files:
+        - "/var/mosdns/geosite_geolocation-!cn.txt"
+        - "/var/mosdns/geosite_gfw.txt"
+        - "/var/mosdns/geosite_bing.txt"
+        - "/var/mosdns/geosite_greatfire.txt"
+
+  - tag: whitelist
+    type: domain_set
+    args:
+      files:
+        - "/etc/mosdns/rule/whitelist.txt"
+
+  - tag: blocklist
+    type: domain_set
+    args:
+      files:
+        - "/etc/mosdns/rule/blocklist.txt"
+
+  - tag: greylist
+    type: domain_set
+    args:
+      files:
+        - "/etc/mosdns/rule/greylist.txt"
+
+  - tag: ddnslist
+    type: domain_set
+    args:
+      files:
+        - "/etc/mosdns/rule/ddnslist.txt"
+
+  - tag: hosts
+    type: hosts
+    args:
+      files:
+        - "/etc/mosdns/rule/hosts.txt"
+
+  - tag: redirect
+    type: redirect
+    args:
+      files:
+        - "/etc/mosdns/rule/redirect.txt"
+
+  - tag: adlist
+    type: domain_set
+    args:
+      files:
+        - "/var/disable-ads.txt"
+
+  - tag: local_ptr
+    type: domain_set
+    args:
+      files:
+        - "/etc/mosdns/rule/local-ptr.txt"
+
+  - tag: sp_low
+    type: domain_set
+    args:
+      files:
+        - "/usr/share/mosdns/sp_low.tdata"
+
+  - tag: forward_local
+    type: forward
+    args:
+      concurrent: 3
+      upstreams:
+        - addr: 202.96.134.133
+        - addr: 202.96.128.166
+        - addr: 240e:1f:1::1
+
+  - tag: forward_remote
+    type: forward
+    args:
+      concurrent: 3
+      upstreams:
+        - addr: 8.8.8.8
+        - addr: 2001:4860:4860::8888
+        - addr: 8.8.4.4
+
+  - tag: modify_ttl
+    type: sequence
+    args:
+      - exec: ttl 0-0
+
+  - tag: modify_ddns_ttl
+    type: sequence
+    args:
+      - exec: ttl 5-5
+
+  - tag: local_sequence
+    type: sequence
+    args:
+      - exec: $forward_local
+
+  - tag: remote_sequence
+    type: sequence
+    args:
+      - exec: $forward_remote
+
+  - tag: has_resp_sequence
+    type: sequence
+    args:
+      - matches: qname $ddnslist
+        exec: $modify_ddns_ttl
+      - matches: "!qname $ddnslist"
+        exec: $modify_ttl
+      - matches: has_resp
+        exec: accept
+
+  - tag: query_is_local_ip
+    type: sequence
+    args:
+      - exec: $local_sequence
+      - matches: "!resp_ip $geoip_cn"
+        exec: drop_resp
+
+  - tag: query_is_remote
+    type: sequence
+    args:
+      - exec: $remote_sequence
+
+  - tag: fallback
+    type: fallback
+    args:
+      primary: query_is_local_ip
+      secondary: query_is_remote
+      threshold: 500
+      always_standby: true
+
+  - tag: query_is_ddns_domain
+    type: sequence
+    args:
+      - matches: qname $ddnslist
+        exec: $local_sequence
+
+  - tag: query_is_local_domain
+    type: sequence
+    args:
+      - matches: qname $geosite_cn
+        exec: $local_sequence
+
+  - tag: query_is_no_local_domain
+    type: sequence
+    args:
+      - matches: qname $geosite_no_cn
+        exec: $remote_sequence
+
+  - tag: query_is_whitelist_domain
+    type: sequence
+    args:
+      - matches: qname $whitelist
+        exec: $local_sequence
+
+  - tag: query_is_greylist_domain
+    type: sequence
+    args:
+      - matches: qname $greylist
+        exec: $remote_sequence
+
+  - tag: query_is_reject_domain
+    type: sequence
+    args:
+      - matches: qname $blocklist
+        exec: reject 3
+      - matches: qname $adlist
+        exec: reject 3
+      - matches: qname $sp_low
+        exec: reject 3
+      - matches:
+        - qtype 12
+        - qname $local_ptr
+        exec: reject 3
+      - matches: qtype 65
+        exec: reject 3
+
+  - tag: main_sequence
+    type: sequence
+    args:
+      - exec: $hosts
+      - exec: jump has_resp_sequence
+      - exec: $redirect
+      - exec: jump has_resp_sequence
+      - exec: $query_is_ddns_domain
+      - exec: jump has_resp_sequence
+      - exec: $query_is_whitelist_domain
+      - exec: jump has_resp_sequence
+      - exec: $query_is_reject_domain
+      - exec: jump has_resp_sequence
+      - exec: $query_is_greylist_domain
+      - exec: jump has_resp_sequence
+      - exec: $query_is_local_domain
+      - exec: jump has_resp_sequence
+      - exec: $query_is_no_local_domain
+      - exec: jump has_resp_sequence
+      - exec: $fallback
+
+  - tag: udp_server
+    type: udp_server
+    args:
+      entry: main_sequence
+      listen: ":5335"
+      
