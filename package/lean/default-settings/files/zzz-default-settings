@@ -136,25 +136,30 @@ uci set dhcp.@host[9].dns='1'
 uci set dhcp.@host[9].mac='a0:36:9f:49:65:ab'
 uci set dhcp.@host[9].ip='192.168.0.14'
 uci add dhcp host
-uci set dhcp.@host[11].name='ILO-GEN8'
-uci set dhcp.@host[11].dns='1'
-uci set dhcp.@host[11].ip='192.168.0.10'
-uci set dhcp.@host[11].mac='00:fd:45:fc:8b:3e'
+uci commit dhcp
 uci add dhcp host
-uci set dhcp.@host[12].name='youxishiatv4k'
-uci set dhcp.@host[12].dns='1'
-uci set dhcp.@host[12].ip='192.168.0.23'
-uci set dhcp.@host[12].mac='f0:b3:ec:09:b3:8e'
+uci set dhcp.@host[-1].name='ILO-GEN8'
+uci set dhcp.@host[-1].dns='1'
+uci set dhcp.@host[-1].ip='192.168.0.10'
+uci set dhcp.@host[-1].mac='00:fd:45:fc:8b:3e'
+uci commit dhcp
 uci add dhcp host
-uci set dhcp.@host[13].name='MACM2'
-uci set dhcp.@host[13].dns='1'
-uci set dhcp.@host[13].mac='f8:e4:3b:d3:02:1a'
-uci set dhcp.@host[13].ip='192.168.0.24'
+uci set dhcp.@host[-1].name='youxishiatv4k'
+uci set dhcp.@host[-1].dns='1'
+uci set dhcp.@host[-1].ip='192.168.0.23'
+uci set dhcp.@host[-1].mac='f0:b3:ec:09:b3:8e'
+uci commit dhcp
 uci add dhcp host
-uci set dhcp.@host[14].name='MACM2Wifi'
-uci set dhcp.@host[14].dns='1'
-uci set dhcp.@host[14].mac='a4:cf:99:51:ce:13'
-uci set dhcp.@host[14].ip='192.168.0.25'
+uci set dhcp.@host[-1].name='mac-m2-eth'
+uci set dhcp.@host[-1].dns='1'
+uci set dhcp.@host[-1].mac='58:ef:68:e7:42:21'
+uci set dhcp.@host[-1].ip='192.168.0.24'
+uci commit dhcp
+uci add dhcp host
+uci set dhcp.@host[-1].name='mac-m2-wifi'
+uci set dhcp.@host[-1].dns='1'
+uci set dhcp.@host[-1].mac='a4:cf:99:51:ce:13'
+uci set dhcp.@host[-1].ip='192.168.0.25'
 uci commit dhcp
 
 echo 'server=127.0.0.1#5334' >> /etc/dnsmasq.conf
