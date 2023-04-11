@@ -252,6 +252,7 @@ uci set uuplugin.uuplugin.enabled='1'
 uci commit uuplugin
 
 uci delete passwall.STEAM
+uci delete passwall.AD
 uci delete passwall.Direct
 uci delete passwall.Netflix
 uci delete passwall.Proxy
@@ -394,7 +395,6 @@ uci set passwall.myshunt.remarks='分流总节点'
 uci set passwall.myshunt.type='Xray'
 uci set passwall.myshunt.protocol='_shunt'
 uci set passwall.myshunt.BT='_direct'
-uci set passwall.myshunt.AD='_blackhole'
 uci set passwall.myshunt.Direct='_direct'
 uci set passwall.myshunt.domainStrategy='IPOnDemand'
 uci set passwall.myshunt.dialerProxy='1'

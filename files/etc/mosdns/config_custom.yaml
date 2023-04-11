@@ -86,6 +86,8 @@ plugins:
       files:
         - "/var/mosdns/geosite_category-ads-all.txt"
         - "/etc/mosdns/rule/adlist.txt"
+        - "/etc/mosdns/rule/ad-dbl.txt"
+        - "/etc/mosdns/rule/ad-qiu-simon.txt"
 
   - tag: local_ptr
     type: domain_set
@@ -217,6 +219,7 @@ plugins:
     type: sequence
     args:
       - exec: $hosts
+      - exec: jump has_resp_sequence
       - exec: jump has_resp_sequence
       - exec: $redirect
       - exec: jump has_resp_sequence
