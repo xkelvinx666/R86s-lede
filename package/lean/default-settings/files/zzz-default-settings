@@ -162,7 +162,6 @@ uci set dhcp.@host[-1].ip='192.168.0.25'
 uci commit dhcp
 
 echo 'server=127.0.0.1#5334' >> /etc/dnsmasq.conf
-echo 'cache-size=0' >> /etc/dnsmasq.conf
 
 uci set mosdns.config=mosdns
 uci set mosdns.config.enabled_api='1'
