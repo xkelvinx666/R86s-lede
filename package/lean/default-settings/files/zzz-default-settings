@@ -135,7 +135,6 @@ uci set dhcp.@host[9].name='DESKTOP-Gen8'
 uci set dhcp.@host[9].dns='1'
 uci set dhcp.@host[9].mac='a0:36:9f:49:65:ab'
 uci set dhcp.@host[9].ip='192.168.0.14'
-uci add dhcp host
 uci commit dhcp
 uci add dhcp host
 uci set dhcp.@host[-1].name='ILO-GEN8'
@@ -163,10 +162,11 @@ uci set dhcp.@host[-1].ip='192.168.0.25'
 uci commit dhcp
 
 echo 'server=127.0.0.1#5334' >> /etc/dnsmasq.conf
+echo 'cache-size=0' >> /etc/dnsmasq.conf
 
 uci set mosdns.config=mosdns
 uci set mosdns.config.enabled_api='1'
-uci set mosdns.config.redirect='1'
+uci set mosdns.config.redirect='0'
 uci set mosdns.config.enabled='1'
 uci set mosdns.config.configfile='/etc/mosdns/config_custom.yaml'
 uci commit mosdns
