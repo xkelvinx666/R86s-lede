@@ -1,244 +1,235 @@
 log:
   level: error
   file: "/tmp/mosdns.log"
-
-api:
-  http: "0.0.0.0:9091"
-
 include: []
-
-plugins:
-  - tag: geosite_cn
-    type: domain_set
-    args:
-      files:
-        - "/var/mosdns/geosite_cn.txt"
-        - "/var/mosdns/geosite_ookla-speedtest.txt"
-        - "/var/mosdns/geosite_apple-cn.txt"
-        - "/var/mosdns/geosite_google-cn.txt"
-        - "/var/mosdns/geosite_playstation.txt"
-        - "/var/mosdns/geosite_private.txt"
-        - "/var/mosdns/geosite_category-games@cn.txt"
-        - "/var/mosdns/geosite_icloud.txt"
-        - "/var/mosdns/geosite_sony@cn.txt"
-        - "/var/mosdns/geosite_jetbrains.txt"
-        - "/var/mosdns/geosite_test-ipv6.txt"
-        - "/var/mosdns/geosite_microsoft@cn.txt"
-        - "/var/mosdns/geosite_tld-cn.txt"
-        - "/var/mosdns/geosite_geolocation-cn.txt"
-        - "/var/mosdns/geosite_onedrive.txt"
-        - "/var/mosdns/geosite_xbox.txt"
-
-  - tag: geoip_cn
-    type: ip_set
-    args:
-      files:
-        - "/var/mosdns/geoip_cn.txt"
-
-  - tag: geosite_no_cn
-    type: domain_set
-    args:
-      files:
-        - "/var/mosdns/geosite_geolocation-!cn.txt"
-        - "/var/mosdns/geosite_gfw.txt"
-        - "/var/mosdns/geosite_bing.txt"
-        - "/var/mosdns/geosite_greatfire.txt"
-
+data_providers:
+  - tag: geoip
+    file: "/usr/share/v2ray/geoip.dat"
+    auto_reload: true
+  - tag: geosite
+    file: "/usr/share/v2ray/geosite.dat"
+    auto_reload: true
   - tag: whitelist
-    type: domain_set
-    args:
-      files:
-        - "/etc/mosdns/rule/whitelist.txt"
-
+    file: "/etc/mosdns/rule/whitelist.txt"
+    auto_reload: true
   - tag: blocklist
-    type: domain_set
-    args:
-      files:
-        - "/etc/mosdns/rule/blocklist.txt"
-
-  - tag: greylist
-    type: domain_set
-    args:
-      files:
-        - "/etc/mosdns/rule/greylist.txt"
-
-  - tag: ddnslist
-    type: domain_set
-    args:
-      files:
-        - "/etc/mosdns/rule/ddnslist.txt"
-
+    file: "/etc/mosdns/rule/blocklist.txt"
+    auto_reload: true
   - tag: hosts
-    type: hosts
-    args:
-      files:
-        - "/etc/mosdns/rule/hosts.txt"
-
+    file: "/etc/mosdns/rule/hosts.txt"
+    auto_reload: true
   - tag: redirect
-    type: redirect
+    file: "/etc/mosdns/rule/redirect.txt"
+    auto_reload: true
+plugins:
+ ################ DNS #################
+  - tag: ali
+    type: fast_forward
     args:
-      files:
-        - "/etc/mosdns/rule/redirect.txt"
-
-  - tag: adlist
-    type: domain_set
+      upstream:
+        - addr: "https://dns.alidns.com/dns-query"
+          dial_addr: "223.5.5.5"
+          trusted: true
+          enable_http3: true
+        - addr: "tls://dns.alidns.com"
+          dial_addr: "223.6.6.6"
+          trusted: true
+        - addr: udpme://223.5.5.5
+  - tag: dnspod
+    type: fast_forward
     args:
-      files:
-        - "/var/mosdns/geosite_category-ads-all.txt"
-        - "/etc/mosdns/rule/adlist.txt"
-        - "/etc/mosdns/rule/ad-dbl.txt"
-        - "/etc/mosdns/rule/ad-qiu-simon.txt"
-
-  - tag: local_ptr
-    type: domain_set
+      upstream:
+        - addr: "https://1.12.12.12/dns-query"
+          trusted: true
+          enable_http3: true
+        - addr: "tls://120.53.53.53"
+          trusted: true
+        - addr: udpme://119.29.29.29
+  - tag: google
+    type: "fast_forward"
     args:
-      files:
-        - "/etc/mosdns/rule/local-ptr.txt"
-
-  - tag: sp_low
-    type: domain_set
+      upstream:
+        - addr: "https://dns.google/dns-query"
+          dial_addr: "8.8.8.8"
+          trusted: true
+        - addr: "https://dns.google/dns-query"
+          dial_addr: "8.8.4.4"
+          trusted: true
+        - addr: "tls://dns.google"
+          dial_addr: "8.8.4.4"
+          trusted: true
+          enable_pipeline: true
+        - addr: "tls://dns.google"
+          dial_addr: "8.8.8.8"
+          trusted: true
+        - addr: "udpme://8.8.8.8"
+        - addr: "udpme://8.8.4.4"
+  - tag: cloudflare
+    type: "fast_forward"
     args:
-      files:
-        - "/usr/share/mosdns/sp_low.tdata"
-
-  - tag: forward_local
-    type: forward
+      upstream:
+        - addr: "https://cloudflare-dns.com/dns-query"
+          dial_addr: "1.0.0.1"
+          trusted: true
+        - addr: "https://cloudflare-dns.com/dns-query"
+          dial_addr: "1.1.1.1"
+          trusted: true
+        - addr: "udpme://1.0.0.1"
+        - addr: "udpme://1.1.1.1"
+  - tag: ips_ipv6
+    type: "fast_forward"
     args:
-      concurrent: 3
-      upstreams:
+      upstream:
+        - addr: "240e:1f:1::1"
+        - addr: "240e:1f:1::33"
+        - addr: "2409:8057:2000:6::8"
+        - addr: "2409:8057:2000:0::8"
+        - addr: "2408:8888::8"
+        - addr: "2408:8899::8"
+        - addr: "udpme://2400:3200::1"
+        - addr: "udpme://2400:3200:baba::1"
+        - addr: "udpme://2402:4e00::"
+        - addr: "udpme://2400:da00::6666"
+        - addr: "udpme://240e:4c:4008::1"
+        - addr: "udpme://240e:4c:4808::1"
+        - addr: "udpme://240C::6666"
+        - addr: "udpme://2001:dc7:1000::1"
+  - tag: oversea_ipv6
+    type: fast_forward
+    args:
+      upstream:
+        - addr: "udpme://2001:4860:4860::8888"
+        - addr: "udpme://2001:4860:4860::8844"
+        - addr: "udpme://2606:4700:4700::1111"
+        - addr: "udpme://2620:0:ccc::2"
+        - addr: "udpme://2620:119:35::35"
+        - addr: "udpme://2606:4700:4700::1111"
+        - addr: "udpme://2606:4700:4700::1001"
+  - tag: other_dns
+    type: "fast_forward"
+    args:
+      upstream:
+        - addr: udpme://1.12.13.53
+        - addr: udpme://180.76.76.76
+        - addr: udpme://52.80.52.52
+        - addr: udpme://114.114.114.114
+  - tag: ips_dns
+    type: "fast_forward"
+    args:
+      upstream:
         - addr: 202.96.134.133
         - addr: 202.96.128.166
-        - addr: 240e:1f:1::1
-
-  - tag: forward_remote
-    type: forward
-    args:
-      concurrent: 3
-      upstreams:
-        - addr: 8.8.8.8
-        - addr: 2001:4860:4860::8888
-        - addr: 8.8.4.4
-
-  - tag: modify_ttl
-    type: sequence
-    args:
-      - exec: ttl 0-0
-
-  - tag: modify_ddns_ttl
-    type: sequence
-    args:
-      - exec: ttl 5-5
-
-  - tag: local_sequence
-    type: sequence
-    args:
-      - exec: $forward_local
-
-  - tag: remote_sequence
-    type: sequence
-    args:
-      - exec: $forward_remote
-
-  - tag: has_resp_sequence
-    type: sequence
-    args:
-      - matches: qname $ddnslist
-        exec: $modify_ddns_ttl
-      - matches: "!qname $ddnslist"
-        exec: $modify_ttl
-      - matches: has_resp
-        exec: accept
-
-  - tag: query_is_local_ip
-    type: sequence
-    args:
-      - exec: $local_sequence
-      - matches: "!resp_ip $geoip_cn"
-        exec: drop_resp
-
-  - tag: query_is_remote
-    type: sequence
-    args:
-      - exec: $remote_sequence
-
-  - tag: fallback
-    type: fallback
-    args:
-      primary: query_is_local_ip
-      secondary: query_is_remote
-      threshold: 500
-      always_standby: true
-
-  - tag: query_is_ddns_domain
-    type: sequence
-    args:
-      - matches: qname $ddnslist
-        exec: $local_sequence
-
-  - tag: query_is_local_domain
-    type: sequence
-    args:
-      - matches: qname $geosite_cn
-        exec: $local_sequence
-
-  - tag: query_is_no_local_domain
-    type: sequence
-    args:
-      - matches: qname $geosite_no_cn
-        exec: $remote_sequence
-
   - tag: query_is_whitelist_domain
+    type: query_matcher
+    args:
+      domain:
+        - "provider:whitelist"
+  - tag: query_is_blocklist_domain
+    type: query_matcher
+    args:
+      domain:
+        - "provider:blocklist"
+  - tag: query_is_hosts_domain
+    type: hosts
+    args:
+      hosts:
+        - "provider:hosts"
+  - tag: query_is_redirect_domain
+    type: redirect
+    args:
+      rule:
+        - "provider:redirect"
+  - tag: query_is_local_domain
+    type: query_matcher
+    args:
+      domain:
+        - "provider:geosite:cn,apple-cn,icloud,google-cn,tld-cn,geolocation-cn,category-games@cn,playstation,microsoft"
+  - tag: query_is_non_local_domain
+    type: query_matcher
+    args:
+      domain:
+        - "provider:geosite:gfw,disney,greatfire,geolocation-!cn,github,bing"
+
+  - tag: response_has_local_ip
+    type: response_matcher
+    args:
+      ip:
+        - "provider:geoip:cn"
+  - tag: query_is_ad_domain
+    type: query_matcher
+    args:
+      domain:
+        - "provider:geosite:category-ads-all"
+  - tag: match_qtype65
+    type: query_matcher
+    args:
+      qtype: [65]
+  ################ 序列 #################
+  # local 序列
+  - tag: forward_local
     type: sequence
     args:
-      - matches: qname $whitelist
-        exec: $local_sequence
-
-  - tag: query_is_greylist_domain
+      exec:
+        - parallel:
+            - - ips_ipv6
+            - - ips_dns
+            - - ali
+            - - dnspod
+            - - other_dns
+  # remote 序列
+  - tag: forward_remote
     type: sequence
     args:
-      - matches: qname $greylist
-        exec: $remote_sequence
-
-  - tag: query_is_reject_domain
+      exec:
+        - parallel:
+            - - oversea_ipv6
+            - - google
+            - - cloudflare
+  - tag: "main_sequence"
+    type: "sequence"
+    args:
+      exec:
+        - query_is_hosts_domain
+        - query_is_redirect_domain
+        - if: query_is_whitelist_domain
+          exec:
+            - forward_local
+            - _return
+        - if: "query_is_blocklist_domain || query_is_ad_domain || match_qtype65"
+          exec:
+            - _new_nxdomain_response
+            - _return
+        - if: query_is_local_domain
+          exec:
+            - forward_local
+            - if: "response_has_local_ip"
+              exec:
+                - _return
+        - if: query_is_non_local_domain
+          exec:
+            - _prefer_ipv4
+            - forward_remote # 无污染
+            - if: "!response_has_local_ip" # 结果是 非cnip
+              exec:
+                - _return # 结束
+        - primary:
+            - forward_local
+            - if: "(! response_has_local_ip) && [_response_valid_answer]"
+              exec:
+                - _drop_response
+          secondary:
+            - forward_remote
+          fast_fallback: 120
+  - tag: my_sequence
     type: sequence
     args:
-      - matches: qname $blocklist
-        exec: reject 3
-      - matches: qname $adlist
-        exec: reject 3
-      - matches: qname $sp_low
-        exec: reject 3
-      - matches:
-        - qtype 12
-        - qname $local_ptr
-        exec: reject 3
-      - matches: qtype 65
-        exec: reject 3
-
-  - tag: main_sequence
-    type: sequence
-    args:
-      - exec: $hosts
-      - exec: jump has_resp_sequence
-      - exec: jump has_resp_sequence
-      - exec: $redirect
-      - exec: jump has_resp_sequence
-      - exec: $query_is_ddns_domain
-      - exec: jump has_resp_sequence
-      - exec: $query_is_whitelist_domain
-      - exec: jump has_resp_sequence
-      - exec: $query_is_reject_domain
-      - exec: jump has_resp_sequence
-      - exec: $query_is_greylist_domain
-      - exec: jump has_resp_sequence
-      - exec: $query_is_local_domain
-      - exec: jump has_resp_sequence
-      - exec: $query_is_no_local_domain
-      - exec: jump has_resp_sequence
-      - exec: $fallback
-
-  - tag: udp_server
-    type: udp_server
-    args:
-      entry: main_sequence
-      listen: ":5335"
+      exec:
+        - _misc_optm
+        - main_sequence
+servers:
+  - exec: my_sequence
+    listeners:
+      - protocol: udp
+        addr: ":5335"
+api:
+    http: "0.0.0.0:8080"
