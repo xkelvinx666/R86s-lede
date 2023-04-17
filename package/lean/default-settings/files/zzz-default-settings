@@ -81,7 +81,8 @@ uci set dhcp.@dnsmasq[0].nohosts='1'
 uci set dhcp.@dnsmasq[0].nonegcache='1'
 uci set dhcp.@dnsmasq[0].boguspriv='0'
 uci set dhcp.@dnsmasq[0].domain='c2201.home'
-uci set dhcp.@dnsmasq[0].server='127.0.0.1#5334'
+uci set dhcp.@dnsmasq[0].port='5334'
+uci set dhcp.@dnsmasq[0].addnhosts='/etc/dnsmasq.hosts.conf'
 uci set dhcp.@dnsmasq[0].filter_aaaa='0'
 uci set dhcp.lan.start='50'
 uci set dhcp.lan.limit='150'
@@ -161,8 +162,6 @@ uci set dhcp.@host[-1].mac='a4:cf:99:51:ce:13'
 uci set dhcp.@host[-1].ip='192.168.0.25'
 uci commit dhcp
 
-echo 'server=127.0.0.1#5334' >> /etc/dnsmasq.conf
-
 uci set mosdns.config=mosdns
 uci set mosdns.config.enabled_api='1'
 uci set mosdns.config.redirect='0'
@@ -197,7 +196,7 @@ uci commit mosdns
 uci set unbound.ub_main.enabled='1'
 uci set unbound.ub_main.manual_conf='1'
 uci set unbound.ub_main.extended_luci='1'
-uci set unbound.ub_main.listen_port='5334'
+uci set unbound.ub_main.listen_port='53'
 uci commit unbound
 
 uci set network.wan.proto='pppoe'
@@ -205,8 +204,6 @@ uci set network.wan.username='pppoe-wan-username'
 uci set network.wan.password='pppoe-wan-password'
 uci set network.wan.mtu='1492'
 uci set network.globals.ula_prefix=''
-uci set network.wan.peerdns='0'
-uci set network.wan6.peerdns='0'
 uci set network.wan6.mtu='1472'
 uci commit network
 
@@ -380,8 +377,11 @@ geosite:geolocation-!cn'
 uci set passwall.@global[0].enabled='1'
 uci set passwall.@global[0].tcp_node='myshunt'
 uci set passwall.@global[0].udp_node='tcp'
-uci set passwall.@global[0].dns_mode='udp'
-uci set passwall.@global[0].remote_dns='127.0.0.1:5334'
+uci set passwall.@global[0].dns_mode='xray'
+uci set passwall.@global[0].advanced_log_feature='0'
+uci set passwall.@global[0].v2ray_dns_mode='doh'
+uci set passwall.@global[0].remote_dns_doh='https://8.8.8.8/dns-query'
+uci set passwall.@global[0].dns_cache='1'
 uci set passwall.@global_forwarding[0].tcp_proxy_way='tproxy'
 uci set passwall.@global_forwarding[0].ipv6_tproxy='1'
 uci set passwall.@global_rules[0].geosite_update='1'
