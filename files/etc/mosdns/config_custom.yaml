@@ -2,9 +2,6 @@ log:
   level: error
   file: "/tmp/mosdns.log"
 
-api:
-  http: "0.0.0.0:9091"
-
 include: []
 
 plugins:
@@ -94,57 +91,55 @@ plugins:
       files:
         - "/etc/mosdns/rule/local-ptr.txt"
 
-  - tag: sp_low
-    type: domain_set
-    args:
-      files:
-        - "/usr/share/mosdns/sp_low.tdata"
-
   - tag: forward_local
     type: forward
     args:
       concurrent: 3
       upstreams:
-        - addr: 202.96.134.133
-        - addr: 202.96.128.166
-        - addr: 240e:1f:1::1
+        - addr: "https://dns.alidns.com/dns-query"
+          dial_addr: "223.5.5.5"
+          enable_pipeline: true
+          enable_http3: true
+          insecure_skip_verify: true
+        - addr: "tcp://1.12.12.12"
+          enable_pipeline: true
+          insecure_skip_verify: true
+        - addr: "tls://120.53.53.53"
+          enable_pipeline: true
+          insecure_skip_verify: true
 
   - tag: forward_remote
     type: forward
     args:
       concurrent: 3
       upstreams:
-        - addr: 8.8.8.8
-        - addr: 2001:4860:4860::8888
-        - addr: 8.8.4.4
-
-  - tag: modify_ttl
-    type: sequence
-    args:
-      - exec: ttl 0-0
-
-  - tag: modify_ddns_ttl
-    type: sequence
-    args:
-      - exec: ttl 5-5
+        - addr: "https://dns.google/dns-query"
+          dial_addr: "8.8.8.8"
+          enable_http3: true
+          insecure_skip_verify: true
+        - addr: "tls://8.8.4.4"
+          enable_pipeline: true
+          insecure_skip_verify: true
+        - addr: "tcp://2001:4860:4860::8888"
+          enable_pipeline: true
+          insecure_skip_verify: true
 
   - tag: local_sequence
     type: sequence
     args:
+      - exec: ecs 113.116.133.0/24
       - exec: $forward_local
 
   - tag: remote_sequence
     type: sequence
     args:
+      - exec: prefer_ipv4
+      - exec: ecs 101.33.127.0/24
       - exec: $forward_remote
 
   - tag: has_resp_sequence
     type: sequence
     args:
-      - matches: qname $ddnslist
-        exec: $modify_ddns_ttl
-      - matches: "!qname $ddnslist"
-        exec: $modify_ttl
       - matches: has_resp
         exec: accept
 
@@ -205,8 +200,6 @@ plugins:
         exec: reject 3
       - matches: qname $adlist
         exec: reject 3
-      - matches: qname $sp_low
-        exec: reject 3
       - matches:
         - qtype 12
         - qname $local_ptr
@@ -218,7 +211,6 @@ plugins:
     type: sequence
     args:
       - exec: $hosts
-      - exec: jump has_resp_sequence
       - exec: jump has_resp_sequence
       - exec: $redirect
       - exec: jump has_resp_sequence
@@ -238,6 +230,12 @@ plugins:
 
   - tag: udp_server
     type: udp_server
+    args:
+      entry: main_sequence
+      listen: ":5335"
+
+  - tag: tcp_server
+    type: tcp_server
     args:
       entry: main_sequence
       listen: ":5335"
