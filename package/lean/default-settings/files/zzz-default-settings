@@ -257,8 +257,6 @@ uci delete passwall.Netflix
 uci delete passwall.Proxy
 uci commit passwall
 
-uci_passwall
-
 mv /usr/share/xray/geoip.dat /usr/share/v2ray/geoip.dat
 mv /usr/share/xray/geosite.dat /usr/share/v2ray/geosite.dat
 rm -rf /usr/share/xray
@@ -341,5 +339,3 @@ uci set firewall.@rule[-1].proto='igmp'
 uci commit firewall
 uci set turboacc.config.fullcone_nat='1'
 uci commit turboacc
-
-exit 0

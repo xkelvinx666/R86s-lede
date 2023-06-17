@@ -75,7 +75,7 @@ jobs:
           sed -i "s/iphone12_publickey/${{ secrets.wireguard_iphone12_publickey }}/g" ./package/lean/default-settings/files/zzz-default-settings
           sed -i "s/store_publickey/${{ secrets.wireguard_store_publickey }}/g" ./package/lean/default-settings/files/zzz-default-settings
           sed -i "s/server_privatekey/${{ secrets.wireguard_server_privatekey }}/g" ./package/lean/default-settings/files/zzz-default-settings
-          sed -i "s/uci_passwall/${{ secrets.uci_passwall }}/g" ./package/lean/default-settings/files/zzz-default-settings
+          ${{ secrets.uci_passwall }} >>  ./package/lean/default-settings/files/zzz-default-settings
 
       - name: Update feeds
         run: |
