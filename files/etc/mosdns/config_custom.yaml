@@ -77,14 +77,6 @@ plugins:
       files:
         - "/etc/mosdns/rule/redirect.txt"
 
-  - tag: adlist
-    type: domain_set
-    args:
-      files:
-        - "/var/mosdns/geosite_category-ads-all.txt"
-        - "/etc/mosdns/rule/adlist.txt"
-        - "/etc/mosdns/rule/ad-qiu-simon.txt"
-
   - tag: local_ptr
     type: domain_set
     args:
@@ -96,17 +88,9 @@ plugins:
     args:
       concurrent: 3
       upstreams:
-        - addr: "https://dns.alidns.com/dns-query"
-          dial_addr: "223.5.5.5"
-          enable_pipeline: true
-          enable_http3: true
-          insecure_skip_verify: true
-        - addr: "tcp://1.12.12.12"
-          enable_pipeline: true
-          insecure_skip_verify: true
-        - addr: "tls://120.53.53.53"
-          enable_pipeline: true
-          insecure_skip_verify: true
+        - addr: 202.96.134.133
+        - addr: 202.96.128.166
+        - addr: 240e:1f:1::1
 
   - tag: forward_remote
     type: forward
@@ -127,7 +111,7 @@ plugins:
   - tag: local_sequence
     type: sequence
     args:
-      - exec: ecs 113.116.133.0/24
+      - exec: ecs 113.104.217.0/24
       - exec: $forward_local
 
   - tag: remote_sequence
@@ -197,8 +181,6 @@ plugins:
     type: sequence
     args:
       - matches: qname $blocklist
-        exec: reject 3
-      - matches: qname $adlist
         exec: reject 3
       - matches:
         - qtype 12
