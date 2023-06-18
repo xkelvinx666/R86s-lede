@@ -1,0 +1,449 @@
+112312
+aw
+wad
+12
+123
+12
+uci set passwall.BT=shunt_rules.map
+uci set passwall.BT.remarks='BT'
+uci set passwall.BT.protocol='bittorrent'
+uci set passwall.OpenAI=shunt_rules
+uci set passwall.OpenAI.remarks='OpenAI'
+uci set passwall.OpenAI.domain_list='openai.com'
+uci set passwall.Speed=shunt_rules
+uci set passwall.Speed.remarks='Speed'
+uci set passwall.Speed.domain_list='geosite:category-porn
+18comic.vip
+mxdcontent.net
+phncdn.com
+haileshe.club
+sb-cd.com
+rule34video.com
+kenzato.uk
+hanime.tv
+cn.pornhub.com
+hath.network
+hembed.com
+i.nhentai.net
+media.porndudecdn.com
+phncdn.com'
+uci set passwall.bing=shunt_rules
+uci set passwall.bing.remarks='bing'
+uci set passwall.bing.domain_list='geosite:bing'
+uci set passwall.Twitter=shunt_rules
+uci set passwall.Twitter.remarks='Twitter'
+uci set passwall.Twitter.domain_list='geosite:twitter
+geosite:bing
+bitget
+steamcommunity.com
+bing'
+uci set passwall.Direct=shunt_rules
+uci set passwall.Direct.remarks='Direct'
+uci set passwall.Direct.ip_list='223.5.5.5/32
+119.29.29.29/32
+180.76.76.76/32
+114.114.114.114/32
+8.8.8.8/32
+2001:4860:4860::8888
+103.10.124.0/24
+103.10.125.0/24
+103.28.54.0/24
+146.66.152.0/24
+146.66.155.0/24
+153.254.86.0/24
+155.133.224.0/23
+155.133.226.0/24
+155.133.227.0/24
+155.133.230.0/24
+155.133.232.0/24
+155.133.233.0/24
+155.133.234.0/24
+155.133.236.0/23
+155.133.238.0/24
+155.133.239.0/24
+155.133.240.0/23
+155.133.245.0/24
+155.133.246.0/24
+155.133.248.0/24
+155.133.249.0/24
+155.133.250.0/24
+155.133.251.0/24
+155.133.252.0/24
+155.133.253.0/24
+155.133.254.0/24
+155.133.255.0/24
+162.254.192.0/24
+162.254.193.0/24
+162.254.194.0/23
+162.254.195.0/24
+162.254.196.0/24
+162.254.197.0/24
+162.254.198.0/24
+162.254.199.0/24
+185.25.182.0/24
+185.25.183.0/24
+190.217.33.0/24
+192.69.96.0/22
+205.185.194.0/24
+205.196.6.0/24
+208.64.200.0/24
+208.64.201.0/24
+208.64.202.0/24
+208.64.203.0/24
+208.78.164.0/22
+geoip:cn
+geoip:private'
+uci set passwall.Direct.domain_list='geosite:cn
+geosite:apple-cn
+geosite:icloud
+geosite:google-cn
+geosite:geolocation-cn
+geosite:private
+geosite:tld-cn
+geosite:category-games@cn
+geosite:microsoft@cn
+geosite:sony@cn
+geosite:playstation
+geosite:xbox
+geosite:onedrive
+geosite:test-ipv6
+geosite:ookla-speedtest
+geosite:jetbrains
+geosite:lark
+caijinbiao.cn
+c2201.top
+linksys.com
+api.steampowered.com
+regexp:.cm.steampowered.com$
+regexp:.steamserver.net$
+fast.com
+ipv6-test.com
+dns.google'
+uci set passwall.Common=shunt_rules
+uci set passwall.Common.remarks='Common'
+uci set passwall.Common.ip_list='149.154.160.0/20
+91.108.4.0/22
+91.108.56.0/24
+109.239.140.0/24
+67.198.55.0/24
+8.8.4.4
+8.8.8.8
+208.67.222.222
+208.67.220.220
+1.1.1.1
+1.1.1.2
+1.0.0.1
+9.9.9.9
+149.112.112.112
+2001:67c:4e8::/48
+2001:b28:f23c::/48
+2001:b28:f23d::/48
+2001:b28:f23f::/48
+2001:b28:f242::/48
+2001:4860:4860::8888
+2001:4860:4860::8844
+2606:4700:4700::1111
+2606:4700:4700::1001'
+uci set passwall.Common.domain_list='geosite:github
+geosite:gfw
+steamcommunity.com'
+uci set passwall.Proxy=shunt_rules
+uci set passwall.Proxy.remarks='Proxy'
+uci set passwall.Proxy.domain_list='geosite:greatfire
+geosite:geolocation-!cn'
+uci set passwall.Proxy.ip_list='geoip:us
+geoip:jp
+geoip:ru'
+uci set passwall.@global[0]=global
+uci set passwall.@global[0].socks_enabled='0'
+uci set passwall.@global[0].tcp_node_socks_port='1070'
+uci set passwall.@global[0].tcp_proxy_mode='chnroute'
+uci set passwall.@global[0].udp_proxy_mode='chnroute'
+uci set passwall.@global[0].localhost_tcp_proxy_mode='default'
+uci set passwall.@global[0].acl_enable='0'
+uci set passwall.@global[0].close_log_tcp='0'
+uci set passwall.@global[0].close_log_udp='0'
+uci set passwall.@global[0].loglevel='error'
+uci set passwall.@global[0].trojan_loglevel='4'
+uci set passwall.@global[0].tcp_node='myshunt'
+uci set passwall.@global[0].udp_node='tcp'
+uci set passwall.@global[0].advanced_log_feature='0'
+uci set passwall.@global[0].enabled='1'
+uci set passwall.@global[0].when_chnroute_default_dns='remote'
+uci set passwall.@global[0].dns_mode='udp'
+uci set passwall.@global[0].remote_dns='127.0.0.1:5334'
+uci set passwall.@global[0].localhost_udp_proxy_mode='default'
+uci set passwall.@global_haproxy[0]=global_haproxy
+uci set passwall.@global_haproxy[0].balancing_enable='0'
+uci set passwall.@global_delay[0]=global_delay
+uci set passwall.@global_delay[0].auto_on='0'
+uci set passwall.@global_delay[0].start_daemon='1'
+uci set passwall.@global_delay[0].start_delay='1'
+uci set passwall.@global_forwarding[0]=global_forwarding
+uci set passwall.@global_forwarding[0].tcp_no_redir_ports='disable'
+uci set passwall.@global_forwarding[0].tcp_proxy_drop_ports='disable'
+uci set passwall.@global_forwarding[0].udp_proxy_drop_ports='80,443'
+uci set passwall.@global_forwarding[0].tcp_redir_ports='22,25,53,143,465,587,853,993,995,80,443'
+uci set passwall.@global_forwarding[0].udp_redir_ports='1:65535'
+uci set passwall.@global_forwarding[0].accept_icmp='0'
+uci set passwall.@global_forwarding[0].use_nft='0'
+uci set passwall.@global_forwarding[0].sniffing='1'
+uci set passwall.@global_forwarding[0].route_only='0'
+uci set passwall.@global_forwarding[0].ipv6_tproxy='1'
+uci set passwall.@global_forwarding[0].accept_icmpv6='0'
+uci set passwall.@global_forwarding[0].udp_no_redir_ports='53'
+uci set passwall.@global_forwarding[0].tcp_proxy_way='tproxy'
+uci set passwall.@global_other[0]=global_other
+uci set passwall.@global_other[0].nodes_ping='auto_ping tcping'
+uci set passwall.@global_rules[0]=global_rules
+uci set passwall.@global_rules[0].chnlist_update='1'
+uci set passwall.@global_rules[0].chnroute_update='1'
+uci set passwall.@global_rules[0].chnroute6_update='1'
+uci set passwall.@global_rules[0].gfwlist_update='1'
+uci set passwall.@global_rules[0].gfwlist_url='https://fastly.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/gfw.txt'
+uci set passwall.@global_rules[0].chnroute_url='https://ispip.clang.cn/all_cn.txt' 'https://fastly.jsdelivr.net/gh/gaoyifan/china-operator-ip@ip-lists/china.txt'
+uci set passwall.@global_rules[0].chnroute6_url='https://ispip.clang.cn/all_cn_ipv6.txt' 'https://fastly.jsdelivr.net/gh/gaoyifan/china-operator-ip@ip-lists/china6.txt'
+uci set passwall.@global_rules[0].chnlist_url='https://fastly.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/accelerated-domains.china.conf' 'https://fastly.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/apple.china.conf' 'https://fastly.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/google.china.conf'
+uci set passwall.@global_rules[0].v2ray_location_asset='/usr/share/v2ray/'
+uci set passwall.@global_rules[0].geosite_update='1'
+uci set passwall.@global_rules[0].geoip_update='1'
+uci set passwall.@global_rules[0].auto_update='1'
+uci set passwall.@global_rules[0].week_update='5'
+uci set passwall.@global_rules[0].time_update='4'
+uci set passwall.@global_app[0]=global_app
+uci set passwall.@global_app[0].v2ray_file='/usr/bin/v2ray'
+uci set passwall.@global_app[0].xray_file='/usr/bin/xray'
+uci set passwall.@global_app[0].trojan_go_file='/usr/bin/trojan-go'
+uci set passwall.@global_app[0].brook_file='/usr/bin/brook'
+uci set passwall.@global_app[0].hysteria_file='/usr/bin/hysteria'
+uci set passwall.@global_app[0].chinadns_ng='/usr/bin/chinadns-ng'
+uci set passwall.@global_subscribe[0]=global_subscribe
+uci set passwall.@global_subscribe[0].ss_aead_type='xray'
+uci set passwall.@global_subscribe[0].trojan_type='xray'
+uci set passwall.@global_subscribe[0].filter_keep_list='香港'
+uci set passwall.@global_subscribe[0].filter_discard_list='过期时间' '剩余流量' 'QQ群' '官网' '俄罗斯' '韩国' '新加坡' '美国' '日本'
+uci set passwall.@global_subscribe[0].filter_keyword_mode='2'
+uci set passwall.@auto_switch[0]=auto_switch
+uci set passwall.@auto_switch[0].testing_time='1'
+uci set passwall.@auto_switch[0].retry_num='3'
+uci set passwall.@auto_switch[0].connect_timeout='1'
+uci set passwall.@auto_switch[0].restore_switch='1'
+uci set passwall.@auto_switch[0].shunt_logic='0'
+uci set passwall.@auto_switch[0].enable='0'
+uci set passwall.@auto_switch[0].tcp_node='33e1e36694f7421aaffaa6ce6cb27a26'
+uci set passwall.myshunt=nodes
+uci set passwall.myshunt.remarks='分流总节点'
+uci set passwall.myshunt.type='Xray'
+uci set passwall.myshunt.protocol='_shunt'
+uci set passwall.myshunt.STEAM='_direct'
+uci set passwall.myshunt.AD='_blackhole'
+uci set passwall.myshunt.BT='_direct'
+uci set passwall.myshunt.Netflix='_default'
+uci set passwall.myshunt.OpenAI='_default'
+uci set passwall.myshunt.domainStrategy='IPOnDemand'
+uci set passwall.myshunt.dialerProxy='1'
+uci set passwall.myshunt.Twitter='33e1e36694f7421aaffaa6ce6cb27a26'
+uci set passwall.myshunt.preproxy_enabled='0'
+uci set passwall.myshunt.Direct='_direct'
+uci set passwall.myshunt.default_node='_direct'
+uci set passwall.myshunt.Common='a3a52ba1e4364d419c0312ad7e69de63'
+uci set passwall.myshunt.Proxy='a3a52ba1e4364d419c0312ad7e69de63'
+uci set passwall.myshunt.Speed='13820b4f711a4468bbdf7c8f22ae0e16'
+uci set passwall.myshunt.bing='0a85e8e9922e42638665c8671715f4d7'
+uci set passwall.33e1e36694f7421aaffaa6ce6cb27a26=nodes
+uci set passwall.33e1e36694f7421aaffaa6ce6cb27a26.remarks='store.c2201.top'
+uci set passwall.33e1e36694f7421aaffaa6ce6cb27a26.type='Xray'
+uci set passwall.33e1e36694f7421aaffaa6ce6cb27a26.address='store.c2201.top'
+uci set passwall.33e1e36694f7421aaffaa6ce6cb27a26.port='443'
+uci set passwall.33e1e36694f7421aaffaa6ce6cb27a26.tls='1'
+uci set passwall.33e1e36694f7421aaffaa6ce6cb27a26.reality='0'
+uci set passwall.33e1e36694f7421aaffaa6ce6cb27a26.tls_allowInsecure='1'
+uci set passwall.33e1e36694f7421aaffaa6ce6cb27a26.protocol='trojan'
+uci set passwall.33e1e36694f7421aaffaa6ce6cb27a26.password='91f7b5d6-9009-4e8e-b079-6684a2699edc'
+uci set passwall.33e1e36694f7421aaffaa6ce6cb27a26.alpn='h2'
+uci set passwall.33e1e36694f7421aaffaa6ce6cb27a26.tls_serverName='store.c2201.top'
+uci set passwall.33e1e36694f7421aaffaa6ce6cb27a26.transport='grpc'
+uci set passwall.33e1e36694f7421aaffaa6ce6cb27a26.grpc_serviceName='xvvdtrojangrpc'
+uci set passwall.33e1e36694f7421aaffaa6ce6cb27a26.grpc_mode='gun'
+uci set passwall.33e1e36694f7421aaffaa6ce6cb27a26.grpc_initial_windows_size='0'
+uci set passwall.b158a696836b492a8accb277360edb61=nodes
+uci set passwall.b158a696836b492a8accb277360edb61.remarks='Hys-speed-c2201-top'
+uci set passwall.b158a696836b492a8accb277360edb61.type='Hysteria'
+uci set passwall.b158a696836b492a8accb277360edb61.address='speed.c2201.top'
+uci set passwall.b158a696836b492a8accb277360edb61.port='21289'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_auth_type='string'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_auth_password='j45BNvw2fwT8Vi4JGBAjJ4fPOcySvxhdVzKl1MFIAHhMQtysIR'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_alpn='h3'
+uci set passwall.b158a696836b492a8accb277360edb61.tls_serverName='speed.c2201.top'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_up_mbps='220'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_down_mbps='220'
+uci set passwall.b158a696836b492a8accb277360edb61.tls_allowInsecure='1'
+uci set passwall.b158a696836b492a8accb277360edb61.protocol='wechat-video'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_recv_window_conn='4194304'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_recv_window='16777216'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_handshake_timeout='15'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_idle_timeout='30'
+uci set passwall.b158a696836b492a8accb277360edb61.hysteria_disable_mtu_discovery='1'
+uci set passwall.4d6f185a906048be937764a0a8f90840=nodes
+uci set passwall.4d6f185a906048be937764a0a8f90840.remarks='b1f87abc-vless_reality_grpc'
+uci set passwall.4d6f185a906048be937764a0a8f90840.type='Xray'
+uci set passwall.4d6f185a906048be937764a0a8f90840.protocol='vless'
+uci set passwall.4d6f185a906048be937764a0a8f90840.address='101.33.127.109'
+uci set passwall.4d6f185a906048be937764a0a8f90840.port='32430'
+uci set passwall.4d6f185a906048be937764a0a8f90840.encryption='none'
+uci set passwall.4d6f185a906048be937764a0a8f90840.uuid='b1f87abc-5db8-472f-8e4b-038ef20d3c64'
+uci set passwall.4d6f185a906048be937764a0a8f90840.tls='1'
+uci set passwall.4d6f185a906048be937764a0a8f90840.reality='1'
+uci set passwall.4d6f185a906048be937764a0a8f90840.tls_serverName='c2201.top'
+uci set passwall.4d6f185a906048be937764a0a8f90840.reality_publicKey='rvVezqy9lTg_rd48OwyzPzqBIEPf-T87cM3_20X5qVs'
+uci set passwall.4d6f185a906048be937764a0a8f90840.fingerprint='chrome'
+uci set passwall.4d6f185a906048be937764a0a8f90840.transport='grpc'
+uci set passwall.4d6f185a906048be937764a0a8f90840.grpc_serviceName='grpc'
+uci set passwall.4d6f185a906048be937764a0a8f90840.grpc_initial_windows_size='0'
+uci set passwall.@subscribe_list[0]=subscribe_list
+uci set passwall.@subscribe_list[0].remark='飞鸟云'
+uci set passwall.@subscribe_list[0].allowInsecure='1'
+uci set passwall.@subscribe_list[0].filter_keyword_mode='5'
+uci set passwall.@subscribe_list[0].ss_aead_type='global'
+uci set passwall.@subscribe_list[0].trojan_type='global'
+uci set passwall.@subscribe_list[0].auto_update='1'
+uci set passwall.@subscribe_list[0].week_update='6'
+uci set passwall.@subscribe_list[0].time_update='4'
+uci set passwall.@subscribe_list[0].user_agent='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36'
+uci set passwall.@subscribe_list[0].url='https://feiniaoyun.life/api/v1/client/subscribe?token=d1596644bdfdb6859edcab7edbda5155'
+uci set passwall.13820b4f711a4468bbdf7c8f22ae0e16=nodes
+uci set passwall.13820b4f711a4468bbdf7c8f22ae0e16.remarks='speed'
+uci set passwall.13820b4f711a4468bbdf7c8f22ae0e16.type='Xray'
+uci set passwall.13820b4f711a4468bbdf7c8f22ae0e16.protocol='_balancing'
+uci set passwall.13820b4f711a4468bbdf7c8f22ae0e16.balancingStrategy='leastPing'
+uci set passwall.13820b4f711a4468bbdf7c8f22ae0e16.useCustomProbeUrl='1'
+uci set passwall.13820b4f711a4468bbdf7c8f22ae0e16.probeUrl='https://cn.pornhub.com/generate_204'
+uci set passwall.13820b4f711a4468bbdf7c8f22ae0e16.probeInterval='5s'
+uci set passwall.13820b4f711a4468bbdf7c8f22ae0e16.balancing_node='b158a696836b492a8accb277360edb61' '723f0202e9c44947aacc826ea3502904' '99f481ad1ace4e0b9c7e72eae6f784c1'
+uci set passwall.a3a52ba1e4364d419c0312ad7e69de63=nodes
+uci set passwall.a3a52ba1e4364d419c0312ad7e69de63.type='Xray'
+uci set passwall.a3a52ba1e4364d419c0312ad7e69de63.protocol='_balancing'
+uci set passwall.a3a52ba1e4364d419c0312ad7e69de63.balancingStrategy='leastPing'
+uci set passwall.a3a52ba1e4364d419c0312ad7e69de63.useCustomProbeUrl='1'
+uci set passwall.a3a52ba1e4364d419c0312ad7e69de63.probeUrl='https://www.google.com/generate_204'
+uci set passwall.a3a52ba1e4364d419c0312ad7e69de63.remarks='common'
+uci set passwall.a3a52ba1e4364d419c0312ad7e69de63.probeInterval='5s'
+uci set passwall.a3a52ba1e4364d419c0312ad7e69de63.balancing_node='4d6f185a906048be937764a0a8f90840' '99f481ad1ace4e0b9c7e72eae6f784c1' '33e1e36694f7421aaffaa6ce6cb27a26' 'a292a8d432f146ddad5d5785fb93719d' '27bff7b3c37d4b42bf70d8abf72289e9'
+uci set passwall.0a85e8e9922e42638665c8671715f4d7=nodes
+uci set passwall.0a85e8e9922e42638665c8671715f4d7.tls='1'
+uci set passwall.0a85e8e9922e42638665c8671715f4d7.type='Xray'
+uci set passwall.0a85e8e9922e42638665c8671715f4d7.timeout='60'
+uci set passwall.0a85e8e9922e42638665c8671715f4d7.add_from='飞鸟云'
+uci set passwall.0a85e8e9922e42638665c8671715f4d7.password='367c093f-a415-4770-9109-f5f8ae4f049d'
+uci set passwall.0a85e8e9922e42638665c8671715f4d7.port='64338'
+uci set passwall.0a85e8e9922e42638665c8671715f4d7.protocol='trojan'
+uci set passwall.0a85e8e9922e42638665c8671715f4d7.address='gzdx2.170203.xyz'
+uci set passwall.0a85e8e9922e42638665c8671715f4d7.remarks='香港|08|奈飞ChatGPT2'
+uci set passwall.0a85e8e9922e42638665c8671715f4d7.tls_allowInsecure='0'
+uci set passwall.0a85e8e9922e42638665c8671715f4d7.tls_serverName='hkmax08.170203.xyz'
+uci set passwall.0a85e8e9922e42638665c8671715f4d7.add_mode='2'
+uci set passwall.723f0202e9c44947aacc826ea3502904=nodes
+uci set passwall.723f0202e9c44947aacc826ea3502904.tls='1'
+uci set passwall.723f0202e9c44947aacc826ea3502904.type='Xray'
+uci set passwall.723f0202e9c44947aacc826ea3502904.timeout='60'
+uci set passwall.723f0202e9c44947aacc826ea3502904.add_from='飞鸟云'
+uci set passwall.723f0202e9c44947aacc826ea3502904.password='367c093f-a415-4770-9109-f5f8ae4f049d'
+uci set passwall.723f0202e9c44947aacc826ea3502904.port='13995'
+uci set passwall.723f0202e9c44947aacc826ea3502904.protocol='trojan'
+uci set passwall.723f0202e9c44947aacc826ea3502904.address='gzdx0.170203.xyz'
+uci set passwall.723f0202e9c44947aacc826ea3502904.remarks='香港|02奈飞ChatGPT0'
+uci set passwall.723f0202e9c44947aacc826ea3502904.tls_allowInsecure='0'
+uci set passwall.723f0202e9c44947aacc826ea3502904.tls_serverName='hkmax02.170203.xyz'
+uci set passwall.723f0202e9c44947aacc826ea3502904.add_mode='2'
+uci set passwall.ca24e255967d4b75af34e06ea49e6567=nodes
+uci set passwall.ca24e255967d4b75af34e06ea49e6567.tls='1'
+uci set passwall.ca24e255967d4b75af34e06ea49e6567.type='Xray'
+uci set passwall.ca24e255967d4b75af34e06ea49e6567.timeout='60'
+uci set passwall.ca24e255967d4b75af34e06ea49e6567.add_from='飞鸟云'
+uci set passwall.ca24e255967d4b75af34e06ea49e6567.password='367c093f-a415-4770-9109-f5f8ae4f049d'
+uci set passwall.ca24e255967d4b75af34e06ea49e6567.port='43150'
+uci set passwall.ca24e255967d4b75af34e06ea49e6567.protocol='trojan'
+uci set passwall.ca24e255967d4b75af34e06ea49e6567.address='gzdx3.170203.xyz'
+uci set passwall.ca24e255967d4b75af34e06ea49e6567.remarks='香港|06奈飞ChatGPT3'
+uci set passwall.ca24e255967d4b75af34e06ea49e6567.tls_allowInsecure='0'
+uci set passwall.ca24e255967d4b75af34e06ea49e6567.tls_serverName='hkmax06.170203.xyz'
+uci set passwall.ca24e255967d4b75af34e06ea49e6567.add_mode='2'
+uci set passwall.faba91ad667d422e811c79ae0ef2651b=nodes
+uci set passwall.faba91ad667d422e811c79ae0ef2651b.tls='1'
+uci set passwall.faba91ad667d422e811c79ae0ef2651b.type='Xray'
+uci set passwall.faba91ad667d422e811c79ae0ef2651b.timeout='60'
+uci set passwall.faba91ad667d422e811c79ae0ef2651b.add_from='飞鸟云'
+uci set passwall.faba91ad667d422e811c79ae0ef2651b.password='367c093f-a415-4770-9109-f5f8ae4f049d'
+uci set passwall.faba91ad667d422e811c79ae0ef2651b.port='42490'
+uci set passwall.faba91ad667d422e811c79ae0ef2651b.protocol='trojan'
+uci set passwall.faba91ad667d422e811c79ae0ef2651b.address='gzdx0.170203.xyz'
+uci set passwall.faba91ad667d422e811c79ae0ef2651b.remarks='香港|06|奈飞ChatGPT0'
+uci set passwall.faba91ad667d422e811c79ae0ef2651b.tls_allowInsecure='0'
+uci set passwall.faba91ad667d422e811c79ae0ef2651b.tls_serverName='hkmax06.170203.xyz'
+uci set passwall.faba91ad667d422e811c79ae0ef2651b.add_mode='2'
+uci set passwall.a292a8d432f146ddad5d5785fb93719d=nodes
+uci set passwall.a292a8d432f146ddad5d5785fb93719d.tls='1'
+uci set passwall.a292a8d432f146ddad5d5785fb93719d.type='Xray'
+uci set passwall.a292a8d432f146ddad5d5785fb93719d.timeout='60'
+uci set passwall.a292a8d432f146ddad5d5785fb93719d.add_from='飞鸟云'
+uci set passwall.a292a8d432f146ddad5d5785fb93719d.password='367c093f-a415-4770-9109-f5f8ae4f049d'
+uci set passwall.a292a8d432f146ddad5d5785fb93719d.port='443'
+uci set passwall.a292a8d432f146ddad5d5785fb93719d.protocol='trojan'
+uci set passwall.a292a8d432f146ddad5d5785fb93719d.address='hkmax01.170203.xyz'
+uci set passwall.a292a8d432f146ddad5d5785fb93719d.remarks='香港|01直连'
+uci set passwall.a292a8d432f146ddad5d5785fb93719d.tls_allowInsecure='0'
+uci set passwall.a292a8d432f146ddad5d5785fb93719d.tls_serverName='hkmax01.170203.xyz'
+uci set passwall.a292a8d432f146ddad5d5785fb93719d.add_mode='2'
+uci set passwall.99f481ad1ace4e0b9c7e72eae6f784c1=nodes
+uci set passwall.99f481ad1ace4e0b9c7e72eae6f784c1.tls='1'
+uci set passwall.99f481ad1ace4e0b9c7e72eae6f784c1.type='Xray'
+uci set passwall.99f481ad1ace4e0b9c7e72eae6f784c1.timeout='60'
+uci set passwall.99f481ad1ace4e0b9c7e72eae6f784c1.add_from='飞鸟云'
+uci set passwall.99f481ad1ace4e0b9c7e72eae6f784c1.password='367c093f-a415-4770-9109-f5f8ae4f049d'
+uci set passwall.99f481ad1ace4e0b9c7e72eae6f784c1.port='47516'
+uci set passwall.99f481ad1ace4e0b9c7e72eae6f784c1.protocol='trojan'
+uci set passwall.99f481ad1ace4e0b9c7e72eae6f784c1.address='gzdx3.170203.xyz'
+uci set passwall.99f481ad1ace4e0b9c7e72eae6f784c1.remarks='香港|01隧道3'
+uci set passwall.99f481ad1ace4e0b9c7e72eae6f784c1.tls_allowInsecure='0'
+uci set passwall.99f481ad1ace4e0b9c7e72eae6f784c1.tls_serverName='hkmax01.170203.xyz'
+uci set passwall.99f481ad1ace4e0b9c7e72eae6f784c1.add_mode='2'
+uci set passwall.27bff7b3c37d4b42bf70d8abf72289e9=nodes
+uci set passwall.27bff7b3c37d4b42bf70d8abf72289e9.tls='1'
+uci set passwall.27bff7b3c37d4b42bf70d8abf72289e9.type='Xray'
+uci set passwall.27bff7b3c37d4b42bf70d8abf72289e9.timeout='60'
+uci set passwall.27bff7b3c37d4b42bf70d8abf72289e9.add_from='飞鸟云'
+uci set passwall.27bff7b3c37d4b42bf70d8abf72289e9.password='367c093f-a415-4770-9109-f5f8ae4f049d'
+uci set passwall.27bff7b3c37d4b42bf70d8abf72289e9.port='12409'
+uci set passwall.27bff7b3c37d4b42bf70d8abf72289e9.protocol='trojan'
+uci set passwall.27bff7b3c37d4b42bf70d8abf72289e9.address='gzdx1.170203.xyz'
+uci set passwall.27bff7b3c37d4b42bf70d8abf72289e9.remarks='香港|08奈飞ChatGPT1'
+uci set passwall.27bff7b3c37d4b42bf70d8abf72289e9.tls_allowInsecure='0'
+uci set passwall.27bff7b3c37d4b42bf70d8abf72289e9.tls_serverName='hkmax08.170203.xyz'
+uci set passwall.27bff7b3c37d4b42bf70d8abf72289e9.add_mode='2'
+uci set passwall.b175d369fe414dd99391b4b8278be838=nodes
+uci set passwall.b175d369fe414dd99391b4b8278be838.tls='1'
+uci set passwall.b175d369fe414dd99391b4b8278be838.type='Xray'
+uci set passwall.b175d369fe414dd99391b4b8278be838.timeout='60'
+uci set passwall.b175d369fe414dd99391b4b8278be838.add_from='飞鸟云'
+uci set passwall.b175d369fe414dd99391b4b8278be838.password='367c093f-a415-4770-9109-f5f8ae4f049d'
+uci set passwall.b175d369fe414dd99391b4b8278be838.port='63259'
+uci set passwall.b175d369fe414dd99391b4b8278be838.protocol='trojan'
+uci set passwall.b175d369fe414dd99391b4b8278be838.address='gzdx0.170203.xyz'
+uci set passwall.b175d369fe414dd99391b4b8278be838.remarks='香港|01|隧道2'
+uci set passwall.b175d369fe414dd99391b4b8278be838.tls_allowInsecure='0'
+uci set passwall.b175d369fe414dd99391b4b8278be838.tls_serverName='hkmax01.170203.xyz'
+uci set passwall.b175d369fe414dd99391b4b8278be838.add_mode='2'
+uci set passwall.1642a74b0a1140f792104f54f1a51636=nodes
+uci set passwall.1642a74b0a1140f792104f54f1a51636.tls='1'
+uci set passwall.1642a74b0a1140f792104f54f1a51636.type='Xray'
+uci set passwall.1642a74b0a1140f792104f54f1a51636.timeout='60'
+uci set passwall.1642a74b0a1140f792104f54f1a51636.add_from='飞鸟云'
+uci set passwall.1642a74b0a1140f792104f54f1a51636.password='367c093f-a415-4770-9109-f5f8ae4f049d'
+uci set passwall.1642a74b0a1140f792104f54f1a51636.port='22907'
+uci set passwall.1642a74b0a1140f792104f54f1a51636.protocol='trojan'
+uci set passwall.1642a74b0a1140f792104f54f1a51636.address='gzdx1.170203.xyz'
+uci set passwall.1642a74b0a1140f792104f54f1a51636.remarks='香港|02|奈飞ChatGPT1'
+uci set passwall.1642a74b0a1140f792104f54f1a51636.tls_allowInsecure='0'
+uci set passwall.1642a74b0a1140f792104f54f1a51636.tls_serverName='hkmax02.170203.xyz'
+uci set passwall.1642a74b0a1140f792104f54f1a51636.add_mode='2'
+uci commit passwall
