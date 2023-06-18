@@ -49,6 +49,9 @@ jobs:
       - name: Checkout OpenWrt
         uses: actions/checkout@v3
 
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+      
       - name: Clone extra packages code
         run: |
           git clone https://github.com/sun-cut/luci-app-nginx-manager package/lean/luci-app-nginx-manager
