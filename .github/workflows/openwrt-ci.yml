@@ -76,7 +76,7 @@ jobs:
           sed -i "s/iphone12_publickey/${{ secrets.wireguard_iphone12_publickey }}/g" ./package/lean/default-settings/files/zzz-default-settings
           sed -i "s/store_publickey/${{ secrets.wireguard_store_publickey }}/g" ./package/lean/default-settings/files/zzz-default-settings
           sed -i "s/server_privatekey/${{ secrets.wireguard_server_privatekey }}/g" ./package/lean/default-settings/files/zzz-default-settings
-          passwall_text = echo -e "${{ secrets.uci_passwall }}"
+          passwall_text=`echo -e "${{ secrets.uci_passwall }}"`
           cat >> ./package/lean/default-settings/files/zzz-default-settings <<EOF
           ${passwall_text}
           EOF
