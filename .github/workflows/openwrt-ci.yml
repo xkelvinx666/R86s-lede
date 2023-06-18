@@ -52,6 +52,7 @@ jobs:
       - name: Clone extra packages code
         run: |
           git clone https://github.com/sun-cut/luci-app-nginx-manager package/lean/luci-app-nginx-manager
+          git clone https://github.com/gngpp/luci-theme-design.git  package/luci-theme-design
 
       - name: fetch geo data
         run: |
