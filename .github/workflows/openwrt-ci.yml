@@ -93,9 +93,6 @@ jobs:
           sed -i 's/^[ \t]*//g' ./.config
           make defconfig
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-
       - name: Download packages
         run: make download -j16
 
