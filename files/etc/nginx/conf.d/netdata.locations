@@ -1,3 +1,0 @@
-location /cgi-bin/luci/admin/status/netdata {
-      return 302 http://192.168.0.2:19999;
-}
