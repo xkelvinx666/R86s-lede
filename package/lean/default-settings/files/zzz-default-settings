@@ -68,8 +68,6 @@ uci set network.lan.ifname='eth0'   # 网络端口：默认 eth0，第一个接�
 uci set network.lan.netmask='255.255.255.0' # 子网掩码
 uci set network.lan.gateway='192.168.0.1'   # 默认网关地址（主路由 IP）
 uci set network.lan.dns='192.168.0.1'  # 默认上游 DNS 地址
-uci set network.globals.ula_prefix=''
-uci delete network.wan6
 uci commit network
 
 uci set dhcp.lan.ignore='1'
@@ -79,4 +77,15 @@ uci set uuplugin.uuplugin.enabled='1'
 uci commit uuplugin
 
 uci delete network.wan
+uci delete network.wan6
+uci set network.globals.ula_prefix=''
 uci commit network
+
+uci delete firewall.@zone[1]
+uci commit firewall
+
+uci set firewall.@defaults[0].forward='ACCEPT'
+uci set firewall.@zone[0].masq='1'
+uci set firewall.@zone[0].mtu_fix='1'
+uci delete firewall.@zone[1]
+uci commit firewall
