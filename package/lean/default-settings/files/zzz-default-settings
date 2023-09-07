@@ -80,9 +80,6 @@ uci delete network.wan6
 uci set network.globals.ula_prefix=''
 uci commit network
 
-uci delete firewall.@zone[1]
-uci commit firewall
-
 uci set firewall.@defaults[0].forward='ACCEPT'
 uci set firewall.@zone[0].masq='1'
 uci set firewall.@zone[0].mtu_fix='1'
