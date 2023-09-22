@@ -17,6 +17,7 @@
 /package/openwrt-packages
 /package/lean/luci-app-nginx-manager
 /package/lean/luci-theme-neobird
+/package/lean/luci-app-adguardhome
 /*.patch
 key-build*
 *.orig
