@@ -63,27 +63,136 @@ echo "log-facility=/dev/null" >> /etc/dnsmasq.conf
 rm -rf /tmp/luci-modulecache/
 rm -f /tmp/luci-indexcache
 
-uci set network.lan.ipaddr='192.168.0.2'   # 默认 IP 地址
-uci set network.lan.proto='static'   # 静态 IP
+uci set network.lan.proto='dhcp'   # 静态 IP
 uci set network.lan.ifname='eth0'   # 网络端口：默认 eth0，第一个接口
-uci set network.lan.netmask='255.255.255.0' # 子网掩码
-uci set network.lan.gateway='192.168.0.1'   # 默认网关地址（主路由 IP）
-uci set network.lan.dns='192.168.0.1'  # 默认上游 DNS 地址
 uci commit network
 
 uci set dhcp.lan.ignore='1'
 uci commit dhcp
 
-uci set uuplugin.uuplugin.enabled='1'
-uci commit uuplugin
-
 uci delete network.wan
 uci delete network.wan6
 uci set network.globals.ula_prefix=''
+uci set network.lan.hostname='MicroServerGen8'
 uci commit network
 
 uci set firewall.@defaults[0].forward='ACCEPT'
 uci set firewall.@zone[0].masq='1'
 uci set firewall.@zone[0].mtu_fix='1'
-uci delete firewall.@zone[1]
 uci commit firewall
+
+
+uci set samba4.@samba[0].name='MicroServerGen8'
+uci add samba4 sambashare
+uci set samba4.@sambashare[-1]=sambashare
+uci set samba4.@sambashare[-1].auto='1'
+uci set samba4.@sambashare[-1].name='sde1'
+uci set samba4.@sambashare[-1].path='/mnt/sde1'
+uci set samba4.@sambashare[-1].create_mask='0666'
+uci set samba4.@sambashare[-1].dir_mask='0777'
+uci set samba4.@sambashare[-1].device='sde1'
+uci set samba4.@sambashare[-1].inherit_owner='yes'
+uci set samba4.@sambashare[-1].browseable='no'
+uci commit samba4
+uci add samba4 sambashare
+uci set samba4.@sambashare[-1]=sambashare
+uci set samba4.@sambashare[-1].auto='1'
+uci set samba4.@sambashare[-1].name='sdd1'
+uci set samba4.@sambashare[-1].path='/mnt/sdd1'
+uci set samba4.@sambashare[-1].read_only='no'  
+uci set samba4.@sambashare[-1].guest_ok='yes'  
+uci set samba4.@sambashare[-1].create_mask='0666'
+uci set samba4.@sambashare[-1].dir_mask='0777' 
+uci set samba4.@sambashare[-1].device='sdd1'   
+uci set samba4.@sambashare[-1].inherit_owner='yes'
+uci commit samba4
+uci add samba4 sambashare
+uci set samba4.@sambashare[-1]=sambashare
+uci set samba4.@sambashare[-1].auto='1'
+uci set samba4.@sambashare[-1].read_only='no'
+uci set samba4.@sambashare[-1].guest_ok='yes'
+uci set samba4.@sambashare[-1].create_mask='0666'
+uci set samba4.@sambashare[-1].dir_mask='0777'
+uci set samba4.@sambashare[-1].device='sdc1'
+uci set samba4.@sambashare[-1].inherit_owner='yes'
+uci set samba4.@sambashare[-1].name='public'
+uci set samba4.@sambashare[-1].path='/mnt/sdc1/public'
+uci commit samba4
+uci add samba4 sambashare
+uci set samba4.@sambashare[-1]=sambashare
+uci set samba4.@sambashare[-1].auto='1'
+uci set samba4.@sambashare[-1].read_only='no'
+uci set samba4.@sambashare[-1].create_mask='0666'
+uci set samba4.@sambashare[-1].dir_mask='0777'
+uci set samba4.@sambashare[-1].device='sdb1'
+uci set samba4.@sambashare[-1].inherit_owner='yes'
+uci set samba4.@sambashare[-1].browseable='no'
+uci set samba4.@sambashare[-1].name='freq'
+uci set samba4.@sambashare[-1].path='/mnt/sdb1/freq'
+uci set samba4.@sambashare[-1].guest_ok='yes'
+uci commit samba4
+uci add samba4 sambashare
+uci set samba4.@sambashare[-1]=sambashare
+uci set samba4.@sambashare[-1].auto='1'
+uci set samba4.@sambashare[-1].read_only='no'
+uci set samba4.@sambashare[-1].guest_ok='yes'
+uci set samba4.@sambashare[-1].create_mask='0666'
+uci set samba4.@sambashare[-1].dir_mask='0777'
+uci set samba4.@sambashare[-1].device='sda1'
+uci set samba4.@sambashare[-1].inherit_owner='yes'
+uci set samba4.@sambashare[-1].browseable='no'
+uci set samba4.@sambashare[-1].name='omv'
+uci set samba4.@sambashare[-1].path='/mnt/sda1/omv'
+uci commit samba4
+
+
+uci set nfs.@share[0]=share
+uci set nfs.@share[0].clients='*'
+uci set nfs.@share[0].options='rw,sync,root_squash,all_squash,insecure,no_subtree_check'
+uci set nfs.@share[0].enabled='1'
+uci set nfs.@share[0].path='/mnt/sdc1/public'
+uci commit nfs
+
+uci set baidupcs-web.config.enabled='1'
+uci set baidupcs-web.config.download_dir='/mnt/sdb1/freq/downloads/baidu'
+uci commit baidupcs-web
+
+uci set aria2.main=aria2
+uci set aria2.main.bt_enable_lpd='true'
+uci set aria2.main.enable_dht='true'
+uci set aria2.main.follow_torrent='true'
+uci set aria2.main.file_allocation='none'
+uci set aria2.main.header=''
+uci set aria2.main.rpc_auth_method='token'
+uci set aria2.main.rpc_secret='P3TERX'
+uci set aria2.main.config_dir='/etc/aria2'
+uci set aria2.main.enabled='1'
+uci set aria2.main.disk_cache='512M'
+uci set aria2.main.save_session_interval='20'
+uci set aria2.main.max_concurrent_downloads='5'
+uci set aria2.main.max_connection_per_server='16'
+uci set aria2.main.min_split_size='4M'
+uci set aria2.main.split='64'
+uci set aria2.main.enable_log='false'
+uci set aria2.main.dir='/mnt/sdb1/freq'
+uci set aria2.main.user='nobody'
+uci add_list aria2.main.extra_settings='continue=true' 
+uci add_list aria2.main.extra_settings='always-resume=false' 
+uci add_list aria2.main.extra_settings='max-resume-failure-tries=0' 
+uci add_list aria2.main.extra_settings='remote-time=true' 
+uci add_list aria2.main.extra_settings='force-save=false' 
+uci add_list aria2.main.extra_settings='max-file-not-found=10' 
+uci add_list aria2.main.extra_settings='max-tries=0' 
+uci add_list aria2.main.extra_settings='retry-wait=10' 
+uci add_list aria2.main.extra_settings='connect-timeout=10' 
+uci add_list aria2.main.extra_settings='timeout=10' 
+uci add_list aria2.main.extra_settings='no-file-allocation-limit=64M' 
+uci add_list aria2.main.extra_settings='allow-piece-length-change=true' 
+uci add_list aria2.main.extra_settings='piece-length=1M' 
+uci add_list aria2.main.extra_settings='http-accept-gzip=true' 
+uci add_list aria2.main.extra_settings='reuse-uri=false' 
+uci add_list aria2.main.extra_settings='no-netrc=true' 
+uci add_list aria2.main.extra_settings='allow-overwrite=false' 
+uci add_list aria2.main.extra_settings='auto-file-renaming=true' 
+uci add_list aria2.main.extra_settings='content-disposition-default-utf8=true'
+uci commit aria2
