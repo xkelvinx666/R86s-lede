@@ -196,3 +196,21 @@ uci add_list aria2.main.extra_settings='allow-overwrite=false'
 uci add_list aria2.main.extra_settings='auto-file-renaming=true' 
 uci add_list aria2.main.extra_settings='content-disposition-default-utf8=true'
 uci commit aria2
+
+
+uci set alist.@alist[0]=alist        
+uci set alist.@alist[0].port='5244'  
+uci set alist.@alist[0].temp_dir='/tmp/alist'
+uci set alist.@alist[0].ssl='0'      
+uci set alist.@alist[0].max_connections='0'
+uci set alist.@alist[0].enabled='1'  
+uci set alist.@alist[0].mysql='0'    
+uci set alist.@alist[0].data_dir='/etc/alist'
+uci set alist.@alist[0].token_expires_in='48'
+uci set alist.@alist[0].delayed_start='120'
+uci set alist.@alist[0].log='1'      
+uci set alist.@alist[0].allow_wan='1'
+uci commit alist
+
+uci set dockerd.globals.data_root='/mnt/sdd1/docker'
+uci commit dockerd

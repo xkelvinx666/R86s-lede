@@ -1,0 +1,17 @@
+config hd-idle
+        option enabled '1'
+        option disk 'sda'
+        option idle_time_unit 'hours'
+        option idle_time_interval '2'
+
+config hd-idle
+        option enabled '1'
+        option disk 'sdb'
+        option idle_time_unit 'hours'
+        option idle_time_interval '2'
+
+config hd-idle
+        option enabled '1'
+        option disk 'sdc'
+        option idle_time_unit 'hours'
+        option idle_time_interval '2'
