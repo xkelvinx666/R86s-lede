@@ -223,6 +223,8 @@ define Device/asus_rt-ac42u
 #	Rather, this device is a/k/a RT-AC42U
 #	But we'll go with what the vendor firmware has...
 	UIMAGE_NAME:=$(shell echo -e '\03\01\01\01RT-AC82U')
+	KERNEL_INITRAMFS := $$(KERNEL) | uImage none
+	KERNEL_INITRAMFS_SUFFIX := -factory.trx
 	DEVICE_PACKAGES := ath10k-firmware-qca9984-ct kmod-usb-ledtrig-usbport
 endef
 TARGET_DEVICES += asus_rt-ac42u
@@ -244,6 +246,8 @@ define Device/asus_rt-ac58u
 #	to add a version... or we are very careful not to add '\0' into that
 #	string and call it a day.... Yeah, we do the latter!
 	UIMAGE_NAME:=$(shell echo -e '\03\01\01\01RT-AC58U')
+	KERNEL_INITRAMFS := $$(KERNEL) | uImage none
+	KERNEL_INITRAMFS_SUFFIX := -factory.trx
 	DEVICE_PACKAGES := -kmod-ath10k-ct kmod-ath10k-ct-smallbuffers \
 		kmod-usb-ledtrig-usbport
 endef
@@ -982,6 +986,20 @@ define Device/unielec_u4019-32m
 	DEFAULT := n
 endef
 TARGET_DEVICES += unielec_u4019-32m
+
+define Device/yyets_le1
+	$(call Device/FitzImage)
+	DEVICE_VENDOR := YYeTs
+	DEVICE_MODEL := LE1
+	SOC := qcom-ipq4019
+	KERNEL_SIZE := 4096k
+	IMAGE_SIZE := 31232k
+	IMAGES += factory.bin
+	IMAGE/factory.bin := qsdk-ipq-factory-nor | check-size
+	IMAGE/sysupgrade.bin := append-kernel | append-rootfs | pad-rootfs | append-metadata
+	DEVICE_PACKAGES := ipq-wifi-yyets_le1 kmod-usb-ledtrig-usbport
+endef
+TARGET_DEVICES += yyets_le1
 
 define Device/zte_mf28x_common
 	$(call Device/FitzImage)
