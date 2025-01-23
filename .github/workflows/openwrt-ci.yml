@@ -48,34 +48,6 @@ jobs:
 
       - name: Checkout OpenWrt
         uses: actions/checkout@v4
-      
-      - name: Clone extra packages code
-        run: |
-          git clone https://github.com/sun-cut/luci-app-nginx-manager package/lean/luci-app-nginx-manager
-          git clone https://github.com/gngpp/luci-theme-design.git  package/luci-theme-design
-          git clone https://github.com/rufengsuixing/luci-app-adguardhome  package/luci-app-adguardhome
-
-      - name: fetch geo data
-        run: |
-          mkdir -p files/usr/share/xray
-          wget https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat -O files/usr/share/xray/geoip.dat
-          wget https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat -O files/usr/share/xray/geosite.dat
-          wget https://anti-ad.net/domains.txt -O files/etc/mosdns/rule/adlist.txt
-          wget -O files/etc/mosdns/rule/ad-qiu-simon.txt https://raw.githubusercontent.com/QiuSimons/openwrt-mos/master/dat/serverlist.txt
-
-      - name: set private settings
-        run: |
-          sed -i "s/tencent-cloud-id/${{ secrets.tencent_cloud_id }}/g" ./package/lean/default-settings/files/zzz-default-settings
-          sed -i "s/tencent-cloud-token/${{ secrets.tencent_cloud_token }}/g" ./package/lean/default-settings/files/zzz-default-settings
-          sed -i "s/pppoe-wan-username/${{ secrets.pppoe_wan_user_name }}/g" ./package/lean/default-settings/files/zzz-default-settings
-          sed -i "s/pppoe-wan-password/${{ secrets.pppoe_wan_password }}/g" ./package/lean/default-settings/files/zzz-default-settings
-          sed -i "s/iphone12_publickey/${{ secrets.wireguard_iphone12_publickey }}/g" ./package/lean/default-settings/files/zzz-default-settings
-          sed -i "s/store_publickey/${{ secrets.wireguard_store_publickey }}/g" ./package/lean/default-settings/files/zzz-default-settings
-          sed -i "s/server_privatekey/${{ secrets.wireguard_server_privatekey }}/g" ./package/lean/default-settings/files/zzz-default-settings
-          passwall_text=`echo -e "${{ secrets.uci_passwall }}"`
-          cat >> ./package/lean/default-settings/files/zzz-default-settings <<EOF
-          ${passwall_text}
-          EOF
 
       - name: Update feeds
         run: |
