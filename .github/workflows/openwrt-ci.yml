@@ -8,9 +8,16 @@
 name: OpenWrt-CI
 
 on:
-  schedule:
-    - cron: 0 20 * * *
-
+  workflow_call:
+  push:
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
+    
 permissions:
   contents: read
 
@@ -44,12 +51,15 @@ jobs:
 
       - name: Update feeds
         run: |
-          sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
       - name: Generate configuration file
-        run: make defconfig
+        run: |
+          rm -f ./.config*
+          mv diff.config .config
+          sed -i 's/^[ \t]*//g' ./.config
+          make defconfig
 
       - name: Download packages
         run: make download -j16
